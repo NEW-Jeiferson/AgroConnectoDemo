@@ -68,3 +68,258 @@
             <p class="toggle-form">¿No tienes cuenta? <a href="#register">Crear cuenta</a></p>
         </div>
     </div>
+
+    <!-- ========================================
+         MAIN - Contenido Principal
+         Responsable: PERSONA 2 (Landing + Catálogo)
+    ======================================== -->
+    <main class="main-content">
+        
+        <!-- SECCIÓN 1: HERO / BANNER PRINCIPAL -->
+        <section class="hero" id="inicio">
+            <div class="hero-content">
+                <h2>Compra directo de productores locales</h2>
+                <p>Sin intermediarios, con precios justos</p>
+                <button class="cta-btn">Comienza ahora</button>
+            </div>
+            <div class="hero-image">
+                <img src="placeholder-hero.jpg" alt="AgroConnect Hero">
+            </div>
+        </section>
+
+        <!-- SECCIÓN 2: FILTROS + CATÁLOGO DE PRODUCTOS -->
+        <section class="products-section" id="productos">
+            <div class="products-container">
+                
+                <!-- Filtros -->
+                <aside class="filters">
+                    <h3>Filtrar</h3>
+                    
+                    <div class="filter-group">
+                        <label>Categoría</label>
+                        <input type="checkbox"> Frutas
+                        <input type="checkbox"> Verduras
+                        <input type="checkbox"> Lácteos
+                        <input type="checkbox"> Huevos
+                    </div>
+
+                    <div class="filter-group">
+                        <label>Rango de precio</label>
+                        <input type="range" min="0" max="500">
+                        <span id="price-range">$0 - $500</span>
+                    </div>
+
+                    <div class="filter-group">
+                        <label>Ubicación</label>
+                        <input type="text" placeholder="Tu provincia...">
+                    </div>
+
+                    <button class="apply-filters-btn">Aplicar filtros</button>
+                </aside>
+
+                <!-- Grid de productos -->
+                <div class="products-grid">
+                    <h3>Productos disponibles</h3>
+                    
+                    <!-- CARD PRODUCTO 1 -->
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="placeholder-product.jpg" alt="Producto">
+                        </div>
+                        <div class="product-info">
+                            <h4>Nombre del producto</h4>
+                            <p class="producer-name">Productor: Juan García</p>
+                            <p class="product-price">$45.99</p>
+                            <p class="product-rating">⭐⭐⭐⭐ (23 reseñas)</p>
+                            <button class="add-to-cart-btn">Agregar al carrito</button>
+                        </div>
+                    </div>
+
+                    <!-- CARD PRODUCTO 2 -->
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="placeholder-product.jpg" alt="Producto">
+                        </div>
+                        <div class="product-info">
+                            <h4>Nombre del producto</h4>
+                            <p class="producer-name">Productor: María López</p>
+                            <p class="product-price">$32.50</p>
+                            <p class="product-rating">⭐⭐⭐⭐⭐ (45 reseñas)</p>
+                            <button class="add-to-cart-btn">Agregar al carrito</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 3: PÁGINA DE PRODUCTORES -->
+        <section class="producers-section" id="productores">
+            <h3>Productores locales</h3>
+            <div class="producers-grid">
+                
+                <!-- CARD PRODUCTOR 1 -->
+                <div class="producer-card">
+                    <div class="producer-avatar">
+                        <img src="placeholder-avatar.jpg" alt="Productor">
+                    </div>
+                    <div class="producer-info">
+                        <h4>Nombre del productor</h4>
+                        <p class="producer-location">📍 San Cristóbal</p>
+                        <p class="producer-category">Frutas y verduras</p>
+                        <p class="producer-rating">⭐⭐⭐⭐ (12 clientes)</p>
+                        <button class="visit-profile-btn">Ver perfil</button>
+                    </div>
+                </div>
+
+                <!-- CARD PRODUCTOR 2 -->
+                <div class="producer-card">
+                    <div class="producer-avatar">
+                        <img src="placeholder-avatar.jpg" alt="Productor">
+                    </div>
+                    <div class="producer-info">
+                        <h4>Nombre del productor</h4>
+                        <p class="producer-location">📍 La Vega</p>
+                        <p class="producer-category">Lácteos y derivados</p>
+                        <p class="producer-rating">⭐⭐⭐⭐⭐ (28 clientes)</p>
+                        <button class="visit-profile-btn">Ver perfil</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ========================================
+         PERFIL DE USUARIO / PRODUCTOR
+         Responsable: PERSONA 3 (Perfiles + Dashboard)
+    ======================================== -->
+    <div class="profile-page" id="profile-page" style="display: none;">
+        <div class="profile-container">
+            <div class="profile-header">
+                <div class="profile-avatar">
+                    <img src="placeholder-avatar.jpg" alt="Usuario">
+                </div>
+                <div class="profile-details">
+                    <h2>Nombre del usuario</h2>
+                    <p class="profile-type">Tipo: Consumidor</p>
+                    <p class="profile-since">Miembro desde: Junio 2026</p>
+                </div>
+                <button class="edit-profile-btn">Editar perfil</button>
+            </div>
+
+            <div class="profile-tabs">
+                <button class="tab-btn active" data-tab="mis-compras">Mis compras</button>
+                <button class="tab-btn" data-tab="favoritos">Favoritos</button>
+                <button class="tab-btn" data-tab="reseñas">Mis reseñas</button>
+                <button class="tab-btn" data-tab="direcciones">Direcciones</button>
+            </div>
+
+            <div class="tab-content">
+                <div id="mis-compras" class="tab-pane active">
+                    <h3>Historial de compras</h3>
+                </div>
+                <div id="favoritos" class="tab-pane">
+                    <h3>Productos favoritos</h3>
+                </div>
+                <div id="reseñas" class="tab-pane">
+                    <h3>Mis reseñas</h3>
+                </div>
+                <div id="direcciones" class="tab-pane">
+                    <h3>Direcciones de entrega</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================
+         CARRITO (Modal/Drawer)
+         Responsable: PERSONA 3 (Carrito + Checkout)
+    ======================================== -->
+    <div class="cart-modal" id="cart-modal" style="display: none;">
+        <div class="cart-overlay"></div>
+        <div class="cart-panel">
+            <div class="cart-header">
+                <h3>Mi carrito</h3>
+                <button class="close-cart-btn">&times;</button>
+            </div>
+
+            <div class="cart-items" id="cart-items">
+                <p class="empty-cart">Tu carrito está vacío</p>
+            </div>
+
+            <div class="cart-summary">
+                <div class="summary-row">
+                    <span>Subtotal:</span>
+                    <span id="subtotal">$0.00</span>
+                </div>
+                <div class="summary-row">
+                    <span>Comisión (12%):</span>
+                    <span id="fee">$0.00</span>
+                </div>
+                <div class="summary-row total">
+                    <span>Total:</span>
+                    <span id="total">$0.00</span>
+                </div>
+            </div>
+            <button class="checkout-btn">Proceder al pago</button>
+        </div>
+    </div>
+
+    <!-- ========================================
+         FOOTER - Información General
+         Responsable: PERSONA 3 (Footer + Links)
+    ======================================== -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>Sobre AgroConnect</h4>
+                <ul>
+                    <li><a href="#about">¿Quiénes somos?</a></li>
+                    <li><a href="#mission">Nuestra misión</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Para compradores</h4>
+                <ul>
+                    <li><a href="#how-to-buy">Cómo comprar</a></li>
+                    <li><a href="#deliveries">Entregas</a></li>
+                    <li><a href="#faq">Preguntas frecuentes</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Para productores</h4>
+                <ul>
+                    <li><a href="#join">Únete como productor</a></li>
+                    <li><a href="#producer-support">Soporte</a></li>
+                    <li><a href="#pricing">Precios</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#terms">Términos de servicio</a></li>
+                    <li><a href="#privacy">Privacidad</a></li>
+                    <li><a href="#contact">Contacto</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 AgroConnect. Todos los derechos reservados.</p>
+            <div class="social-links">
+                <a href="#facebook">Facebook</a>
+                <a href="#instagram">Instagram</a>
+                <a href="#whatsapp">WhatsApp</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========================================
+         SCRIPTS
+    ======================================== -->
+    <script src="scripts.js"></script>
+</body>
+</html>
