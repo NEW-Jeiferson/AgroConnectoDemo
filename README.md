@@ -1,192 +1,52 @@
 # 🌱 AgroConnect
 
-AgroConnect es una plataforma móvil que conecta directamente a productores agrícolas con consumidores finales, eliminando intermediarios y permitiendo una compra más justa, económica y eficiente.
+## Descripción
 
-Los productores pueden gestionar su inventario, publicar sus productos y coordinar entregas locales, mientras que los consumidores tienen acceso a alimentos frescos directamente desde el origen a mejores precios. :contentReference[oaicite:1]{index=1}
-
----
-
-## 📖 Descripción
-
-En muchos países de Latinoamérica, incluyendo República Dominicana, los pequeños agricultores dependen de intermediarios para vender sus productos. Esto provoca que:
-
-- Los productores reciban un pago muy inferior al valor real de sus productos.
-- Los consumidores paguen precios considerablemente más altos.
-- Exista poca transparencia en la cadena de distribución.
-
-AgroConnect busca solucionar este problema mediante un marketplace donde productores y consumidores puedan interactuar directamente. :contentReference[oaicite:2]{index=2}
+AgroConnect es una aplicación móvil que conecta directamente a productores agrícolas con consumidores finales, permitiendo la compra y venta de productos frescos sin intermediarios. La plataforma busca ofrecer precios más justos para los consumidores y mayores ganancias para los productores mediante un marketplace sencillo y accesible. :contentReference[oaicite:0]{index=0}
 
 ---
 
-## 🎯 Objetivos
+## Problema que resuelve
 
-- Facilitar la venta directa entre productores y consumidores.
-- Reducir los costos ocasionados por intermediarios.
-- Incrementar las ganancias de los agricultores.
-- Ofrecer productos frescos a precios más accesibles.
-- Impulsar la digitalización del sector agrícola.
+En República Dominicana y otros países de Latinoamérica, muchos agricultores venden sus productos a intermediarios que obtienen gran parte de las ganancias. Esto provoca que los productores reciban un pago menor por sus cosechas y que los consumidores paguen precios más elevados.
+
+AgroConnect busca reducir esta brecha permitiendo la venta directa entre productores y consumidores, facilitando además la gestión de productos, pedidos y entregas locales. :contentReference[oaicite:1]{index=1}
 
 ---
 
-## ✨ Características
+## Tecnologías
 
-### Para productores
+Las tecnologías del proyecto aún están en proceso de definición.
 
-- Registro y creación de perfil.
-- Publicación de productos agrícolas.
-- Gestión de inventario.
-- Administración de pedidos.
-- Coordinación de entregas locales.
+Actualmente se contempla el siguiente stack:
 
-### Para consumidores
-
-- Búsqueda de productores cercanos.
-- Catálogo de productos.
-- Comparación de precios.
-- Compra directa desde el productor.
-- Comunicación con el vendedor.
+- **Frontend:** HTML - CSS - JavaScript
+- **Backend:** Por definir
+- **Base de datos:** Por definir
+- **Aplicación móvil:** Por definir
+- **Servicios en la nube:** Por definir
 
 ---
 
-## 🚜 Productos disponibles
+## Cómo ejecutar el proyecto
 
-Entre los productos que podrán comercializarse se incluyen:
+Las instrucciones de instalación y ejecución serán agregadas cuando la arquitectura y las tecnologías del proyecto estén definidas.
 
-- Frutas
-- Verduras
-- Lácteos
-- Huevos
-- *(La lista puede ampliarse en futuras versiones.)* :contentReference[oaicite:3]{index=3}
+Ejemplo de esta sección en el futuro:
 
----
+```bash
+# Clonar el repositorio
+git clone https://github.com/usuario/AgroConnect.git
 
-## 🚀 Diferenciadores
+# Instalar dependencias
+...
 
-- ✅ Eliminación de intermediarios.
-- ✅ Plataforma enfocada específicamente en pequeños productores agrícolas.
-- ✅ Diseño Mobile First.
-- ✅ Integración con canales de comunicación como WhatsApp y SMS (por definir).
-- ✅ Gestión de logística para entregas locales.
-- ✅ Beneficios económicos tanto para productores como para consumidores. :contentReference[oaicite:4]{index=4}
-
----
-
-## 💰 Modelo de negocio
-
-El proyecto está planteado como un **Marketplace B2C**, donde los productores venden directamente al consumidor final.
-
-Las fuentes de ingresos contempladas incluyen:
-
-- Comisión por venta.
-- Suscripción premium para productores (opcional).
-- Publicidad agrícola.
-- Servicios relacionados con logística y entregas.
-
-> Algunas de estas funcionalidades se encuentran sujetas a decisión e implementación futura. :contentReference[oaicite:5]{index=5}
-
----
-
-## 📱 Funcionalidades principales
-
-- Registro e inicio de sesión.
-- Gestión de perfiles.
-- Catálogo de productos.
-- Búsqueda y filtrado.
-- Gestión de inventario.
-- Carrito de compras.
-- Gestión de pedidos.
-- Chat entre productor y consumidor.
-- Coordinación de entregas.
-- Sistema de pagos *(por definir)*.
-
----
-
-## 🛠️ Tecnologías
-
-> **Por definir**
-
-Posibles tecnologías a utilizar:
-
-- Frontend: Por definir
-- Backend: Por definir
-- Base de datos: Por definir
-- API: Por definir
-- Aplicación móvil: Por definir
-- Servicios en la nube: Por definir
-
----
-
-## 📂 Estructura del proyecto
-
-```
-AgroConnect/
-│
-├── frontend/
-├── backend/
-├── database/
-├── docs/
-├── assets/
-└── README.md
+# Ejecutar el proyecto
+...
 ```
 
-> La estructura podrá modificarse conforme avance el desarrollo.
-
 ---
 
-## 👥 Usuarios del sistema
-
-- Productores agrícolas
-- Consumidores
-
----
-
-## 🌎 Público objetivo
-
-Pequeños y medianos productores agrícolas, así como consumidores interesados en adquirir productos frescos directamente del productor.
-
-Inicialmente el proyecto está orientado a **República Dominicana**, con posibilidad de expansión a otros países de Latinoamérica.
-
----
-
-## 📈 Estado del proyecto
+## Estado del proyecto
 
 🚧 En desarrollo.
-
-Actualmente se encuentra en etapa de planificación y definición de funcionalidades.
-
----
-
-## 🔮 Mejoras futuras
-
-- Sistema de calificaciones.
-- Seguimiento de pedidos en tiempo real.
-- Geolocalización.
-- Notificaciones push.
-- Estadísticas para productores.
-- Integración con pasarelas de pago.
-- Panel administrativo.
-
----
-
-## 🤝 Contribuciones
-
-Las contribuciones son bienvenidas. Si deseas colaborar:
-
-1. Haz un Fork del proyecto.
-2. Crea una nueva rama.
-3. Realiza tus cambios.
-4. Envía un Pull Request.
-
----
-
-## 📄 Licencia
-
-**Por definir.**
-
----
-
-## 👨‍💻 Equipo de desarrollo
-
-Proyecto desarrollado como parte de un equipo de desarrollo de software.
-
-Los integrantes serán agregados cuando se definan oficialmente.
