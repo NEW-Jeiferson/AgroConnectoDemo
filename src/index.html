@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroConnect - Marketplace Agrícola</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- ========================================
+         HEADER - Navegación Principal
+         Responsable: PERSONA 1 (Navío + Autenticación)
+    ======================================== -->
+    <header class="header">
+        <div class="header-container">
+            <!-- Logo -->
+            <div class="logo">
+                <h1>AgroConnect</h1>
+                <p class="tagline">Del productor al consumidor</p>
+            </div>
+
+            <!-- Barra de búsqueda -->
+            <div class="search-bar">
+                <input type="text" placeholder="Buscar productos, productores..." class="search-input">
+                <button class="search-btn">Buscar</button>
+            </div>
+
+            <!-- Navegación + User Menu -->
+            <nav class="navbar">
+                <ul class="nav-links">
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#productos">Productos</a></li>
+                    <li><a href="#productores">Productores</a></li>
+                </ul>
+                
+                <!-- User Actions (Login/Profile) -->
+                <div class="user-actions">
+                    <button class="cart-btn" id="cart-icon">
+                        🛒 Carrito (<span id="cart-count">0</span>)
+                    </button>
+                    <button class="login-btn" id="login-btn">Iniciar sesión</button>
+                    <div class="profile-menu" id="profile-menu" style="display: none;">
+                        <a href="#mi-cuenta">Mi cuenta</a>
+                        <a href="#mis-compras">Mis compras</a>
+                        <a href="#logout">Cerrar sesión</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ========================================
+         FORMULARIO DE LOGIN (Modal)
+         Responsable: PERSONA 1 (Autenticación)
+    ======================================== -->
+    <div class="login-modal" id="login-modal" style="display: none;">
+        <div class="login-overlay"></div>
+        <div class="login-panel">
+            <h3>Iniciar sesión</h3>
+            <button class="close-login-btn">&times;</button>
+
+            <form class="login-form">
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Contraseña" required>
+                <button type="submit" class="submit-btn">Entrar</button>
+            </form>
+
+            <p class="toggle-form">¿No tienes cuenta? <a href="#register">Crear cuenta</a></p>
+        </div>
+    </div>
