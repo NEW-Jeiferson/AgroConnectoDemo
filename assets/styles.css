@@ -1,0 +1,32 @@
+/* Shared application styles for AgroConnect */
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+.filled-icon {
+    font-variation-settings: 'FILL' 1;
+}
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f9f9ff;
+}
+.profile-card-shadow {
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.05);
+}
+.product-image-container {
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.product-image-container:hover {
+    transform: scale(1.02);
+}
+.success-checkmark-animation {
+    animation: scaleIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+}
+@keyframes scaleIn {
+    0% { transform: scale(0); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+.bento-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 24px;
+}

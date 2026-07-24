@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html class="light" lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Mi Cuenta - AgroConnect</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="../assets/styles.css"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "primary": "#1B5E20",
+                      "on-primary": "#FFFFFF",
+                      "primary-container": "#A3D977",
+                      "on-primary-container": "#002202",
+                      "secondary": "#6750A4",
+                      "on-secondary": "#FFFFFF",
+                      "secondary-container": "#EADDFF",
+                      "on-secondary-container": "#21005D",
+                      "tertiary": "#7D5260",
+                      "on-tertiary": "#FFFFFF",
+                      "tertiary-container": "#FFD8E4",
+                      "on-tertiary-container": "#31111D",
+                      "error": "#B3261E",
+                      "on-error": "#FFFFFF",
+                      "error-container": "#F9DEDC",
+                      "on-error-container": "#410E0B",
+                      "background": "#FFFBFE",
+                      "on-background": "#1C1B1F",
+                      "surface": "#FFFBFE",
+                      "on-surface": "#1C1B1F",
+                      "surface-variant": "#E7E0EC",
+                      "on-surface-variant": "#49454E",
+                      "outline": "#79747E",
+                      "outline-variant": "#CAC7D0",
+                      "inverse-surface": "#313033",
+                      "inverse-on-surface": "#F4EFF4",
+                      "surface-container": "#F3EEF3",
+                      "surface-container-high": "#ECE6F0",
+                      "surface-container-highest": "#E6E1E5",
+                      "surface-container-low": "#F7F2FA",
+                      "surface-container-lowest": "#FFFBFE",
+                      "primary-fixed": "#A3D977",
+                      "on-primary-fixed": "#002202",
+                      "primary-fixed-dim": "#61de8a",
+                      "secondary-fixed-dim": "#61de8a"
+              },
+              "borderRadius": {
+                      "xs": "4px",
+                      "sm": "8px",
+                      "md": "12px",
+                      "lg": "16px",
+                      "xl": "28px",
+                      "full": "9999px"
+              },
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col">
+    <!-- TopNavBar Implementation -->
+    <header class="bg-surface dark:bg-inverse-surface border-b border-outline-variant dark:border-outline flex justify-between items-center w-full px-6 h-16 fixed top-0 z-50">
+        <div class="flex items-center gap-8">
+            <span class="text-2xl font-bold text-primary dark:text-primary-fixed-dim">AgroConnect</span>
+            <nav class="hidden md:flex gap-6">
+                <a class="text-on-surface-variant dark:text-outline-variant text-sm hover:bg-surface-container dark:hover:bg-inverse-surface transition-colors px-2 py-1 rounded" href="ofertas-productos.html">Marketplace</a>
+                <a class="text-on-surface-variant dark:text-outline-variant text-sm hover:bg-surface-container dark:hover:bg-inverse-surface transition-colors px-2 py-1 rounded" href="#">Agricultores</a>
+                <a class="text-on-surface-variant dark:text-outline-variant text-sm hover:bg-surface-container dark:hover:bg-inverse-surface transition-colors px-2 py-1 rounded" href="#">Ofertas</a>
+            </nav>
+        </div>
+        <div class="flex items-center gap-4">
+            <div class="flex items-center gap-2">
+                <button class="p-2 text-on-surface-variant hover:bg-surface-container rounded-full transition-colors">
+                    <span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+                </button>
+                <button class="p-2 text-on-surface-variant hover:bg-surface-container rounded-full transition-colors relative">
+                    <span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+                    <span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></span>
+                </button>
+            </div>
+            <div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary">
+                <img class="w-full h-full object-cover" alt="User profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_RhtKDgPLNVZSe-He8rRJkJnH3ztmGXoPIEc9hfknogKkGIjBlSg4Zscnwr8B6tadbKJuI-1brzjkQl-QdqqHv0HnxkgeZZQqkcsUSA3756GUuuPwToOSGtW63jb_dCH9v8--UF1H5HgvB7PmJY1qLKVRelp3tdLCU1L16xVJnNvW5LBlTvwgmximbwmrdO2z0Hf6EEaMEVmTRqMOdGXq0c5cG8OMrFC1REUwbZXnJo6ZzsQkRAHeRnI7d68A-fG7RL8baIv4dl_k"/>
+            </div>
+        </div>
+    </header>
+
+    <div class="flex-1 lg:flex lg:items-start lg:gap-6">
+        <!-- SideNavBar Implementation (for Desktop) -->
+        <aside class="hidden lg:block sticky top-[80px] self-start shrink-0 w-[280px] bg-surface-container-low dark:bg-inverse-surface shadow-sm flex-col py-4 z-40">
+            <div class="px-4 py-6">
+                <h2 class="text-xl font-bold text-primary">Mi Cuenta</h2>
+                <p class="text-xs text-on-surface-variant opacity-70">Gestiona tu experiencia</p>
+            </div>
+            <nav class="flex-grow max-h-[calc(100vh-140px)] overflow-auto">
+                <div class="space-y-1">
+                    <a class="flex items-center gap-3 px-4 py-3 bg-secondary-container text-on-secondary-container dark:bg-primary-container dark:text-on-primary-container rounded-lg mx-2 my-1 translate-x-1 transition-transform" href="#">
+                        <span class="material-symbols-outlined" data-icon="person">person</span>
+                        <span class="text-xs font-medium">Perfil</span>
+                    </a>
+                    <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high mx-2 my-1 rounded-lg transition-colors" href="#">
+                        <span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+                        <span class="text-xs font-medium">Mis pedidos</span>
+                    </a>
+                    <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high mx-2 my-1 rounded-lg transition-colors" href="#">
+                        <span class="material-symbols-outlined" data-icon="payments">payments</span>
+                        <span class="text-xs font-medium">Métodos de pago</span>
+                    </a>
+                    <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high mx-2 my-1 rounded-lg transition-colors" href="#">
+                        <span class="material-symbols-outlined" data-icon="location_on">location_on</span>
+                        <span class="text-xs font-medium">Direcciones</span>
+                    </a>
+                </div>
+            </nav>
+            <div class="mt-auto border-t border-outline-variant pt-4">
+                <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high mx-2 my-1 rounded-lg transition-colors" href="#">
+                    <span class="material-symbols-outlined" data-icon="settings">settings</span>
+                    <span class="text-xs font-medium">Configuración</span>
+                </a>
+                <a class="flex items-center gap-3 px-4 py-3 text-error hover:bg-error-container mx-2 my-1 rounded-lg transition-colors" href="#">
+                    <span class="material-symbols-outlined" data-icon="logout">logout</span>
+                    <span class="text-xs font-medium">Cerrar sesión</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content Canvas -->
+        <main class="pt-20 lg:pt-24 pb-12 px-4 md:px-6 flex-1">
+            <div>
+                <!-- Bento Grid Layout for Profile -->
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+                <!-- Hero Profile Card -->
+                <section class="md:col-span-8 bg-surface-container-lowest rounded-xl profile-card-shadow p-8 flex flex-col md:flex-row items-center gap-8 border border-outline-variant/30">
+                    <div class="relative">
+                        <div class="w-32 h-32 rounded-full overflow-hidden border-4 border-primary-container shadow-lg">
+                            <img class="w-full h-full object-cover" alt="User profile picture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5RDv3TCj_03kSTv2c6MIpMfh5SagfS2HtTU9rB4YZw3PzFthytihCs2DGi7_4X8N56l4GTUnDIQj-ZOJMBjiOPkY-dclam3_08GFFci02L1Up0-Hiff4kfXLeJ6uVUyxWQpXtufv_oEWc9y8xxXzkA09yukSoFo_n3JxStHdtc2UAd4lkWJe2nEuDqxRDELtwltuj0SXhxUGM6f3Yl8ZpuJ4_S2RIyT2fLCrSMf8kJaljv-M8O5Rx__7S2RoXKBj0R9hr3Zw6XzZz"/>
+                        </div>
+                        <button class="absolute bottom-0 right-0 bg-primary text-on-primary p-2 rounded-full shadow-md hover:scale-105 transition-transform">
+                            <span class="material-symbols-outlined text-[20px]" data-icon="edit">edit</span>
+                        </button>
+                    </div>
+                    <div class="text-center md:text-left space-y-2 flex-1">
+                        <h1 class="text-3xl font-bold text-on-surface">Carlos Mendoza</h1>
+                        <p class="text-base text-on-surface-variant flex items-center justify-center md:justify-start gap-2">
+                            <span class="material-symbols-outlined text-primary" data-icon="mail">mail</span>
+                            c.mendoza@email.com
+                        </p>
+                        <div class="flex flex-wrap gap-3 mt-4 justify-center md:justify-start">
+                            <span class="px-3 py-1 bg-primary-container/20 text-on-primary-container rounded-full text-xs font-medium">Cliente VIP</span>
+                            <span class="px-3 py-1 bg-secondary-container/20 text-on-secondary-container rounded-full text-xs font-medium">Desde 2022</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Quick Actions / Stats -->
+                <section class="md:col-span-4 grid grid-cols-2 md:grid-cols-1 gap-4">
+                    <div class="bg-primary text-on-primary rounded-xl p-6 flex flex-col justify-between profile-card-shadow">
+                        <span class="material-symbols-outlined text-4xl" data-icon="eco">eco</span>
+                        <div>
+                            <p class="text-3xl font-bold">124</p>
+                            <p class="text-sm opacity-90">Kilos de CO2 ahorrados</p>
+                        </div>
+                    </div>
+                    <div class="bg-tertiary-container text-on-tertiary-container rounded-xl p-6 flex flex-col justify-between profile-card-shadow">
+                        <span class="material-symbols-outlined text-4xl" data-icon="local_shipping">local_shipping</span>
+                        <div>
+                            <p class="text-3xl font-bold">3</p>
+                            <p class="text-sm opacity-90">Pedidos en camino</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Information Details -->
+                <section class="md:col-span-12 lg:col-span-7 bg-surface-container-lowest rounded-xl profile-card-shadow p-8 border border-outline-variant/30">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="text-xl font-bold text-on-surface">Información de Contacto</h3>
+                        <button class="text-primary text-xs font-medium flex items-center gap-1 hover:underline">
+                            <span class="material-symbols-outlined text-[18px]" data-icon="edit">edit</span>
+                            Editar
+                        </button>
+                    </div>
+                    <div class="space-y-6">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div class="space-y-1">
+                                <p class="text-xs font-medium text-on-surface-variant uppercase tracking-wider">Teléfono</p>
+                                <p class="text-base font-medium">+54 9 11 5555-0123</p>
+                            </div>
+                            <div class="space-y-1">
+                                <p class="text-xs font-medium text-on-surface-variant uppercase tracking-wider">Documento</p>
+                                <p class="text-base font-medium">DNI 34.XXX.XXX</p>
+                            </div>
+                        </div>
+                        <div class="pt-4 border-t border-outline-variant/30 space-y-4">
+                            <div class="flex gap-4 items-start">
+                                <div class="p-2 bg-surface-container rounded-lg flex-shrink-0">
+                                    <span class="material-symbols-outlined text-primary" data-icon="location_on">location_on</span>
+                                </div>
+                                <div class="flex-grow">
+                                    <p class="text-xs font-medium text-on-surface-variant uppercase tracking-wider">Dirección Principal</p>
+                                    <p class="text-base font-medium">Av. de Mayo 1370, 4to Piso B</p>
+                                    <p class="text-sm text-on-surface-variant">C1085 Buenos Aires, Argentina</p>
+                                </div>
+                            </div>
+                            <div class="h-48 w-full rounded-lg overflow-hidden bg-surface-variant mt-4">
+                                <div class="w-full h-full flex items-center justify-center bg-surface-container-high border border-outline-variant relative">
+                                    <span class="material-symbols-outlined text-4xl text-primary/50" data-icon="map">map</span>
+                                    <div class="absolute inset-0 bg-primary/5 opacity-10"></div>
+                                    <p class="absolute bottom-4 left-4 bg-white/80 backdrop-blur px-3 py-1 rounded-full text-xs font-medium text-on-surface">Ubicación guardada</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Side Panel (Payment & Activity) -->
+                <section class="md:col-span-12 lg:col-span-5 space-y-6">
+                    <!-- Payment Methods Card -->
+                    <div class="bg-surface-container-lowest rounded-xl profile-card-shadow p-6 border border-outline-variant/30">
+                        <div class="flex justify-between items-center mb-6">
+                            <h3 class="text-xl font-bold text-on-surface">Métodos de Pago</h3>
+                            <button class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-all">
+                                <span class="material-symbols-outlined" data-icon="add">add</span>
+                            </button>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between p-3 border border-outline-variant rounded-lg hover:bg-surface-container/50 transition-colors cursor-pointer group">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-12 h-8 bg-inverse-surface rounded flex items-center justify-center text-white font-bold text-[10px]">VISA</div>
+                                    <div>
+                                        <p class="text-sm font-bold">**** 4582</p>
+                                        <p class="text-xs text-on-surface-variant">Exp: 08/26</p>
+                                    </div>
+                                </div>
+                                <span class="material-symbols-outlined text-primary" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                            </div>
+                            <div class="flex items-center justify-between p-3 border border-outline-variant rounded-lg hover:bg-surface-container/50 transition-colors cursor-pointer">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-12 h-8 bg-[#EB001B] rounded flex items-center justify-center text-white font-bold text-[10px]">MC</div>
+                                    <div>
+                                        <p class="text-sm font-bold">**** 9104</p>
+                                        <p class="text-xs text-on-surface-variant">Exp: 11/25</p>
+                                    </div>
+                                </div>
+                                <span class="material-symbols-outlined text-outline-variant" data-icon="more_vert">more_vert</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Account Settings & Privacy -->
+                    <div class="bg-surface-container-lowest rounded-xl profile-card-shadow p-6 border border-outline-variant/30">
+                        <h3 class="text-xl font-bold text-on-surface mb-6">Preferencias</h3>
+                        <div class="space-y-4">
+                            <label class="flex items-center justify-between cursor-pointer">
+                                <span class="text-sm">Notificaciones por Email</span>
+                                <div class="relative inline-flex items-center cursor-pointer">
+                                    <input checked="" class="sr-only peer" type="checkbox"/>
+                                    <div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+                                </div>
+                            </label>
+                            <label class="flex items-center justify-between cursor-pointer">
+                                <span class="text-sm">Ofertas Personalizadas</span>
+                                <div class="relative inline-flex items-center cursor-pointer">
+                                    <input checked="" class="sr-only peer" type="checkbox"/>
+                                    <div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                </section>
+            </div>
+
+            <!-- Recent Orders Section -->
+            <section class="mt-8 bg-surface-container-lowest rounded-xl profile-card-shadow p-8 border border-outline-variant/30">
+                <div class="flex justify-between items-center mb-8">
+                    <h3 class="text-xl font-bold text-on-surface">Pedidos Recientes</h3>
+                    <a class="text-primary text-xs font-medium flex items-center gap-1 hover:underline" href="#">Ver todo el historial</a>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-sm">
+                        <thead class="bg-surface-container-low">
+                            <tr>
+                                <th class="px-4 py-3 font-medium text-on-surface-variant uppercase text-xs">ID Pedido</th>
+                                <th class="px-4 py-3 font-medium text-on-surface-variant uppercase text-xs">Fecha</th>
+                                <th class="px-4 py-3 font-medium text-on-surface-variant uppercase text-xs">Estado</th>
+                                <th class="px-4 py-3 font-medium text-on-surface-variant uppercase text-xs">Total</th>
+                                <th class="px-4 py-3 font-medium text-on-surface-variant uppercase text-xs text-right">Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-outline-variant/30">
+                            <tr class="hover:bg-surface-container-low/50 transition-colors">
+                                <td class="px-4 py-4 font-medium">#AGR-99234</td>
+                                <td class="px-4 py-4 font-medium">14 Oct, 2023</td>
+                                <td class="px-4 py-4">
+                                    <span class="px-2 py-1 bg-primary-container/20 text-on-primary-container rounded text-xs font-medium">Entregado</span>
+                                </td>
+                                <td class="px-4 py-4 font-bold">$4,250.00</td>
+                                <td class="px-4 py-4 text-right">
+                                    <button class="p-2 hover:bg-primary-container rounded-full text-primary transition-colors">
+                                        <span class="material-symbols-outlined" data-icon="visibility">visibility</span>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-surface-container-low/50 transition-colors">
+                                <td class="px-4 py-4 font-medium">#AGR-98112</td>
+                                <td class="px-4 py-4 font-medium">02 Oct, 2023</td>
+                                <td class="px-4 py-4">
+                                    <span class="px-2 py-1 bg-tertiary-container/20 text-on-tertiary-container rounded text-xs font-medium">En tránsito</span>
+                                </td>
+                                <td class="px-4 py-4 font-bold">$1,890.00</td>
+                                <td class="px-4 py-4 text-right">
+                                    <button class="p-2 hover:bg-primary-container rounded-full text-primary transition-colors">
+                                        <span class="material-symbols-outlined" data-icon="visibility">visibility</span>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </main>
+</div>
+
+    <!-- Footer Implementation -->
+    <footer class="bg-inverse-surface dark:bg-surface-container-lowest border-t border-outline-variant w-full py-8 px-6 flex flex-col md:flex-row justify-between items-center text-on-primary dark:text-on-surface mt-12">
+        <div class="mb-4 md:mb-0">
+            <span class="font-bold text-lg text-primary-fixed-dim">AgroConnect</span>
+            <p class="text-sm opacity-80 mt-2">© 2024 AgroConnect. Conectando raíces a mesas.</p>
+        </div>
+        <div class="flex gap-6 flex-wrap justify-center">
+            <a class="text-surface-variant opacity-80 hover:text-primary-fixed hover:opacity-100 text-xs font-medium transition-all" href="#">Política de Privacidad</a>
+            <a class="text-surface-variant opacity-80 hover:text-primary-fixed hover:opacity-100 text-xs font-medium transition-all" href="#">Términos de Servicio</a>
+            <a class="text-surface-variant opacity-80 hover:text-primary-fixed hover:opacity-100 text-xs font-medium transition-all" href="#">Centro de Ayuda</a>
+            <a class="text-surface-variant opacity-80 hover:text-primary-fixed hover:opacity-100 text-xs font-medium transition-all" href="#">Contáctanos</a>
+        </div>
+    </footer>
+
+    <!-- Bottom Nav for Mobile -->
+    <nav class="fixed bottom-0 left-0 right-0 h-16 bg-surface border-t border-outline-variant flex items-center justify-around md:hidden z-50">
+        <a class="flex flex-col items-center gap-1 text-on-surface-variant" href="ofertas-productos.html">
+            <span class="material-symbols-outlined" data-icon="home">home</span>
+            <span class="text-[10px]">Inicio</span>
+        </a>
+        <a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#">
+            <span class="material-symbols-outlined" data-icon="search">search</span>
+            <span class="text-[10px]">Explorar</span>
+        </a>
+        <a class="flex flex-col items-center gap-1 text-primary" href="cuentaConsumidor.html">
+            <span class="material-symbols-outlined" data-icon="person" style="font-variation-settings: 'FILL' 1;">person</span>
+            <span class="text-[10px] font-bold">Perfil</span>
+        </a>
+        <a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#">
+            <span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+            <span class="text-[10px]">Carrito</span>
+        </a>
+    </nav>
+
+    <script src="../assets/scripts.js"></script>
+</body>
+</html>
