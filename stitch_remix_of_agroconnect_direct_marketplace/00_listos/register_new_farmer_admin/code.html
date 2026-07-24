@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AgroConnect - Admin Dashboard | Register Farmer</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-surface": "#273140",
+                        "outline-variant": "#bbcbbb",
+                        "tertiary-fixed-dim": "#ffb68d",
+                        "primary-fixed-dim": "#4ae183",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-fixed": "#331200",
+                        "on-surface": "#121c2a",
+                        "surface": "#f9f9ff",
+                        "surface-container-high": "#dee9fd",
+                        "primary": "#006d37",
+                        "secondary-fixed": "#7efba4",
+                        "surface-container": "#e6eeff",
+                        "on-secondary-fixed": "#00210c",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-container": "#007239",
+                        "surface-variant": "#d9e3f7",
+                        "on-surface-variant": "#3d4a3e",
+                        "error-container": "#ffdad6",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed": "#ffdbc9",
+                        "inverse-primary": "#4ae183",
+                        "on-tertiary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "primary-container": "#2ecc71",
+                        "surface-container-highest": "#d9e3f7",
+                        "on-tertiary-container": "#733200",
+                        "surface-dim": "#d0daef",
+                        "on-primary-fixed": "#00210c",
+                        "tertiary-container": "#ff995b",
+                        "on-primary-container": "#005027",
+                        "surface-tint": "#006d37",
+                        "tertiary": "#9b4500",
+                        "background": "#f9f9ff",
+                        "secondary": "#006d37",
+                        "on-secondary-fixed-variant": "#005228",
+                        "on-tertiary-fixed-variant": "#763300",
+                        "outline": "#6c7b6d",
+                        "on-primary-fixed-variant": "#005228",
+                        "on-background": "#121c2a",
+                        "inverse-on-surface": "#ebf1ff",
+                        "secondary-container": "#7bf8a1",
+                        "on-secondary": "#ffffff",
+                        "primary-fixed": "#6bfe9c",
+                        "surface-container-low": "#eff3ff",
+                        "error": "#ba1a1a",
+                        "surface-bright": "#f9f9ff",
+                        "secondary-fixed-dim": "#61de8a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "32px",
+                        "base": "4px",
+                        "margin-mobile": "16px",
+                        "gutter": "24px",
+                        "sidebar-width": "280px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "title-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #F5F7FA; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .form-card {
+            background: #FFFFFF;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.05);
+            border: 1px solid #E5E7EB;
+        }
+        .custom-input {
+            background-color: #F9FAFB;
+            border: 1px solid #E5E7EB;
+            transition: all 0.2s ease;
+        }
+        .custom-input:focus {
+            border-color: #006d37;
+            background-color: #FFFFFF;
+            ring: 2px;
+            ring-color: #006d37;
+        }
+    </style>
+</head>
+<body class="bg-surface">
+<!-- Sidebar Navigation -->
+<aside class="fixed left-0 top-0 h-full w-[280px] flex flex-col py-4 z-40 bg-surface-container-low dark:bg-inverse-surface shadow-sm">
+<div class="px-4 py-6">
+<h1 class="font-headline-md text-headline-md text-primary">AgroConnect</h1>
+<p class="font-label-md text-label-md text-on-surface-variant opacity-70">Management Portal</p>
+</div>
+<nav class="flex-1 px-2 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-secondary-container text-on-secondary-container rounded-lg translate-x-1 transition-transform" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person_add</span>
+<span class="font-label-md text-label-md font-bold">Manage Farmers</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">local_shipping</span>
+<span class="font-label-md text-label-md">Order Tracking</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">monitoring</span>
+<span class="font-label-md text-label-md">Statistics</span>
+</a>
+</nav>
+<div class="px-2 mt-auto border-t border-outline-variant pt-4">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-colors text-error" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-label-md text-label-md">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-[280px] min-h-screen">
+<!-- Header / Top Bar -->
+<header class="h-16 flex items-center justify-between px-margin-desktop sticky top-0 bg-surface/80 backdrop-blur-md z-30">
+<div class="flex items-center gap-4">
+<img class="w-10 h-10 rounded-full object-cover border-2 border-primary-container" data-alt="Professional studio portrait of a corporate administrator in his late 40s wearing a crisp white shirt and a confident smile, high-end commercial photography style with soft bokeh background and warm lighting, professional headshot for an agricultural tech company dashboard." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXpVeZjErLFIng7M8Qek8sJCuN7kWLfeR8mXrAbOqyUgIh5Y0brzm_ae8IdUauEhhrvo0y9OWklCrI7mHq6IpXRPyXcdA3PFzuh5roJzFqaxVaHzMH7qM920V4EWU1f3QUq9JIh2RHlqLmUnXUUm4pmtgRPzjHfFCvxDLF8OEcUYQ_lVJBS4Y9zmYvq24f3EDS69tI2iBjqNqoee8zHb8GvEtDUW1wmzYnkw6GAtk-RTSzHfyiC1wHOlygu0-PjuAKo6eg7fIfzPfK"/>
+<div>
+<h2 class="font-title-lg text-title-lg text-on-surface">Admin Dashboard</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Welcome back, Carlos Mendoza</p>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative group cursor-pointer">
+<span class="material-symbols-outlined text-on-surface-variant">notifications</span>
+<span class="absolute -top-1 -right-1 w-2.5 h-2.5 bg-error rounded-full border-2 border-surface"></span>
+</div>
+<div class="relative group cursor-pointer flex items-center gap-2">
+<span class="material-symbols-outlined text-on-surface-variant">mail</span>
+<span class="font-label-md text-label-md text-on-surface-variant">Inbox</span>
+</div>
+</div>
+</header>
+<!-- Registration Form Container -->
+<div class="px-margin-desktop py-8 max-w-6xl mx-auto">
+<div class="flex items-center justify-between mb-8">
+<div>
+<h3 class="font-headline-lg text-headline-lg text-on-surface">Registrar Agricultor</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Fill in the following information to onboard a new producer to the AgroConnect network.</p>
+</div>
+<div class="bg-primary-container/10 px-4 py-2 rounded-full flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm">verified_user</span>
+<span class="font-label-md text-label-md text-primary font-bold uppercase tracking-wider">Secure Portal</span>
+</div>
+</div>
+<form action="#" class="space-y-gutter" method="POST">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-gutter">
+<!-- Section 1: Info Personal -->
+<section class="form-card p-8 rounded-xl">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary bg-primary-container/20 p-2 rounded-lg">person</span>
+<h4 class="font-title-lg text-title-lg text-on-surface">Info personal</h4>
+</div>
+<div class="space-y-5">
+<div class="group">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1.5 ml-1">Nombre</label>
+<input class="w-full h-12 px-4 rounded-lg custom-input font-body-md text-body-md" placeholder="e.g. Juan" type="text"/>
+</div>
+<div class="group">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1.5 ml-1">Apellido</label>
+<input class="w-full h-12 px-4 rounded-lg custom-input font-body-md text-body-md" placeholder="e.g. Pérez" type="text"/>
+</div>
+<div class="group">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1.5 ml-1">Cedula</label>
+<input class="w-full h-12 px-4 rounded-lg custom-input font-body-md text-body-md" placeholder="000-0000000-0" type="text"/>
+</div>
+<div class="group">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1.5 ml-1">Telefono</label>
+<input class="w-full h-12 px-4 rounded-lg custom-input font-body-md text-body-md" placeholder="+1 (809) 000-0000" type="tel"/>
+</div>
+<div class="group">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1.5 ml-1">Correo</label>
+<input class="w-full h-12 px-4 rounded-lg custom-input font-body-md text-body-md" placeholder="example@agroconnect.com" type="email"/>
+</div>
+</div>
+</section>
+<!-- Section 2: Info Agricultor -->
+<section class="form-card p-8 rounded-xl">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary bg-primary-container/20 p-2 rounded-lg">agriculture</span>
+<h4 class="font-title-lg text-title-lg text-on-surface">Info Agricultor</h4>
+</div>
+<div class="space-y-5">
+<div class="group">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1.5 ml-1">Direccion</label>
+<input class="w-full h-12 px-4 rounded-lg custom-input font-body-md text-body-md" placeholder="Calle Principal #45" type="text"/>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="group">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1.5 ml-1">Provincia</label>
+<select class="w-full h-12 px-4 rounded-lg custom-input font-body-md text-body-md appearance-none">
+<option value="">Seleccione...</option>
+<option value="santo-domingo">Santo Domingo</option>
+<option value="la-vega">La Vega</option>
+<option value="moca">Moca</option>
+</select>
+</div>
+<div class="group">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1.5 ml-1">Municipio</label>
+<input class="w-full h-12 px-4 rounded-lg custom-input font-body-md text-body-md" placeholder="e.g. Constanza" type="text"/>
+</div>
+</div>
+<div class="group">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1.5 ml-1">Producto</label>
+<select class="w-full h-12 px-4 rounded-lg custom-input font-body-md text-body-md">
+<option value="">Tipo de Cosecha...</option>
+<option value="vegetables">Vegetales &amp; Hortalizas</option>
+<option value="fruits">Frutas Tropicales</option>
+<option value="grains">Granos &amp; Cereales</option>
+</select>
+</div>
+<div class="pt-2">
+<label class="flex items-center gap-3 cursor-pointer group">
+<div class="relative">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-12 h-6 bg-surface-variant rounded-full peer-checked:bg-primary transition-colors duration-200"></div>
+<div class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform duration-200 peer-checked:translate-x-6"></div>
+</div>
+<span class="font-body-md text-body-md text-on-surface-variant group-hover:text-on-surface">Puede hacer Envios</span>
+</label>
+<p class="text-[11px] text-on-surface-variant/60 mt-1 ml-[60px]">Activate this if the farmer has logistics capabilities.</p>
+</div>
+</div>
+</section>
+</div>
+<!-- Form Actions -->
+<div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-8">
+<button class="w-full sm:w-64 h-14 bg-primary text-white font-title-lg text-title-lg rounded-lg flex items-center justify-center gap-2 hover:bg-on-secondary-fixed-variant transition-all active:scale-95 shadow-md" type="submit">
+<span class="material-symbols-outlined">add_circle</span>
+                        Crear
+                    </button>
+<button class="w-full sm:w-64 h-14 bg-surface-container-high text-on-surface-variant font-title-lg text-title-lg rounded-lg flex items-center justify-center gap-2 hover:bg-surface-variant transition-all active:scale-95" type="button">
+<span class="material-symbols-outlined">cancel</span>
+                        Cancelar
+                    </button>
+</div>
+</form>
+<!-- Decorative Visual Aid -->
+<div class="mt-16 relative rounded-2xl overflow-hidden h-64 shadow-lg">
+<div class="absolute inset-0 bg-gradient-to-r from-primary/80 to-transparent z-10 flex flex-col justify-center px-12 text-white">
+<h5 class="font-headline-md text-headline-md mb-2">Connecting Roots to Tables</h5>
+<p class="font-body-lg text-body-lg max-w-md opacity-90">Every farmer registered is a new bridge between rural hard work and urban nutrition. Thank you for maintaining the network.</p>
+</div>
+<img class="absolute inset-0 w-full h-full object-cover" data-alt="A lush, cinematic panoramic wide shot of a vibrant green agricultural field in the morning sun, with morning dew sparkling on the leaves. The scene shows various rows of fresh crops stretching into the distance with rolling hills in the background. High-quality photography style, rich earthy tones, professional lighting, conveying growth and sustainability for an agricultural marketplace UI." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC59y9sBRT-RCx7M_LgOtjGuNr6FY5bohYRE9zmbR47bTsyK_wosFkrv6kl1HyPA2cFeYHebjPOFWV47L5p6Swc-abXAS52fpuL8wT9uTFvNSgS4DqD5FVKGa4XlZQreEOV9D8ntv0ywSH2i0j8aliXMkS3rChxuFzQRGWhUIYPc22E69XjboeXZ7zstoPB26saUoMSGB8mwLY9jsbZ8MDDcJttZm2quYHZ0MViM26gWEidcoCQYvwHNFXWIAFns2BTrYwjf7w5dXrR"/>
+</div>
+</div>
+<!-- Footer (Consistent with System) -->
+<footer class="w-full py-8 px-margin-desktop flex flex-col md:flex-row justify-between items-center bg-inverse-surface mt-20 border-t border-outline-variant">
+<div class="mb-4 md:mb-0">
+<span class="font-headline-md text-primary-fixed-dim">AgroConnect</span>
+<p class="font-body-md text-body-md text-surface-variant opacity-80 mt-1">© 2024 AgroConnect. Connecting roots to tables.</p>
+</div>
+<div class="flex gap-6">
+<a class="font-label-md text-label-md text-surface-variant opacity-80 hover:text-primary-fixed hover:opacity-100 transition-opacity" href="#">Privacy Policy</a>
+<a class="font-label-md text-label-md text-surface-variant opacity-80 hover:text-primary-fixed hover:opacity-100 transition-opacity" href="#">Terms of Service</a>
+<a class="font-label-md text-label-md text-surface-variant opacity-80 hover:text-primary-fixed hover:opacity-100 transition-opacity" href="#">Help Center</a>
+<a class="font-label-md text-label-md text-surface-variant opacity-80 hover:text-primary-fixed hover:opacity-100 transition-opacity" href="#">Contact Us</a>
+</div>
+</footer>
+</main>
+<script>
+        // Micro-interactions for form focus
+        document.querySelectorAll('input, select').forEach(element => {
+            element.addEventListener('focus', () => {
+                element.parentElement.querySelector('label').classList.add('text-primary');
+            });
+            element.addEventListener('blur', () => {
+                element.parentElement.querySelector('label').classList.remove('text-primary');
+            });
+        });
+
+        // Simple feedback for the Create button
+        const createBtn = document.querySelector('button[type="submit"]');
+        createBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const originalContent = createBtn.innerHTML;
+            createBtn.innerHTML = '<span class="material-symbols-outlined animate-spin">sync</span> Procesando...';
+            createBtn.disabled = true;
+            
+            setTimeout(() => {
+                createBtn.innerHTML = '<span class="material-symbols-outlined">check_circle</span> Éxito';
+                createBtn.classList.replace('bg-primary', 'bg-secondary');
+                setTimeout(() => {
+                    createBtn.innerHTML = originalContent;
+                    createBtn.classList.replace('bg-secondary', 'bg-primary');
+                    createBtn.disabled = false;
+                }, 2000);
+            }, 1500);
+        });
+    </script>
+</body></html>

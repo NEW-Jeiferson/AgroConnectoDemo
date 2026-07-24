@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AgroConnect - Iniciar Sesión</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-lowest": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "on-secondary": "#ffffff",
+                    "error": "#ba1a1a",
+                    "on-error-container": "#93000a",
+                    "inverse-on-surface": "#ebf1ff",
+                    "on-tertiary-fixed-variant": "#763300",
+                    "primary-container": "#2ecc71",
+                    "surface-container": "#e6eeff",
+                    "on-surface-variant": "#3d4a3e",
+                    "on-primary-fixed": "#00210c",
+                    "on-tertiary-fixed": "#331200",
+                    "inverse-primary": "#4ae183",
+                    "outline-variant": "#bbcbbb",
+                    "primary-fixed-dim": "#4ae183",
+                    "tertiary-fixed-dim": "#ffb68d",
+                    "primary-fixed": "#6bfe9c",
+                    "primary": "#006d37",
+                    "tertiary": "#9b4500",
+                    "outline": "#6c7b6d",
+                    "inverse-surface": "#273140",
+                    "on-surface": "#121c2a",
+                    "surface-container-high": "#dee9fd",
+                    "background": "#f9f9ff",
+                    "on-secondary-fixed": "#00210c",
+                    "on-primary": "#ffffff",
+                    "on-background": "#121c2a",
+                    "on-error": "#ffffff",
+                    "surface-bright": "#f9f9ff",
+                    "on-secondary-container": "#007239",
+                    "on-tertiary": "#ffffff",
+                    "surface-dim": "#d0daef",
+                    "on-secondary-fixed-variant": "#005228",
+                    "tertiary-fixed": "#ffdbc9",
+                    "on-primary-container": "#005027",
+                    "surface-container-low": "#eff3ff",
+                    "on-tertiary-container": "#733200",
+                    "tertiary-container": "#ff995b",
+                    "surface-container-highest": "#d9e3f7",
+                    "secondary-fixed": "#7efba4",
+                    "secondary": "#006d37",
+                    "on-primary-fixed-variant": "#005228",
+                    "surface-variant": "#d9e3f7",
+                    "surface-tint": "#006d37",
+                    "secondary-container": "#7bf8a1",
+                    "surface": "#f9f9ff",
+                    "secondary-fixed-dim": "#61de8a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "sidebar-width": "280px",
+                    "margin-mobile": "16px",
+                    "gutter": "24px",
+                    "base": "4px",
+                    "margin-desktop": "32px"
+            },
+            "fontFamily": {
+                    "display-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "title-lg": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .organic-pattern {
+            background-color: #f9f9ff;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%232ecc71' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col">
+<!-- Suppression of Nav Shells per "The Destination Rule": Login is Transactional/Focused -->
+<main class="flex-grow flex items-center justify-center p-margin-mobile md:p-margin-desktop organic-pattern">
+<div class="w-full max-w-[1100px] grid grid-cols-1 md:grid-cols-2 bg-surface-container-lowest rounded-xl shadow-[0px_8px_24px_rgba(0,0,0,0.05)] overflow-hidden border border-outline-variant">
+<!-- Branding/Image Side -->
+<div class="hidden md:flex flex-col justify-between p-12 bg-primary relative overflow-hidden">
+<div class="z-10">
+<div class="flex items-center gap-2 mb-8">
+<span class="material-symbols-outlined text-on-primary text-[40px]" style="font-variation-settings: 'FILL' 1;">eco</span>
+<span class="text-on-primary font-headline-lg text-headline-lg tracking-tight">AgroConnect</span>
+</div>
+<h1 class="text-on-primary font-display-lg text-display-lg leading-tight mb-6">Conectando raíces directamente con tu mesa.</h1>
+<p class="text-primary-fixed font-body-lg text-body-lg opacity-90 max-w-md">La plataforma líder que profesionaliza el comercio agrícola entre productores locales y mercados urbanos con transparencia y eficiencia.</p>
+</div>
+<div class="z-10 flex gap-8 items-center mt-auto">
+<div class="flex -space-x-3">
+<div class="w-10 h-10 rounded-full border-2 border-primary overflow-hidden" data-alt="Close-up portrait of a smiling middle-aged male farmer wearing a straw hat in a sun-drenched organic vegetable field. The lighting is warm and natural, emphasizing a sense of trust and professional agriculture. Modern high-definition photography style with soft bokeh background." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAK8K3nFjcE32HP5wKPn3C4XYRPri_O0PENKtlcVJSKq4jS62furEwJcQh1bizbNs4HynPFYC3UgZVaW35aQ1fzenbJKqJpSAaLENOTrbu0Y6x2Nyw00Cj5mPJJmpHJz2w75YMqCiYWgqXPEXA2ZjO3TXIDUrmEIuTxe1rCaEamTLLoItIY8msgBAjuHpZdCLS-_NNlDSHbIU0019W9W3CmP2KQ--6cUFcoc8jVJGhyFakuHmAGZXpT3_F5l7eeqIeAFcwbEJP3QZOS')"></div>
+<div class="w-10 h-10 rounded-full border-2 border-primary overflow-hidden" data-alt="Portrait of a young female agricultural entrepreneur in a greenhouse setting, holding a digital tablet. She has a confident expression, representing the modern side of AgroConnect. The lighting is bright and clean, consistent with a professional corporate-organic aesthetic." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDUnmStMTn2tmflKZEx_00KRyH5oXGD_XEk4nWFM5TNJQeghKxI19_ioTCAh-n8li3ytPGUKV-DAMtIzruhCgT1HRPihYBhRrAileh61KW-2dqfwK5Qaw_2jheYpJfEHAVedAdV_NW9Nap40-aQ8ESEvKWE2xMHV6A-U8UfxtYfDUdHNjwu0Q34SfINzDh8q6l7GIcXZ-bBGpcs137rLQFsImKc06LY8VLPSuYaZ1kMm9ZABsttu7tH_9xZM3-MfAhYxOvGNqqecDgt')"></div>
+<div class="w-10 h-10 rounded-full border-2 border-primary overflow-hidden" data-alt="Close-up of a happy chef in a clean, modern kitchen receiving a basket of fresh vibrant green produce. The scene is illuminated with high-key professional lighting, highlighting freshness and the quality of farm-to-table delivery." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAMMdqGY3TUzb8DrxrDKFNJ5knMrIzOicrs_-m0mAMwcvGvVclXybbBbUK6tL9M3UbZtf5sQYFcF0Uizz-XWS-3kz70z_IaKJfm9Jn8qpO5QgxvSBQUlZFZslRcA9565wGNORJr84cI5vvsrKwIa8CS45QWKIdmbB90Qqw7614hiFI_T2cQ0LK0C6pk7kwuDIS6x1UVcom9EqqR_1DHx2nsNpZRf4kMFNl-hB0SPreKAUiD_skUYWgUIFn6rzl-Iku5SGaL66E6oEaY')"></div>
+</div>
+<p class="text-on-primary font-label-md text-label-md">+2,500 productores ya están conectados</p>
+</div>
+<!-- Subtle Decorative Background Shape -->
+<div class="absolute -bottom-20 -left-20 w-80 h-80 bg-primary-container opacity-20 rounded-full blur-3xl"></div>
+<div class="absolute -top-20 -right-20 w-64 h-64 bg-secondary-container opacity-20 rounded-full blur-2xl"></div>
+</div>
+<!-- Form Side -->
+<div class="flex flex-col justify-center p-8 md:p-16 bg-surface-container-lowest">
+<div class="mb-10 text-center md:text-left">
+<div class="md:hidden flex justify-center items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-primary text-[32px]" style="font-variation-settings: 'FILL' 1;">eco</span>
+<span class="text-primary font-headline-md text-headline-md">AgroConnect</span>
+</div>
+<h2 class="text-on-surface font-headline-lg text-headline-lg-mobile md:text-headline-lg mb-2">Bienvenido de nuevo</h2>
+<p class="text-on-surface-variant font-body-md text-body-md">Ingresa tus credenciales para gestionar tu mercado.</p>
+</div>
+<form action="#" class="space-y-6" onsubmit="return false;">
+<!-- Email Field -->
+<div class="space-y-2">
+<label class="block text-on-surface-variant font-label-md text-label-md ml-1" for="email">Correo Electrónico</label>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-primary transition-colors">mail</span>
+<input class="w-full pl-12 pr-4 py-3 bg-surface-container-low border border-outline-variant rounded-lg font-body-md text-on-surface focus:ring-2 focus:ring-primary focus:border-primary transition-all outline-none" id="email" placeholder="ejemplo@agroconnect.com" required="" type="email"/>
+</div>
+</div>
+<!-- Password Field -->
+<div class="space-y-2">
+<div class="flex justify-between items-center px-1">
+<label class="block text-on-surface-variant font-label-md text-label-md" for="password">Contraseña</label>
+<a class="text-primary font-label-md text-label-md hover:underline" href="#">¿Olvidó su contraseña?</a>
+</div>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-primary transition-colors">lock</span>
+<input class="w-full pl-12 pr-12 py-3 bg-surface-container-low border border-outline-variant rounded-lg font-body-md text-on-surface focus:ring-2 focus:ring-primary focus:border-primary transition-all outline-none" id="password" placeholder="••••••••" required="" type="password"/>
+<button class="absolute right-4 top-1/2 -translate-y-1/2 text-outline hover:text-on-surface-variant" onclick="togglePassword()" type="button">
+<span class="material-symbols-outlined" id="pw-icon">visibility</span>
+</button>
+</div>
+</div>
+<!-- Remember Me -->
+<div class="flex items-center space-x-3 ml-1">
+<input class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary-container" id="remember" type="checkbox"/>
+<label class="text-on-surface-variant font-body-md text-body-md cursor-pointer" for="remember">Recordarme en este dispositivo</label>
+</div>
+<!-- Submit Button -->
+<button class="w-full bg-primary hover:bg-on-primary-container text-on-primary font-title-lg text-title-lg py-4 rounded-lg shadow-sm transition-all active:scale-[0.98] flex items-center justify-center gap-2" type="submit">
+<span>Entrar</span>
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</form>
+<div class="mt-10 pt-8 border-t border-outline-variant text-center">
+<p class="text-on-surface-variant font-body-md text-body-md">
+                        ¿No tienes una cuenta aún? 
+                        <a class="text-primary font-bold hover:underline ml-1" href="#">Crear una cuenta nueva</a>
+</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Simple Footer for Transactional Pages -->
+<footer class="w-full py-6 px-margin-desktop text-center border-t border-outline-variant bg-surface-container-lowest">
+<p class="text-on-surface-variant font-label-md text-label-md opacity-70">© 2024 AgroConnect. Conectando raíces con mesas de forma eficiente y profesional.</p>
+</footer>
+<script>
+        function togglePassword() {
+            const pwInput = document.getElementById('password');
+            const pwIcon = document.getElementById('pw-icon');
+            if (pwInput.type === 'password') {
+                pwInput.type = 'text';
+                pwIcon.textContent = 'visibility_off';
+            } else {
+                pwInput.type = 'password';
+                pwIcon.textContent = 'visibility';
+            }
+        }
+
+        // Simple feedback for the Login button micro-interaction
+        const loginBtn = document.querySelector('button[type="submit"]');
+        loginBtn.addEventListener('click', function(e) {
+            if(document.getElementById('email').value && document.getElementById('password').value) {
+                this.innerHTML = '<span class="material-symbols-outlined animate-spin">progress_activity</span><span>Cargando...</span>';
+                setTimeout(() => {
+                    this.innerHTML = '<span>Entrar</span><span class="material-symbols-outlined">arrow_forward</span>';
+                }, 2000);
+            }
+        });
+    </script>
+</body></html>
