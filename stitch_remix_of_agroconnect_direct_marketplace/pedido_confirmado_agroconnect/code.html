@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AgroConnect - ¡Pedido Realizado!</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9f9ff;
+        }
+        .success-checkmark-animation {
+            animation: scaleIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+        }
+        @keyframes scaleIn {
+            0% { transform: scale(0); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-lowest": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-secondary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "on-error-container": "#93000a",
+                        "inverse-on-surface": "#ebf1ff",
+                        "on-tertiary-fixed-variant": "#763300",
+                        "primary-container": "#2ecc71",
+                        "surface-container": "#e6eeff",
+                        "on-surface-variant": "#3d4a3e",
+                        "on-primary-fixed": "#00210c",
+                        "on-tertiary-fixed": "#331200",
+                        "inverse-primary": "#4ae183",
+                        "outline-variant": "#bbcbbb",
+                        "primary-fixed-dim": "#4ae183",
+                        "tertiary-fixed-dim": "#ffb68d",
+                        "primary-fixed": "#6bfe9c",
+                        "primary": "#006d37",
+                        "tertiary": "#9b4500",
+                        "outline": "#6c7b6d",
+                        "inverse-surface": "#273140",
+                        "on-surface": "#121c2a",
+                        "surface-container-high": "#dee9fd",
+                        "background": "#f9f9ff",
+                        "on-secondary-fixed": "#00210c",
+                        "on-primary": "#ffffff",
+                        "on-background": "#121c2a",
+                        "on-error": "#ffffff",
+                        "surface-bright": "#f9f9ff",
+                        "on-secondary-container": "#007239",
+                        "on-tertiary": "#ffffff",
+                        "surface-dim": "#d0daef",
+                        "on-secondary-fixed-variant": "#005228",
+                        "tertiary-fixed": "#ffdbc9",
+                        "on-primary-container": "#005027",
+                        "surface-container-low": "#eff3ff",
+                        "on-tertiary-container": "#733200",
+                        "tertiary-container": "#ff995b",
+                        "surface-container-highest": "#d9e3f7",
+                        "secondary-fixed": "#7efba4",
+                        "secondary": "#006d37",
+                        "on-primary-fixed-variant": "#005228",
+                        "surface-variant": "#d9e3f7",
+                        "surface-tint": "#006d37",
+                        "secondary-container": "#7bf8a1",
+                        "surface": "#f9f9ff",
+                        "secondary-fixed-dim": "#61de8a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "sidebar-width": "280px",
+                        "margin-mobile": "16px",
+                        "gutter": "24px",
+                        "base": "4px",
+                        "margin-desktop": "32px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "title-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col">
+<!-- TopNavBar (Suppressed for Success Screen according to UX logic, but including as subtle utility if needed - here we prioritize content canvas) -->
+<header class="bg-surface border-b border-outline-variant w-full h-16 fixed top-0 z-50 flex justify-between items-center px-margin-desktop">
+<div class="flex items-center gap-2">
+<span class="font-headline-lg text-primary text-title-lg">AgroConnect</span>
+</div>
+<div class="hidden md:flex gap-6 items-center">
+<a class="font-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Marketplace</a>
+<a class="font-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Direct Producers</a>
+<a class="font-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Special Offers</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-on-surface-variant p-2 hover:bg-surface-container-low rounded-full transition-all active:scale-95">shopping_cart</button>
+<button class="material-symbols-outlined text-on-surface-variant p-2 hover:bg-surface-container-low rounded-full transition-all active:scale-95">notifications</button>
+<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-bold overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A clean, professional headshot of a user with a friendly expression, set against a minimalist light green background, matching the organic and modern corporate aesthetic of the brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxj-8vhd8x6vMdW61fRjzdU4zSJ5ZiFo57QZ7JQIlXYYmtscZIOTgxrUfNMJtzraqjxywKu8A77VBOChg3CN9yq3pTU2dTN-N3KZtA4TF6ItOe3nHjlW0tGuxO81NQXMngP69e-ab6YfXZTJQeVDjr2h0EW7QQHzKGoQNDQzhD-tr5oVetyASYtXGnxeAV5brAfG9jEcWQwwWsfTSE6hsAyLkC1FSTA-ctvK2uoTIv2cce8xoNG1olyR1xpjuKiWZ3i6uVrjcSUr8s"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow pt-24 pb-16 px-margin-mobile md:px-margin-desktop max-w-6xl mx-auto w-full">
+<!-- Hero Success Section -->
+<div class="text-center mb-12 flex flex-col items-center">
+<div class="w-24 h-24 bg-primary-container rounded-full flex items-center justify-center mb-6 success-checkmark-animation">
+<span class="material-symbols-outlined text-white text-6xl" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-primary mb-2">¡Pedido Realizado!</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Gracias por conectar con las raíces de nuestra tierra.</p>
+<div class="mt-4 inline-flex items-center gap-2 px-4 py-2 bg-surface-container-highest rounded-full text-on-surface font-medium">
+<span class="text-label-md uppercase tracking-wider">Número de orden:</span>
+<span class="font-bold text-primary">#000127</span>
+</div>
+</div>
+<!-- Bento Grid Layout for Order Info -->
+<div class="bento-grid">
+<!-- Summary Card -->
+<div class="col-span-12 lg:col-span-7 bg-surface-container-lowest p-6 rounded-xl shadow-sm border border-outline-variant">
+<h3 class="font-title-lg text-title-lg text-on-surface mb-6">Resumen de productos</h3>
+<div class="space-y-4">
+<!-- Product Item 1 -->
+<div class="flex items-center gap-4 p-3 hover:bg-surface-container-low rounded-lg transition-colors">
+<div class="w-20 h-20 bg-surface-variant rounded-lg overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="A close-up, high-resolution photograph of a basket of organic vine-ripened tomatoes, vibrant red and glistening with morning dew. The lighting is soft and natural, emphasizing the freshness and farm-to-table quality of the product within a modern, minimalist setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTqR79pWafUJ6cUAkd1iUfKat0SY2Tu7rClUwtlhJuLtvR1vAOficd9CNrUWY-KP1xRFMekM895YCTP8RGvRQs7xdzq7YNQCWuM-4CUnCYS9e45l7JvBqDUMkHm1_7H3Gj8ayqunyEaG09ZSXpozk_z47F8-LPHVKMV9coUzLW17AsG2ZqHt3Eg21otKR39oy-xwniLMp9xY_58K2cvJF_s5vKJhXKrKZ1uugRoB9VDhKxUo2mzzbexEvk9cg2A6V1-iqIs6rMMmzE"/>
+</div>
+<div class="flex-grow">
+<h4 class="font-headline-md text-body-lg text-on-surface">Tomate Orgánico Cherry</h4>
+<p class="text-on-surface-variant text-body-md">Productor: Finca El Rocío</p>
+<p class="text-label-md text-on-surface-variant">2.0 kg x $4.50</p>
+</div>
+<div class="text-right">
+<span class="font-bold text-on-surface">$9.00</span>
+</div>
+</div>
+<!-- Product Item 2 -->
+<div class="flex items-center gap-4 p-3 hover:bg-surface-container-low rounded-lg transition-colors">
+<div class="w-20 h-20 bg-surface-variant rounded-lg overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Artisanal goat cheese rounds presented on a rustic wooden board with a sprig of fresh rosemary. The composition is elegant and focused, using high-key studio lighting to highlight the creamy texture and organic origin, fitting the premium marketplace aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDF4OAeTfUlTjPqf_ktHHRkYkP_YZtHdfHaaTk6qE19f_LYRjJq-6D05G2zsWIJG4sC1gD4ctkwOtS_9BBWA7sVnhhBBsOJUV6xIa_mj73H5ahbn6UdV4VF0I6QO88eP1vSQEX5SFOV4pi3pvOajgwK7eqXoWutuLpfTSKt5om7eJtApjfO3dzMnVgfWz-B02QIjd-OOpzdn-s_ckkg2xurzz_Ziy2H4y5IcwXAcyrifZl38rKmkuvKbRi_aqFHkhcnbxe-mVkyuSC"/>
+</div>
+<div class="flex-grow">
+<h4 class="font-headline-md text-body-lg text-on-surface">Queso de Cabra Artesanal</h4>
+<p class="text-on-surface-variant text-body-md">Productor: Quesería Los Andes</p>
+<p class="text-label-md text-on-surface-variant">1 ud x $12.00</p>
+</div>
+<div class="text-right">
+<span class="font-bold text-on-surface">$12.00</span>
+</div>
+</div>
+<!-- Product Item 3 -->
+<div class="flex items-center gap-4 p-3 hover:bg-surface-container-low rounded-lg transition-colors">
+<div class="w-20 h-20 bg-surface-variant rounded-lg overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="A bunch of fresh, vibrant kale leaves with deep green hues and curly textures, captured in a bright, clean kitchen environment. The image communicates health, growth, and nutritional value, adhering to the brand's commitment to quality agricultural products." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAw1crD_vbo92qgWtvDxt9qabaHl1YrKW2-0I09ZpQIkh8-AdjjGPsgATd2nLDx23OpPC8O9Cqm4UDhuzWM13FQWTBAtj8mOHl00ZWenwqfl3zBYAcuYOcXfPY-7NiBaHEP72kSSg9_rClBNqQJCtzt6FmHOvzA_oohBBFmlYKIpFvrng7BPjDpiSqxJaDqz5EO3YHgbbrYtDRINZMdFFHBlRMub-fxh2UtRufKEpXX1lKp1QGbwJELOwYJHBIwpItuVPRhALROPhZP"/>
+</div>
+<div class="flex-grow">
+<h4 class="font-headline-md text-body-lg text-on-surface">Kale Rizado Fresco</h4>
+<p class="text-on-surface-variant text-body-md">Productor: Huerta Urbana Norte</p>
+<p class="text-label-md text-on-surface-variant">1.5 kg x $3.00</p>
+</div>
+<div class="text-right">
+<span class="font-bold text-on-surface">$4.50</span>
+</div>
+</div>
+</div>
+<div class="mt-8 pt-6 border-t border-outline-variant space-y-2">
+<div class="flex justify-between text-body-md text-on-surface-variant">
+<span>Subtotal</span>
+<span>$25.50</span>
+</div>
+<div class="flex justify-between text-body-md text-on-surface-variant">
+<span>Envío (Standard)</span>
+<span>$5.00</span>
+</div>
+<div class="flex justify-between text-title-lg font-bold text-on-surface mt-4">
+<span>Total Pagado</span>
+<span class="text-primary">$30.50</span>
+</div>
+</div>
+</div>
+<!-- Logistics & Actions Card -->
+<div class="col-span-12 lg:col-span-5 space-y-6">
+<!-- Delivery Info -->
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm border border-outline-variant">
+<h3 class="font-title-lg text-title-lg text-on-surface mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">local_shipping</span>
+                        Entrega Estimada
+                    </h3>
+<div class="bg-surface-container-low p-4 rounded-lg">
+<p class="font-bold text-on-surface text-headline-md">24 de Octubre, 2024</p>
+<p class="text-body-md text-on-surface-variant">Entre las 09:00 AM - 12:00 PM</p>
+</div>
+<div class="mt-6 flex gap-3">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-on-secondary-container">location_on</span>
+</div>
+<div>
+<p class="font-bold text-on-surface text-body-lg">Dirección de Envío</p>
+<p class="text-body-md text-on-surface-variant">Calle Las Orquídeas 452, Miraflores, Lima.</p>
+</div>
+</div>
+</div>
+<!-- Wireframe Image Context Placeholder -->
+<div class="rounded-xl overflow-hidden shadow-sm border border-outline-variant h-48 relative">
+<img class="w-full h-full object-cover grayscale opacity-30" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD933yWKoBGuhHrDQOAo8SAsmqFSmSDZbC4lQ8sEPMXlz2OaOhxIcGNkVcaYZMd3vH-G4N4uRvsNmeulAor3g9iUD4C1HXRQKoBmntNsmBrZPrd_2EbTLLPunNM8GZ4ZmSTIZYkiISPPv3ac3BnOmiuzj2oZIH-0WN2WImkrjJtLtamd5oxoBXdEYRB0VURS3oVe7ZgWii0ap0X1io8skBnsFqZzy-6Fb-e26PHEq_aQ4cnCr-pNKD0jizxmIHL3MR9GDVjRcTaDOit"/>
+<div class="absolute inset-0 flex items-center justify-center bg-primary/10">
+<span class="bg-white px-4 py-2 rounded-full font-bold text-primary shadow-lg">Confirmación Validada</span>
+</div>
+</div>
+<!-- Primary Actions -->
+<div class="space-y-3 pt-4">
+<button class="w-full py-4 bg-primary text-white font-bold rounded-xl flex items-center justify-center gap-2 hover:opacity-90 transition-all active:scale-[0.98]">
+<span class="material-symbols-outlined">receipt_long</span>
+                        Ver mis pedidos
+                    </button>
+<button class="w-full py-4 bg-surface-container-high text-primary font-bold rounded-xl border border-primary/20 flex items-center justify-center gap-2 hover:bg-surface-container-highest transition-all active:scale-[0.98]">
+<span class="material-symbols-outlined">storefront</span>
+                        Volver a la tienda
+                    </button>
+</div>
+<!-- Support Shortcut -->
+<p class="text-center text-label-md text-on-surface-variant">
+                    ¿Tienes dudas? <a class="text-primary underline font-bold" href="#">Contactar Soporte</a>
+</p>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-inverse-surface text-on-primary py-8 px-margin-desktop mt-auto">
+<div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="text-center md:text-left">
+<p class="font-headline-md text-primary-fixed-dim mb-1">AgroConnect</p>
+<p class="font-label-md text-surface-variant opacity-80">© 2024 AgroConnect. Connecting roots to tables.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-6">
+<a class="text-label-md text-surface-variant hover:text-primary-fixed-dim transition-colors" href="#">Privacy Policy</a>
+<a class="text-label-md text-surface-variant hover:text-primary-fixed-dim transition-colors" href="#">Terms of Service</a>
+<a class="text-label-md text-surface-variant hover:text-primary-fixed-dim transition-colors" href="#">Help Center</a>
+<a class="text-label-md text-surface-variant hover:text-primary-fixed-dim transition-colors" href="#">Contact Us</a>
+</div>
+</div>
+</footer>
+<script>
+        // Micro-interaction for buttons
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('mousedown', () => {
+                button.classList.add('scale-95');
+            });
+            button.addEventListener('mouseup', () => {
+                button.classList.remove('scale-95');
+            });
+        });
+
+        // Simulating the "Complete" animation trigger on load
+        window.addEventListener('DOMContentLoaded', () => {
+            console.log('Order success screen initialized');
+        });
+    </script>
+</body></html>

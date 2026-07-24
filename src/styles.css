@@ -96,14 +96,14 @@ button { font-family: inherit; cursor: pointer; border: none; transition: all 0.
     min-height: calc(100vh - 400px);
 }
 
-.register-section {
+.auth-section {
     display: flex;
     justify-content: center;
     align-items: center;
     padding: var(--spacing-xl) 0;
 }
 
-.register-container {
+.auth-container {
     width: 100%;
     max-width: 500px;
     background-color: var(--color-white);
@@ -113,7 +113,7 @@ button { font-family: inherit; cursor: pointer; border: none; transition: all 0.
     box-shadow: 0 4px 16px rgba(0,0,0,0.1);
 }
 
-.register-container h2 {
+.auth-container h2 {
     text-align: center;
     color: var(--color-primary);
     margin-bottom: var(--spacing-md);
@@ -125,7 +125,7 @@ button { font-family: inherit; cursor: pointer; border: none; transition: all 0.
     margin-bottom: var(--spacing-lg);
 }
 
-.register-form { display: flex; flex-direction: column; gap: var(--spacing-lg); }
+.auth-form { display: flex; flex-direction: column; gap: var(--spacing-lg); }
 
 .form-group {
     display: flex;
@@ -248,6 +248,6 @@ button { font-family: inherit; cursor: pointer; border: none; transition: all 0.
 @media (max-width: 768px) {
     .header-container { flex-direction: column; gap: var(--spacing-md); }
     .search-bar { max-width: 100%; }
-    .register-container { padding: var(--spacing-lg); }
+    .auth-container { padding: var(--spacing-lg); }
     .footer-bottom { flex-direction: column; text-align: center; }
 }
