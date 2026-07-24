@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html class="light" lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>AgroConnect - Carrito de Compras</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="../assets/styles.css"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "primary": "#1B5E20",
+                      "on-primary": "#FFFFFF",
+                      "primary-container": "#A3D977",
+                      "on-primary-container": "#002202",
+                      "secondary": "#6750A4",
+                      "on-secondary": "#FFFFFF",
+                      "secondary-container": "#EADDFF",
+                      "on-secondary-container": "#21005D",
+                      "tertiary": "#7D5260",
+                      "on-tertiary": "#FFFFFF",
+                      "tertiary-container": "#FFD8E4",
+                      "on-tertiary-container": "#31111D",
+                      "error": "#B3261E",
+                      "on-error": "#FFFFFF",
+                      "error-container": "#F9DEDC",
+                      "on-error-container": "#410E0B",
+                      "background": "#FFFBFE",
+                      "on-background": "#1C1B1F",
+                      "surface": "#FFFBFE",
+                      "on-surface": "#1C1B1F",
+                      "surface-variant": "#E7E0EC",
+                      "on-surface-variant": "#49454E",
+                      "outline": "#79747E",
+                      "outline-variant": "#CAC7D0",
+                      "inverse-surface": "#313033",
+                      "inverse-on-surface": "#F4EFF4",
+                      "surface-container": "#F3EEF3",
+                      "surface-container-high": "#ECE6F0",
+                      "surface-container-highest": "#E6E1E5",
+                      "surface-container-low": "#F7F2FA",
+                      "surface-container-lowest": "#FFFBFE",
+                      "primary-fixed": "#A3D977",
+                      "on-primary-fixed": "#002202",
+                      "primary-fixed-dim": "#61de8a",
+                      "secondary-fixed-dim": "#61de8a"
+              },
+              "borderRadius": {
+                      "xs": "4px",
+                      "sm": "8px",
+                      "md": "12px",
+                      "lg": "16px",
+                      "xl": "28px",
+                      "full": "9999px"
+              },
+            },
+          },
+        }
+    </script>
+</head>
+<body class="min-h-screen pt-16">
+    <!-- TopNavBar -->
+    <nav class="bg-surface dark:bg-inverse-surface flex justify-between items-center w-full px-6 h-16 fixed top-0 z-50 border-b border-outline-variant dark:border-outline">
+        <div class="flex items-center gap-8">
+            <span class="text-2xl font-bold text-primary dark:text-primary-fixed-dim">AgroConnect</span>
+            <div class="hidden md:flex items-center gap-6">
+                <a class="text-on-surface-variant dark:text-outline-variant text-sm hover:bg-surface-container dark:hover:bg-inverse-surface transition-colors px-2 py-1" href="ofertas-productos.html">Marketplace</a>
+                <a class="text-on-surface-variant dark:text-outline-variant text-sm hover:bg-surface-container dark:hover:bg-inverse-surface transition-colors px-2 py-1" href="#">Agricultores</a>
+                <a class="text-on-surface-variant dark:text-outline-variant text-sm hover:bg-surface-container dark:hover:bg-inverse-surface transition-colors px-2 py-1" href="#">Ofertas</a>
+            </div>
+        </div>
+        <div class="flex items-center gap-4">
+            <div class="relative hidden sm:block">
+                <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+                <input class="bg-surface-container-low border-none rounded-full pl-10 pr-4 py-2 text-sm w-64 focus:ring-2 focus:ring-primary" placeholder="Buscar productos..." type="text"/>
+            </div>
+            <button class="relative p-2 rounded-full hover:bg-surface-container transition-all active:scale-95">
+                <span class="material-symbols-outlined text-primary" data-icon="shopping_cart">shopping_cart</span>
+                <span class="absolute top-0 right-0 bg-tertiary text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full border-2 border-surface">3</span>
+            </button>
+            <button class="p-2 rounded-full hover:bg-surface-container transition-all active:scale-95">
+                <span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+            </button>
+            <div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary">
+                <img class="w-full h-full object-cover" alt="User profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4ewaSJAfrCIEyVwtjq6cHQTG3UxQspKaqzATnDsV9QOjyMo6N11nAJTCbjzBgfSL4dr10PzXF8BXSZ6X1hn_gZfhSS6O8UrfzpJVUw7SlA57QYw7U4joaOp4FUGY4VDiwfRyM9d2e9X0ktNMTH-4dvNTNOGc5edcQxQ2EChg0qMxMZpUY1SQe-hnSO1lK3_ZGFoQhw976EKQVRMn1R-G1t99uTyfmrZ4K62sn9GXQupNyFTCHaFWnjYNqMgjJxM3ox4S_BdaMDdn_"/>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="max-w-7xl mx-auto px-4 md:px-6 py-8">
+        <div class="mb-8">
+            <h1 class="text-3xl font-bold text-on-surface">Carrito de Compras</h1>
+            <p class="text-base text-on-surface-variant">Revisa tus productos seleccionados directamente del campo a tu mesa.</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            <!-- Product List Section -->
+            <div class="lg:col-span-8 space-y-4">
+                <!-- Item 1: Tomates Orgánicos -->
+                <div class="bg-white rounded-xl p-4 flex flex-col sm:flex-row items-center gap-4 shadow-sm border border-outline-variant hover:shadow-md transition-shadow">
+                    <div class="w-32 h-32 flex-shrink-0 rounded-lg overflow-hidden bg-surface-container">
+                        <img class="w-full h-full object-cover" alt="Tomates orgánicos" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBpkScL3833tdSDUwi6ED0-Kxx0w4JQj0jDD7Twl2GP78GguX1Z14jYULKZbHNmPIO39gojMnNekvzVZ8VtSH4Cv5tolZ7bgAOtxivMYZEVYbJZGpbZtEDAiekqzq8IZNgzUe_QbreCJN4_SQcHzhQmOLqXQSKz6uyXGurHeM0gr3haLrCFogoeTR5mGIBvJtpJg2orNpwYQHNlpkPPIjw3DWRxMfOzTNNsv_Q_SanXRnilRMd7z3YnxtvyIIlYCTzOMqseRhcUcTh"/>
+                    </div>
+                    <div class="flex-grow w-full">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="text-lg font-bold text-on-surface">Tomates Orgánicos de Racimo</h3>
+                                <p class="text-sm text-primary font-semibold">Productor: Granja Los Abuelos</p>
+                            </div>
+                            <button class="text-outline hover:text-error transition-colors">
+                                <span class="material-symbols-outlined" data-icon="delete">delete</span>
+                            </button>
+                        </div>
+                        <div class="mt-4 flex flex-wrap justify-between items-end">
+                            <div class="flex items-center gap-3 bg-surface-container-low rounded-lg p-1 border border-outline-variant">
+                                <button class="w-8 h-8 flex items-center justify-center rounded hover:bg-white text-primary transition-all active:scale-90" onclick="decreaseQty(this)">
+                                    <span class="material-symbols-outlined">remove</span>
+                                </button>
+                                <span class="w-8 text-center font-bold text-on-surface qty">2</span>
+                                <button class="w-8 h-8 flex items-center justify-center rounded hover:bg-white text-primary transition-all active:scale-90" onclick="increaseQty(this)">
+                                    <span class="material-symbols-outlined">add</span>
+                                </button>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-xs text-on-surface-variant block">Precio unitario: $3.50</span>
+                                <span class="text-xl font-bold text-primary">$7.00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 2: Pan Artesanal -->
+                <div class="bg-white rounded-xl p-4 flex flex-col sm:flex-row items-center gap-4 shadow-sm border border-outline-variant hover:shadow-md transition-shadow">
+                    <div class="w-32 h-32 flex-shrink-0 rounded-lg overflow-hidden bg-surface-container">
+                        <img class="w-full h-full object-cover" alt="Pan artesanal" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6x9VJLn6uv2e4BjJvSYJhKUS37233lojQObev8WmNZENDdWtiqBXiY4RFt4pLvdRTSRXzM8g3THfQKv1_4ujtz5u7mBVOBf1FZSxTQUbsw26fB160e-3fTeqdyUF_QZdD5omgIeDj9MxsD2XBJJEWJWRdLyxTBqkltZ9kSoCRFTOVeB-N6Kv09II0EirMTZfHlV20V04ROEGRTplVCN3EoT0pgoYUMWjFMZfFJkBlgVt9Vt6DFIMGuCqQUfBhEsG9Fv_vimpugLz5"/>
+                    </div>
+                    <div class="flex-grow w-full">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="text-lg font-bold text-on-surface">Pan Artesanal de Masa Madre</h3>
+                                <p class="text-sm text-primary font-semibold">Productor: Panadería El Trigal</p>
+                            </div>
+                            <button class="text-outline hover:text-error transition-colors">
+                                <span class="material-symbols-outlined" data-icon="delete">delete</span>
+                            </button>
+                        </div>
+                        <div class="mt-4 flex flex-wrap justify-between items-end">
+                            <div class="flex items-center gap-3 bg-surface-container-low rounded-lg p-1 border border-outline-variant">
+                                <button class="w-8 h-8 flex items-center justify-center rounded hover:bg-white text-primary transition-all active:scale-90" onclick="decreaseQty(this)">
+                                    <span class="material-symbols-outlined">remove</span>
+                                </button>
+                                <span class="w-8 text-center font-bold text-on-surface qty">1</span>
+                                <button class="w-8 h-8 flex items-center justify-center rounded hover:bg-white text-primary transition-all active:scale-90" onclick="increaseQty(this)">
+                                    <span class="material-symbols-outlined">add</span>
+                                </button>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-xs text-on-surface-variant block">Precio unitario: $5.20</span>
+                                <span class="text-xl font-bold text-primary">$5.20</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 3: Canasta Variada -->
+                <div class="bg-white rounded-xl p-4 flex flex-col sm:flex-row items-center gap-4 shadow-sm border border-outline-variant hover:shadow-md transition-shadow">
+                    <div class="w-32 h-32 flex-shrink-0 rounded-lg overflow-hidden bg-surface-container">
+                        <img class="w-full h-full object-cover" alt="Canasta variada" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFoJslOBYiSKsGCwWxNqx0vFRDbhHapvTsLm_7R0I2RSIa6FarCGOkcYU-6yhuqJcPJlHsb4tpWMCrTYUlOMPv4yN9GWaV441V180ppNQ0cAh4UUuzXa1GK47oOjGqXItY9JaPmZZNvXdjKPJSe58205O0sl9hcxqZCRWUJ1KEyEA91nUzA39MdHFcfw5pS5CxlqgQYzSUMhGGYQ7fNFBQOaYHO9MMp8eoe66tl-R1ZTZ49Ij0VoCAvWt9A8QR0Zo7z405UmPVnHzk"/>
+                    </div>
+                    <div class="flex-grow w-full">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="text-lg font-bold text-on-surface">Canasta Variada Estacional</h3>
+                                <p class="text-sm text-primary font-semibold">Productor: Cooperativa Huerto Verde</p>
+                            </div>
+                            <button class="text-outline hover:text-error transition-colors">
+                                <span class="material-symbols-outlined" data-icon="delete">delete</span>
+                            </button>
+                        </div>
+                        <div class="mt-4 flex flex-wrap justify-between items-end">
+                            <div class="flex items-center gap-3 bg-surface-container-low rounded-lg p-1 border border-outline-variant">
+                                <button class="w-8 h-8 flex items-center justify-center rounded hover:bg-white text-primary transition-all active:scale-90" onclick="decreaseQty(this)">
+                                    <span class="material-symbols-outlined">remove</span>
+                                </button>
+                                <span class="w-8 text-center font-bold text-on-surface qty">1</span>
+                                <button class="w-8 h-8 flex items-center justify-center rounded hover:bg-white text-primary transition-all active:scale-90" onclick="increaseQty(this)">
+                                    <span class="material-symbols-outlined">add</span>
+                                </button>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-xs text-on-surface-variant block">Precio unitario: $24.99</span>
+                                <span class="text-xl font-bold text-primary">$24.99</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Order Summary Section -->
+            <div class="lg:col-span-4">
+                <div class="bg-white rounded-2xl p-6 shadow-lg border border-outline-variant sticky top-24">
+                    <h2 class="text-xl font-bold text-on-surface mb-6 border-b border-surface-container-high pb-4">Resumen del Pedido</h2>
+                    <div class="space-y-4 mb-6">
+                        <div class="flex justify-between">
+                            <span class="text-sm text-on-surface-variant">Subtotal (4 items)</span>
+                            <span class="text-base font-semibold text-on-surface">$37.19</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-sm text-on-surface-variant">Envío estimado</span>
+                            <span class="text-base font-semibold text-on-surface">$4.50</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-sm text-on-surface-variant">Descuento (Cupón: AGRO10)</span>
+                            <span class="text-base font-semibold text-tertiary">-$3.72</span>
+                        </div>
+                    </div>
+                    <div class="border-t border-surface-container-high pt-6 mb-8">
+                        <div class="flex justify-between items-center">
+                            <span class="text-lg font-bold text-on-surface">Total</span>
+                            <span class="text-3xl font-extrabold text-primary">$37.97</span>
+                        </div>
+                        <p class="text-xs text-outline mt-1 text-right">IVA incluido</p>
+                    </div>
+                    <a href="pedido-confirmado.html" class="w-full bg-primary hover:bg-on-secondary-container text-white font-bold py-4 rounded-xl shadow-md transition-all active:scale-95 flex items-center justify-center gap-2 mb-4">
+                        <span class="material-symbols-outlined" data-icon="payment">payment</span>
+                        Continuar al Pago
+                    </a>
+                    <div class="bg-surface-container-low rounded-3xl p-6 mt-6 text-center">
+                        <p class="text-sm text-on-surface mb-3">¿Aún quieres algo más?</p>
+                        <a href="ofertas-productos.html" class="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-semibold text-white hover:bg-primary/90 transition-all">
+                            <span class="material-symbols-outlined" data-icon="search">search</span>
+                            Buscar más productos
+                        </a>
+                    </div>
+                    <div class="bg-surface-container-low rounded-lg p-4 mt-6">
+                        <div class="flex gap-3">
+                            <span class="material-symbols-outlined text-primary flex-shrink-0" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+                            <div>
+                                <p class="text-xs font-bold text-on-surface">Compra Protegida</p>
+                                <p class="text-xs text-on-surface-variant">Tu pago está seguro con nuestro sistema de encriptación.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Additional Coupon/Promo Code -->
+                    <div class="mt-6">
+                        <label class="text-xs font-medium text-outline uppercase tracking-wider mb-2 block">Código de Descuento</label>
+                        <div class="flex flex-col sm:flex-row gap-2">
+                            <input class="min-w-0 flex-grow bg-surface-container-lowest border border-outline-variant rounded-lg px-4 py-2 text-sm focus:ring-primary focus:border-primary" placeholder="Ej: FRESH2024" type="text"/>
+                            <button class="sm:w-auto w-full bg-surface-container-high text-on-surface font-bold px-4 py-2 rounded-lg hover:bg-surface-container-highest transition-colors text-sm">Aplicar</button>
+                        </div>
+                    </div>
+                    <!-- Trust Badges -->
+                    <div class="mt-6 flex justify-center gap-6 opacity-60 hover:opacity-100 transition-opacity duration-500">
+                        <button class="text-center text-xs text-on-surface-variant hover:text-primary transition-colors">
+                            <span class="material-symbols-outlined text-3xl block mb-1">local_shipping</span>
+                            <span>Envío</span>
+                        </button>
+                        <button class="text-center text-xs text-on-surface-variant hover:text-primary transition-colors">
+                            <span class="material-symbols-outlined text-3xl block mb-1">psychology_alt</span>
+                            <span>Seguro</span>
+                        </button>
+                        <button class="text-center text-xs text-on-surface-variant hover:text-primary transition-colors">
+                            <span class="material-symbols-outlined text-3xl block mb-1">payments</span>
+                            <span>Pagos</span>
+                        </button>
+                        <button class="text-center text-xs text-on-surface-variant hover:text-primary transition-colors">
+                            <span class="material-symbols-outlined text-3xl block mb-1">support_agent</span>
+                            <span>Soporte</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full py-8 px-6 flex flex-col md:flex-row justify-between items-center bg-inverse-surface dark:bg-surface-container-lowest border-t border-outline-variant mt-12">
+        <div class="mb-4 md:mb-0">
+            <span class="font-bold text-lg text-primary-fixed-dim">AgroConnect</span>
+            <p class="text-xs opacity-80 mt-2">© 2024 AgroConnect. Conectando raíces a mesas.</p>
+        </div>
+        <div class="flex gap-6 flex-wrap justify-center">
+            <a class="text-surface-variant opacity-80 hover:text-primary-fixed hover:opacity-100 text-xs font-medium transition-all" href="#">Política de Privacidad</a>
+            <a class="text-surface-variant opacity-80 hover:text-primary-fixed hover:opacity-100 text-xs font-medium transition-all" href="#">Términos de Servicio</a>
+            <a class="text-surface-variant opacity-80 hover:text-primary-fixed hover:opacity-100 text-xs font-medium transition-all" href="#">Centro de Ayuda</a>
+            <a class="text-surface-variant opacity-80 hover:text-primary-fixed hover:opacity-100 text-xs font-medium transition-all" href="#">Contáctanos</a>
+        </div>
+    </footer>
+
+    <script src="../assets/scripts.js"></script>
+</body>
+</html>

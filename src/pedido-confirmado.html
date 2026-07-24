@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html class="light" lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>AgroConnect - ¡Pedido Realizado!</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="../assets/styles.css"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#1B5E20",
+                        "on-primary": "#FFFFFF",
+                        "primary-container": "#A3D977",
+                        "on-primary-container": "#002202",
+                        "secondary": "#6750A4",
+                        "on-secondary": "#FFFFFF",
+                        "secondary-container": "#EADDFF",
+                        "on-secondary-container": "#21005D",
+                        "tertiary": "#7D5260",
+                        "on-tertiary": "#FFFFFF",
+                        "tertiary-container": "#FFD8E4",
+                        "on-tertiary-container": "#31111D",
+                        "error": "#B3261E",
+                        "on-error": "#FFFFFF",
+                        "error-container": "#F9DEDC",
+                        "on-error-container": "#410E0B",
+                        "background": "#FFFBFE",
+                        "on-background": "#1C1B1F",
+                        "surface": "#FFFBFE",
+                        "on-surface": "#1C1B1F",
+                        "surface-variant": "#E7E0EC",
+                        "on-surface-variant": "#49454E",
+                        "outline": "#79747E",
+                        "outline-variant": "#CAC7D0",
+                        "inverse-surface": "#313033",
+                        "inverse-on-surface": "#F4EFF4",
+                        "surface-container": "#F3EEF3",
+                        "surface-container-high": "#ECE6F0",
+                        "surface-container-highest": "#E6E1E5",
+                        "surface-container-low": "#F7F2FA",
+                        "surface-container-lowest": "#FFFBFE",
+                        "primary-fixed": "#A3D977",
+                        "on-primary-fixed": "#002202",
+                        "primary-fixed-dim": "#61de8a",
+                        "secondary-fixed-dim": "#61de8a"
+                    },
+                    "borderRadius": {
+                        "xs": "4px",
+                        "sm": "8px",
+                        "md": "12px",
+                        "lg": "16px",
+                        "xl": "28px",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col">
+    <!-- TopNavBar -->
+    <header class="bg-surface border-b border-outline-variant w-full h-16 fixed top-0 z-50 flex justify-between items-center px-6">
+        <div class="flex items-center gap-2">
+            <span class="font-bold text-xl text-primary">AgroConnect</span>
+        </div>
+        <div class="hidden md:flex gap-6 items-center">
+            <a class="text-sm text-on-surface-variant hover:text-primary transition-colors" href="ofertas-productos.html">Marketplace</a>
+            <a class="text-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Agricultores</a>
+            <a class="text-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Ofertas</a>
+        </div>
+        <div class="flex items-center gap-4">
+            <button class="material-symbols-outlined text-on-surface-variant p-2 hover:bg-surface-container-low rounded-full transition-all active:scale-95">shopping_cart</button>
+            <button class="material-symbols-outlined text-on-surface-variant p-2 hover:bg-surface-container-low rounded-full transition-all active:scale-95">notifications</button>
+            <div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary">
+                <img class="w-full h-full object-cover" alt="User profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxj-8vhd8x6vMdW61fRjzdU4zSJ5ZiFo57QZ7JQIlXYYmtscZIOTgxrUfNMJtzraqjxywKu8A77VBOChg3CN9yq3pTU2dTN-N3KZtA4TF6ItOe3nHjlW0tGuxO81NQXMngP69e-ab6YfXZTJQeVDjr2h0EW7QQHzKGoQNDQzhD-tr5oVetyASYtXGnxeAV5brAfG9jEcWQwwWsfTSE6hsAyLkC1FSTA-ctvK2uoTIv2cce8xoNG1olyR1xpjuKiWZ3i6uVrjcSUr8s"/>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Canvas -->
+    <main class="flex-grow pt-24 pb-16 px-4 md:px-6 max-w-6xl mx-auto w-full">
+        <!-- Hero Success Section -->
+        <div class="text-center mb-12 flex flex-col items-center">
+            <div class="w-24 h-24 bg-primary rounded-full flex items-center justify-center mb-6 success-checkmark-animation">
+                <span class="material-symbols-outlined text-white text-6xl" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+            </div>
+            <h1 class="text-3xl font-bold text-primary mb-2">¡Pedido Realizado!</h1>
+            <p class="text-base text-on-surface-variant">Gracias por conectar con las raíces de nuestra tierra.</p>
+            <div class="mt-4 inline-flex items-center gap-2 px-4 py-2 bg-surface-container-highest rounded-full text-on-surface font-medium">
+                <span class="text-xs uppercase tracking-wider">Número de orden:</span>
+                <span class="font-bold text-primary">#000127</span>
+            </div>
+        </div>
+
+        <!-- Bento Grid Layout for Order Info -->
+        <div class="bento-grid">
+            <!-- Summary Card -->
+            <div class="col-span-12 lg:col-span-7 bg-surface-container-lowest p-6 rounded-xl shadow-sm border border-outline-variant">
+                <h3 class="text-xl font-bold text-on-surface mb-6">Resumen de productos</h3>
+                <div class="space-y-4">
+                    <!-- Product Item 1 -->
+                    <div class="flex items-center gap-4 p-3 hover:bg-surface-container-low rounded-lg transition-colors">
+                        <div class="w-20 h-20 bg-surface-variant rounded-lg overflow-hidden flex-shrink-0">
+                            <img class="w-full h-full object-cover" alt="Tomate orgánico" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTqR79pWafUJ6cUAkd1iUfKat0SY2Tu7rClUwtlhJuLtvR1vAOficd9CNrUWY-KP1xRFMekM895YCTP8RGvRQs7xdzq7YNQCWuM-4CUnCYS9e45l7JvBqDUMkHm1_7H3Gj8ayqunyEaG09ZSXpozk_z47F8-LPHVKMV9coUzLW17AsG2ZqHt3Eg21otKR39oy-xwniLMp9xY_58K2cvJF_s5vKJhXKrKZ1uugRoB9VDhKxUo2mzzbexEvk9cg2A6V1-iqIs6rMMmzE"/>
+                        </div>
+                        <div class="flex-grow">
+                            <h4 class="font-bold text-base text-on-surface">Tomate Orgánico Cherry</h4>
+                            <p class="text-sm text-on-surface-variant">Productor: Finca El Rocío</p>
+                            <p class="text-xs text-on-surface-variant">2.0 kg x $4.50</p>
+                        </div>
+                        <div class="text-right">
+                            <span class="font-bold text-on-surface">$9.00</span>
+                        </div>
+                    </div>
+
+                    <!-- Product Item 2 -->
+                    <div class="flex items-center gap-4 p-3 hover:bg-surface-container-low rounded-lg transition-colors">
+                        <div class="w-20 h-20 bg-surface-variant rounded-lg overflow-hidden flex-shrink-0">
+                            <img class="w-full h-full object-cover" alt="Queso de cabra" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDF4OAeTfUlTjPqf_ktHHRkYkP_YZtHdfHaaTk6qE19f_LYRjJq-6D05G2zsWIJG4sC1gD4ctkwOtS_9BBWA7sVnhhBBsOJUV6xIa_mj73H5ahbn6UdV4VF0I6QO88eP1vSQEX5SFOV4pi3pvOajgwK7eqXoWutuLpfTSKt5om7eJtApjfO3dzMnVgfWz-B02QIjd-OOpzdn-s_ckkg2xurzz_Ziy2H4y5IcwXAcyrifZl38rKmkuvKbRi_aqFHkhcnbxe-mVkyuSC"/>
+                        </div>
+                        <div class="flex-grow">
+                            <h4 class="font-bold text-base text-on-surface">Queso de Cabra Artesanal</h4>
+                            <p class="text-sm text-on-surface-variant">Productor: Quesería Los Andes</p>
+                            <p class="text-xs text-on-surface-variant">1 ud x $12.00</p>
+                        </div>
+                        <div class="text-right">
+                            <span class="font-bold text-on-surface">$12.00</span>
+                        </div>
+                    </div>
+
+                    <!-- Product Item 3 -->
+                    <div class="flex items-center gap-4 p-3 hover:bg-surface-container-low rounded-lg transition-colors">
+                        <div class="w-20 h-20 bg-surface-variant rounded-lg overflow-hidden flex-shrink-0">
+                            <img class="w-full h-full object-cover" alt="Kale fresco" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAw1crD_vbo92qgWtvDxt9qabaHl1YrKW2-0I09ZpQIkh8-AdjjGPsgATd2nLDx23OpPC8O9Cqm4UDhuzWM13FQWTBAtj8mOHl00ZWenwqfl3zBYAcuYOcXfPY-7NiBaHEP72kSSg9_rClBNqQJCtzt6FmHOvzA_oohBBFmlYKIpFvrng7BPjDpiSqxJaDqz5EO3YHgbbrYtDRINZMdFFHBlRMub-fxh2UtRufKEpXX1lKp1QGbwJELOwYJHBIwpItuVPRhALROPhZP"/>
+                        </div>
+                        <div class="flex-grow">
+                            <h4 class="font-bold text-base text-on-surface">Kale Rizado Fresco</h4>
+                            <p class="text-sm text-on-surface-variant">Productor: Huerta Urbana Norte</p>
+                            <p class="text-xs text-on-surface-variant">1.5 kg x $3.00</p>
+                        </div>
+                        <div class="text-right">
+                            <span class="font-bold text-on-surface">$4.50</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 pt-6 border-t border-outline-variant space-y-2">
+                    <div class="flex justify-between text-sm text-on-surface-variant">
+                        <span>Subtotal</span>
+                        <span>$25.50</span>
+                    </div>
+                    <div class="flex justify-between text-sm text-on-surface-variant">
+                        <span>Envío (Standard)</span>
+                        <span>$5.00</span>
+                    </div>
+                    <div class="flex justify-between text-lg font-bold text-on-surface mt-4">
+                        <span>Total Pagado</span>
+                        <span class="text-primary">$30.50</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Logistics & Actions Card -->
+            <div class="col-span-12 lg:col-span-5 space-y-6">
+                <!-- Delivery Info -->
+                <div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm border border-outline-variant">
+                    <h3 class="text-xl font-bold text-on-surface mb-4 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-primary">local_shipping</span>
+                        Entrega Estimada
+                    </h3>
+                    <div class="bg-surface-container-low p-4 rounded-lg">
+                        <p class="font-bold text-on-surface text-2xl">24 de Octubre, 2024</p>
+                        <p class="text-base text-on-surface-variant">Entre las 09:00 AM - 12:00 PM</p>
+                    </div>
+                    <div class="mt-6 flex gap-3">
+                        <div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center flex-shrink-0">
+                            <span class="material-symbols-outlined text-on-secondary-container">location_on</span>
+                        </div>
+                        <div>
+                            <p class="font-bold text-on-surface text-base">Dirección de Envío</p>
+                            <p class="text-sm text-on-surface-variant">Calle Las Orquídeas 452, Miraflores, Lima.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Confirmation Badge -->
+                <div class="rounded-xl overflow-hidden shadow-sm border border-outline-variant h-48 relative">
+                
+                    <div class="absolute inset-0 flex items-center justify-center bg-primary/10">
+                        <span class="bg-white px-4 py-2 rounded-full font-bold text-primary shadow-lg">Confirmación Validada</span>
+                    </div>
+                </div>
+
+                <!-- Primary Actions -->
+                <div class="space-y-3 pt-4">
+                    <button class="w-full py-4 bg-primary text-white font-bold rounded-xl flex items-center justify-center gap-2 hover:opacity-90 transition-all active:scale-95">
+                        <span class="material-symbols-outlined">receipt_long</span>
+                        Ver mis pedidos
+                    </button>
+                    <a href="ofertas-productos.html" class="w-full py-4 bg-surface-container-high text-primary font-bold rounded-xl border border-primary/20 flex items-center justify-center gap-2 hover:bg-surface-container-highest transition-all active:scale-95">
+                        <span class="material-symbols-outlined">storefront</span>
+                        Seguir comprando
+                    </a>
+                </div>
+
+                <!-- Support Shortcut -->
+                <p class="text-center text-xs text-on-surface-variant">
+                    ¿Tienes dudas? <a class="text-primary underline font-bold hover:text-primary-container" href="#">Contactar Soporte</a>
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-inverse-surface text-on-primary py-8 px-6 mt-auto border-t border-outline-variant">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="text-center md:text-left">
+                <p class="font-bold text-lg text-primary-fixed-dim mb-1">AgroConnect</p>
+                <p class="text-xs text-surface-variant opacity-80">© 2024 AgroConnect. Conectando raíces a mesas.</p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-6">
+                <a class="text-xs text-surface-variant hover:text-primary-fixed-dim transition-colors" href="#">Política de Privacidad</a>
+                <a class="text-xs text-surface-variant hover:text-primary-fixed-dim transition-colors" href="#">Términos de Servicio</a>
+                <a class="text-xs text-surface-variant hover:text-primary-fixed-dim transition-colors" href="#">Centro de Ayuda</a>
+                <a class="text-xs text-surface-variant hover:text-primary-fixed-dim transition-colors" href="#">Contáctanos</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/scripts.js"></script>
+</body>
+</html>
