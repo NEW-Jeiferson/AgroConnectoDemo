@@ -148,12 +148,14 @@
 <form action="#" class="space-y-6" onsubmit="return false;">
 <!-- Email Field -->
 <div class="space-y-2">
-<label class="block text-on-surface-variant font-label-md text-label-md ml-1" for="email">Correo Electrónico</label>
+<label class="block text-on-surface-variant font-label-md text-label-md ml-1" for="email">Usuario</label>
 <div class="relative group">
-<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-primary transition-colors">mail</span>
-<input class="w-full pl-12 pr-4 py-3 bg-surface-container-low border border-outline-variant rounded-lg font-body-md text-on-surface focus:ring-2 focus:ring-primary focus:border-primary transition-all outline-none" id="email" placeholder="ejemplo@agroconnect.com" required="" type="email"/>
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-primary transition-colors">person</span>
+<input class="w-full pl-12 pr-4 py-3 bg-surface-container-low border border-outline-variant rounded-lg font-body-md text-on-surface focus:ring-2 focus:ring-primary focus:border-primary transition-all outline-none" id="email" placeholder="agricultor1 / comprador1 / admin" required="" type="text"/>
 </div>
 </div>
+<!-- Login Error Message -->
+<p class="hidden text-error font-body-md text-body-md -mt-2 ml-1" id="login-error">Usuario o contraseña incorrectos.</p>
 <!-- Password Field -->
 <div class="space-y-2">
 <div class="flex justify-between items-center px-1">
@@ -205,14 +207,29 @@
             }
         }
 
-        // Simple feedback for the Login button micro-interaction
+        // Demo login: sin backend, solo valida contra usuarios de prueba y redirige por rol
+        const USERS = {
+            'agricultor1': { password: '1234', home: 'fronted/agricultor/agricultor_home.html' },
+            'comprador1': { password: '1234', home: 'fronted/comprador/ofertas-productos.html' },
+            'admin': { password: '1234', home: 'fronted/admin/admin_dashborad.html' }
+        };
+
         const loginBtn = document.querySelector('button[type="submit"]');
+        const errorMsg = document.getElementById('login-error');
+
         loginBtn.addEventListener('click', function(e) {
-            if(document.getElementById('email').value && document.getElementById('password').value) {
+            const user = document.getElementById('email').value.trim();
+            const pass = document.getElementById('password').value.trim();
+            const account = USERS[user];
+
+            if (account && account.password === pass) {
+                errorMsg.classList.add('hidden');
                 this.innerHTML = '<span class="material-symbols-outlined animate-spin">progress_activity</span><span>Cargando...</span>';
                 setTimeout(() => {
-                    this.innerHTML = '<span>Entrar</span><span class="material-symbols-outlined">arrow_forward</span>';
-                }, 2000);
+                    window.location.href = account.home;
+                }, 800);
+            } else {
+                errorMsg.classList.remove('hidden');
             }
         });
     </script>
