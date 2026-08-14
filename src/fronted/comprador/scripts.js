@@ -2,6 +2,12 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('registerForm');
+
+    // Si esta página no tiene el formulario de registro, no ejecutamos
+    // nada de la lógica de validación (evita el error "Cannot read
+    // properties of null").
+    if (!form) return;
+
     const successMessage = document.getElementById('successMessage');
     const provinceGroup = document.getElementById('provinceGroup');
     const provinceInput = document.getElementById('province');
@@ -221,3 +227,122 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+
+// ================================
+// ACTIVIDAD 2 - Primera Conexión con la API
+// ACTIVIDAD 3 - Mostrar los Datos en tarjetas
+// ================================
+
+// Crea el HTML de UNA tarjeta a partir de un producto de la API.
+// Si el producto no trae imagen, usamos un placeholder gris para
+// que la tarjeta no se vea rota.
+function crearTarjetaProducto(producto) {
+    const imagen = producto.image || 'https://placehold.co/400x300?text=Sin+imagen';
+    const titulo = producto.title || 'Producto sin nombre';
+    const categoria = producto.category || 'General';
+    const precio = typeof producto.price === 'number' ? producto.price.toFixed(2) : '0.00';
+    const rating = producto.rating && producto.rating.rate ? producto.rating.rate : '—';
+
+    return `
+        <div class="bg-white border border-outline-variant rounded-xl overflow-hidden group shadow-sm flex flex-col">
+            <div class="relative h-48 overflow-hidden bg-surface-container-high">
+                <img class="w-full h-full object-contain p-4 group-hover:scale-105 transition-transform duration-500"
+                     alt="${titulo}" src="${imagen}"
+                     onerror="this.src='https://placehold.co/400x300?text=Sin+imagen'">
+            </div>
+            <div class="p-4 flex-1 flex flex-col">
+                <div class="flex justify-between items-start mb-2 gap-2">
+                    <h3 class="font-bold text-on-surface leading-tight line-clamp-2">${titulo}</h3>
+                    <div class="flex items-center gap-1 bg-surface-container-high px-2 py-0.5 rounded text-xs shrink-0">
+                        <span class="material-symbols-outlined filled-icon text-tertiary text-[14px]">star</span>
+                        <span class="font-bold">${rating}</span>
+                    </div>
+                </div>
+                <p class="text-sm text-on-surface-variant mb-4 capitalize">${categoria}</p>
+                <div class="mt-auto flex justify-between items-center">
+                    <span class="text-xl font-bold text-primary">$${precio}</span>
+                    <button class="w-10 h-10 bg-secondary-container text-on-secondary-container rounded-lg flex items-center justify-center hover:bg-primary-container transition-colors active:scale-90">
+                        <span class="material-symbols-outlined">add</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+// Recorre el arreglo de productos y genera una tarjeta por cada uno,
+// insertándolas todas dentro del contenedor del marketplace.
+function mostrarProductos(productos) {
+    const contenedor = document.getElementById('productosContainer');
+    if (!contenedor) return; // esta página no tiene el contenedor, no hacemos nada
+
+    contenedor.innerHTML = productos
+        .map(producto => crearTarjetaProducto(producto))
+        .join('');
+}
+
+// Muestra un mensaje de error claro dentro del marketplace,
+// en vez de dejar la pantalla en blanco o solo avisar en consola.
+function mostrarError(mensaje) {
+    const contenedor = document.getElementById('productosContainer');
+    if (!contenedor) return;
+
+    contenedor.innerHTML = `
+        <div class="col-span-full flex flex-col items-center justify-center text-center py-16 px-6 bg-error-container/20 border border-error/30 rounded-xl">
+            <span class="material-symbols-outlined text-error text-[48px] mb-3">error</span>
+            <h3 class="text-lg font-bold text-on-surface mb-1">No pudimos cargar los productos</h3>
+            <p class="text-sm text-on-surface-variant mb-4">${mensaje}</p>
+            <button onclick="obtenerProductos()" class="px-6 py-2 bg-primary text-on-primary rounded-lg font-medium text-sm hover:opacity-90 transition-colors">
+                Intentar de nuevo
+            </button>
+        </div>
+    `;
+}
+
+async function obtenerProductos() {
+  // Contenedor límite de tiempo: si la API no responde en 8 segundos,
+  // cancelamos la petición en vez de dejar al usuario esperando para siempre.
+  const controlador = new AbortController();
+  const limiteDeTiempo = setTimeout(() => controlador.abort(), 2000);
+
+  try {
+    const contenedor = document.getElementById('productosContainer');
+    if (contenedor) {
+        contenedor.innerHTML = `<p class="col-span-full text-center py-16 text-on-surface-variant">Cargando productos...</p>`;
+    }
+
+    const respuesta = await fetch('https://fakestoreapi.com/products', {
+        signal: controlador.signal
+    });
+
+    // fetch() NO lanza error automáticamente si el servidor responde
+    // con un código de error (404, 500, etc.) — hay que revisarlo a mano.
+    if (!respuesta.ok) {
+        throw new Error(`El servidor respondió con error ${respuesta.status}`);
+    }
+
+    const datos = await respuesta.json();
+    console.log('Productos recibidos:', datos);
+    mostrarProductos(datos);
+
+  } catch (error) {
+    console.error('Error al conectar con la API:', error);
+
+    if (error.name === 'AbortError') {
+        // Se canceló porque tardó demasiado (timeout)
+        mostrarError('La API está tardando demasiado en responder. Revisa tu conexión e intenta de nuevo.');
+    } else if (!navigator.onLine) {
+        // El navegador detecta que no hay internet
+        mostrarError('Parece que no tienes conexión a internet.');
+    } else {
+        // Cualquier otro error: URL mal escrita, servidor caído, etc.
+        mostrarError('Ocurrió un problema al conectar con la API. Intenta de nuevo en unos momentos.');
+    }
+
+  } finally {
+    clearTimeout(limiteDeTiempo);
+  }
+}
+
+obtenerProductos();
