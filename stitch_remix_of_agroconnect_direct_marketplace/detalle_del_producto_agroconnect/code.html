@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AgroConnect - Detalle del Producto</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-lowest": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "on-secondary": "#ffffff",
+                    "error": "#ba1a1a",
+                    "on-error-container": "#93000a",
+                    "inverse-on-surface": "#ebf1ff",
+                    "on-tertiary-fixed-variant": "#763300",
+                    "primary-container": "#2ecc71",
+                    "surface-container": "#e6eeff",
+                    "on-surface-variant": "#3d4a3e",
+                    "on-primary-fixed": "#00210c",
+                    "on-tertiary-fixed": "#331200",
+                    "inverse-primary": "#4ae183",
+                    "outline-variant": "#bbcbbb",
+                    "primary-fixed-dim": "#4ae183",
+                    "tertiary-fixed-dim": "#ffb68d",
+                    "primary-fixed": "#6bfe9c",
+                    "primary": "#006d37",
+                    "tertiary": "#9b4500",
+                    "outline": "#6c7b6d",
+                    "inverse-surface": "#273140",
+                    "on-surface": "#121c2a",
+                    "surface-container-high": "#dee9fd",
+                    "background": "#f9f9ff",
+                    "on-secondary-fixed": "#00210c",
+                    "on-primary": "#ffffff",
+                    "on-background": "#121c2a",
+                    "on-error": "#ffffff",
+                    "surface-bright": "#f9f9ff",
+                    "on-secondary-container": "#007239",
+                    "on-tertiary": "#ffffff",
+                    "surface-dim": "#d0daef",
+                    "on-secondary-fixed-variant": "#005228",
+                    "tertiary-fixed": "#ffdbc9",
+                    "on-primary-container": "#005027",
+                    "surface-container-low": "#eff3ff",
+                    "on-tertiary-container": "#733200",
+                    "tertiary-container": "#ff995b",
+                    "surface-container-highest": "#d9e3f7",
+                    "secondary-fixed": "#7efba4",
+                    "secondary": "#006d37",
+                    "on-primary-fixed-variant": "#005228",
+                    "surface-variant": "#d9e3f7",
+                    "surface-tint": "#006d37",
+                    "secondary-container": "#7bf8a1",
+                    "surface": "#f9f9ff",
+                    "secondary-fixed-dim": "#61de8a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "sidebar-width": "280px",
+                    "margin-mobile": "16px",
+                    "gutter": "24px",
+                    "base": "4px",
+                    "margin-desktop": "32px"
+            },
+            "fontFamily": {
+                    "display-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "title-lg": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        .product-image-container { transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+        .product-image-container:hover { transform: scale(1.02); }
+    </style>
+</head>
+<body class="bg-background text-on-background">
+<!-- TopNavBar Implementation from JSON -->
+<header class="flex justify-between items-center w-full px-margin-desktop h-16 fixed top-0 z-50 bg-surface border-b border-outline-variant">
+<div class="flex items-center gap-8">
+<span class="text-title-lg font-headline-lg text-primary">AgroConnect</span>
+<nav class="hidden md:flex gap-6">
+<a class="font-body-md text-body-md text-primary font-bold border-b-2 border-primary pb-1" href="#">Marketplace</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:bg-surface-container transition-colors px-2 py-1 rounded" href="#">Direct Producers</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:bg-surface-container transition-colors px-2 py-1 rounded" href="#">Special Offers</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="pl-10 pr-4 py-2 bg-surface-container-low border border-outline-variant rounded-full text-body-md focus:outline-none focus:ring-2 focus:ring-primary w-64" placeholder="Search products..." type="text"/>
+</div>
+<button class="material-symbols-outlined p-2 text-on-surface-variant hover:bg-surface-container transition-colors rounded-full" data-icon="shopping_cart">shopping_cart</button>
+<button class="material-symbols-outlined p-2 text-on-surface-variant hover:bg-surface-container transition-colors rounded-full" data-icon="notifications">notifications</button>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest overflow-hidden ml-2">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a young adult with a friendly expression, set against a clean, minimalist studio background with soft directional lighting. The aesthetic is modern corporate, matching the AgroConnect brand's professional and trustworthy identity, using a clean color palette of whites and soft grays." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAImN03PIsMnMB1pIahY7bGeY5d4lS4TxYCPIveWNeRVNFY_WXTg8kMdQdKprhHp9OmwhyWuL1D_q1Ggbtiw9iwpmNT_YZO16o9cc5Om29BmILvgy-SWD8FCviIR5g4gKBkLMpD8AMv3yUpYIcclMXCB7AKufpi2vojxOfas3TEqT3HEIP0MtMzxj28YsnRLjhcDiThJzhU8aMxyyrV16XAM4Ti6kuQp6TY06t6eJNXR7hH8qZw_Z5w34xHOc3AT5RSrbF1V22TCERg"/>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-16 px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto">
+<!-- Breadcrumbs -->
+<nav class="flex items-center gap-2 mb-8 text-on-surface-variant font-label-md text-label-md">
+<a class="hover:text-primary" href="#">Marketplace</a>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<a class="hover:text-primary" href="#">Fresh Produce</a>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<span class="text-on-surface">Organic Heirloom Tomatoes</span>
+</nav>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start">
+<!-- Left Column: Image Bento -->
+<div class="lg:col-span-7 space-y-4">
+<div class="product-image-container relative rounded-xl overflow-hidden bg-white shadow-sm border border-outline-variant aspect-[4/3] group">
+<img class="w-full h-full object-cover" data-alt="Close-up high-resolution shot of vibrant red and yellow organic heirloom tomatoes, resting on a rustic wooden table with soft, natural morning light filtering through leaves. The scene evokes freshness, health, and premium agricultural quality, perfectly aligned with a minimalist and professional marketplace aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6OAkDbyyQqiPnlIJlDlQx_dr9suFpAB8DzhtYm5hg0QtYyBY46FeaOsMyWsVPSYHKHWgplAPvwjur5fR6ruZa5-GpZDRbldbHyZOyzizza67xjrlflwgWglHC8XfVUEO-6r3bN396dNYudT6aOTTz-mXEGlNCpzZb7ijYEHRSu9tKhtUyCAaYn3zAT_ZC-BTZOSo-zP3YY709tQAazp3xJl9-zbRHe6lRWxkJ1bxp23UCRhNYOJb2mtKGQJzZM3dyUU-LF1IENhPJ"/>
+<div class="absolute top-4 left-4 bg-tertiary-container text-on-tertiary-container px-3 py-1 rounded-full font-label-md text-label-md shadow-sm">
+                        Offer: 15% OFF
+                    </div>
+</div>
+<div class="grid grid-cols-3 gap-4">
+<div class="aspect-square rounded-xl overflow-hidden border border-outline-variant hover:border-primary cursor-pointer transition-colors">
+<img class="w-full h-full object-cover" data-alt="A top-down view of several sliced heirloom tomatoes on a clean white ceramic plate, showing the rich, detailed textures and seeds. High-key lighting highlights the freshness and organic nature of the produce, maintaining a clean and modern corporate food photography style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0QAJGbplknraSYMH-ZeUUfqjccidHAOXNi9ky9VVlf0tR1NXEdjvciwiO2tNq3zosyOL25Mna-gK6KlGCSjhPqYWuPx3Yw4ObYSMqCeL0atOYOmKSIm7RJoLDbU0ieK5Jl-weDkkHfk4P6GRSfBByHoe83_M02-qBSwvrTzmoOpTbJ0epuiD0hPYfyg-bP8BDnzQs-LmX_XnxEGr3eYwQXe57H2H8pCFhkk4D8VTYwiUK60A-SpgPPvhrQOtNKfCS9LUzJFrMb8NM"/>
+</div>
+<div class="aspect-square rounded-xl overflow-hidden border border-outline-variant hover:border-primary cursor-pointer transition-colors">
+<img class="w-full h-full object-cover" data-alt="A wide shot of a lush, sunny tomato farm in the countryside at golden hour. Rows of healthy green plants are laden with ripening fruit under a clear blue sky. The atmosphere is peaceful and grounded, emphasizing the organic origin of the product." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7dI4N5TqaQbo1huzI0q8dalcqfHmb8jXHQ2cibrPIzqmSblwE6iZkK1m2kKp3AIjPRFstksfTe_wFsxqDVEKnY5LClsPGeyAP-5WXKwhiUpeZKs52YY7MPNbzKmyRAjMSKf1drBTYLk9kJo61t1vyNiT1acZbkd6-bCFyNLUZQWF_q0s1rKs-7aPQZgQg9d-htLhkpkDLM4QdwslI0SUITDy_K5LISCpNo8fwxmp0hCNbjGpX1QXH8CmFvNsJ7-VZgUJMDC61sm7J"/>
+</div>
+<div class="aspect-square rounded-xl overflow-hidden border border-outline-variant hover:border-primary cursor-pointer transition-colors relative">
+<img class="w-full h-full object-cover" data-alt="A detail shot of a farmer's hands gently picking a ripe tomato from a vine. The hands are weathered but careful, suggesting years of agricultural experience. The lighting is warm and natural, creating a sense of trust and direct connection between producer and consumer." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCC3Cqx6M5oBBPg0g5wDQrruH_rCUNnHaoM9LQX7G7oRxMOlLrIJH4pUveFpUITSFVr4_sx3xMKyA-2VVmfGVabpOZGqEqtOGwVFQdNrQ6Ujj1pDStZHoVv7wUc-yh4O9efReT-9Ps83YpjzoOvaOS2QCemRybKmrDpqpDUQ8HI4ZrGp8dgruGH5winBuSSgSnUFUSu-nHr7B4zStP51fjvdwm6mE5k0h5-6PT3TTlf9RiDJU6OvCSFK8YE-cemxXZ5spVlUt_L8u_P"/>
+<div class="absolute inset-0 bg-on-surface/40 flex items-center justify-center text-white font-label-md text-label-md">
+                            +4 more
+                        </div>
+</div>
+</div>
+</div>
+<!-- Right Column: Product Info -->
+<div class="lg:col-span-5 space-y-6">
+<section class="bg-surface-container-lowest p-8 rounded-xl border border-outline-variant shadow-sm">
+<div class="flex justify-between items-start mb-2">
+<span class="text-tertiary font-label-md text-label-md tracking-wider uppercase">Direct from Farmer</span>
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-md text-label-md">4.9 (124 reviews)</span>
+</div>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface mb-4">Organic Heirloom Tomatoes</h1>
+<div class="flex items-baseline gap-3 mb-6">
+<span class="font-headline-md text-headline-md text-primary">$4.50</span>
+<span class="text-on-surface-variant font-body-md text-body-md line-through">$5.30</span>
+<span class="text-on-surface-variant font-body-md text-body-md">per kg</span>
+</div>
+<p class="text-on-surface-variant font-body-md text-body-md mb-8 leading-relaxed">
+                        Grown with artisanal care in the fertile highlands of Villa de Leyva. These heirloom varieties are prized for their exceptional flavor profiles, ranging from sweet and smoky to bright and acidic. Harvested daily at peak ripeness to ensure maximum nutrient density and culinary excellence.
+                    </p>
+<!-- Purchase Actions -->
+<div class="space-y-4 pt-6 border-t border-outline-variant">
+<div class="flex items-center justify-between">
+<span class="font-title-lg text-title-lg text-on-surface">Quantity</span>
+<div class="flex items-center bg-surface-container-low rounded-lg border border-outline-variant">
+<button class="p-2 hover:text-primary transition-colors" onclick="this.nextElementSibling.stepDown()">
+<span class="material-symbols-outlined">remove</span>
+</button>
+<input class="w-12 bg-transparent border-none text-center font-bold text-on-surface focus:ring-0" min="1" type="number" value="1"/>
+<button class="p-2 hover:text-primary transition-colors" onclick="this.previousElementSibling.stepUp()">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+<div class="flex gap-4">
+<button class="flex-1 bg-primary text-on-primary py-4 px-6 rounded-lg font-title-lg text-title-lg hover:opacity-90 transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">shopping_cart</span>
+                                Add to Cart
+                            </button>
+<button class="p-4 rounded-lg border border-outline-variant text-on-surface hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined">favorite</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Farmer Card -->
+<section class="bg-surface-container-low p-6 rounded-xl border border-outline-variant">
+<h3 class="font-title-lg text-title-lg text-on-surface mb-4">Meet the Producer</h3>
+<div class="flex items-center gap-4 mb-4">
+<div class="w-16 h-16 rounded-full overflow-hidden border-2 border-primary-container">
+<img class="w-full h-full object-cover" data-alt="A portrait of a smiling middle-aged farmer with tanned skin and gentle eyes, wearing a simple denim work shirt and a traditional straw hat. He is standing in front of a green field, conveying a sense of authenticity, hard work, and deep connection to the land. The lighting is warm and natural." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKFN_tAb3bjKSsr-8aoPblhW_QajWtYhYE1NCHURCgXYwMLeiWzm9lRT4YQYMX6BdrTwSEwyxrEZHpABtKT9gbpf-K0YQ5QbylJ_WOp3brp2Hc6mCnOLtq0bMPZTRqroTBlEmlkln5WHA8XiPTMHDyVKUl8uhKSJBd1Ib0boUMiO-tN9M3XqTLh45VuiuCPses6Vdpou9gPIuOpETqoCnmAenMR1dQ61vQfvxnTerV3gbI071JUOt9zYvrZ-D_BVIoRlYYp6PGKsZ7"/>
+</div>
+<div>
+<h4 class="font-title-lg text-title-lg text-on-surface">Carlos Alberto Ruiz</h4>
+<p class="text-on-surface-variant font-body-md text-body-md">Finca La Esperanza, Boyacá</p>
+</div>
+</div>
+<p class="text-on-surface-variant font-body-md text-body-md mb-4 italic">
+                        "Agriculture isn't just a job for my family; it's a legacy. We've been using organic methods for three generations to keep our soil healthy and our community fed."
+                    </p>
+<a class="inline-flex items-center gap-2 text-primary font-label-md text-label-md hover:underline" href="#">
+                        View Farm Profile
+                        <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</a>
+</section>
+</div>
+</div>
+<!-- Detailed Description Section -->
+<div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<div class="md:col-span-2 space-y-12">
+<div class="space-y-6">
+<h2 class="font-headline-md text-headline-md text-on-surface border-b border-outline-variant pb-4">Origin &amp; Sustainability</h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+<div class="flex gap-4">
+<div class="w-12 h-12 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container flex-shrink-0">
+<span class="material-symbols-outlined">eco</span>
+</div>
+<div>
+<h4 class="font-title-lg text-title-lg text-on-surface">100% Organic</h4>
+<p class="text-on-surface-variant font-body-md text-body-md">No synthetic pesticides or fertilizers used in the entire growth cycle.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="w-12 h-12 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container flex-shrink-0">
+<span class="material-symbols-outlined">water_drop</span>
+</div>
+<div>
+<h4 class="font-title-lg text-title-lg text-on-surface">Rainwater Harvested</h4>
+<p class="text-on-surface-variant font-body-md text-body-md">Irrigation system powered by local mountain spring water collection.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-surface p-8 rounded-xl border border-outline-variant">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-6">Farming Process</h2>
+<ul class="space-y-4">
+<li class="flex gap-4 items-start">
+<span class="w-6 h-6 rounded-full bg-primary text-on-primary flex items-center justify-center font-label-md text-label-md flex-shrink-0 mt-1">1</span>
+<p class="text-on-surface-variant font-body-md text-body-md">Seed selection from heritage varieties preserved for over 50 years.</p>
+</li>
+<li class="flex gap-4 items-start">
+<span class="w-6 h-6 rounded-full bg-primary text-on-primary flex items-center justify-center font-label-md text-label-md flex-shrink-0 mt-1">2</span>
+<p class="text-on-surface-variant font-body-md text-body-md">Natural composting using local organic waste and microbial enrichment.</p>
+</li>
+<li class="flex gap-4 items-start">
+<span class="w-6 h-6 rounded-full bg-primary text-on-primary flex items-center justify-center font-label-md text-label-md flex-shrink-0 mt-1">3</span>
+<p class="text-on-surface-variant font-body-md text-body-md">Manual weeding and pest management via companion planting (marigolds &amp; basil).</p>
+</li>
+</ul>
+</div>
+</div>
+<!-- Side Cards -->
+<div class="space-y-6">
+<div class="bg-white p-6 rounded-xl border border-outline-variant shadow-sm">
+<h3 class="font-title-lg text-title-lg text-on-surface mb-4">Location</h3>
+<div class="w-full h-48 rounded-lg overflow-hidden bg-surface-container-high relative mb-4">
+<img class="w-full h-full object-cover" data-alt="A stylized map showing the rural area of Villa de Leyva, Colombia, with soft green and earth tones. A prominent pin marks the location of Finca La Esperanza. The map design is clean and minimalist, matching the AgroConnect professional aesthetic." data-location="Villa de Leyva, Colombia" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuRfo04dzxEXNT1OH5XEDV5ZG2OmGen8ohN5a1997CU9PvfR2afUwE_2uhWiw0snAJ-I2bVrC24d1VEBTMEOmes_o0yBiNGZp113FyeLBOxP0C3oQ9SqwZ0ydAmm8mDf9DV_KUhjpvGTqHRGvZ8iyrvtz4v4Vyqi-6va2MHdnfl2aijmr3LWhZh4qvw_BSpHKTIIkmR4XyjsbuYhf6C7pEgfGIjyXUlG7kENRCV6LCAN_NcCvs6uywhRzjZao1VnvPJjDuKw5OpgWO"/>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant font-body-md text-body-md">
+<span class="material-symbols-outlined">location_on</span>
+<span>Villa de Leyva, 15km from center</span>
+</div>
+</div>
+<div class="bg-primary-container/10 p-6 rounded-xl border border-primary/20">
+<h3 class="font-title-lg text-title-lg text-primary mb-2">Express Shipping</h3>
+<p class="text-on-surface-variant font-body-md text-body-md mb-4">Order in the next 2h 15m for delivery tomorrow by 10:00 AM.</p>
+<div class="flex items-center gap-2 text-primary font-bold">
+<span class="material-symbols-outlined">local_shipping</span>
+<span>Next Day Delivery Available</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Implementation from JSON -->
+<footer class="bg-inverse-surface text-on-primary border-t border-outline-variant w-full py-8 px-margin-desktop flex flex-col md:flex-row justify-between items-center mt-12">
+<div class="mb-6 md:mb-0">
+<span class="font-headline-md text-primary-fixed-dim">AgroConnect</span>
+<p class="font-body-md text-body-md text-surface-variant opacity-80 mt-2">© 2024 AgroConnect. Connecting roots to tables.</p>
+</div>
+<nav class="flex flex-wrap justify-center gap-6">
+<a class="font-label-md text-label-md text-surface-variant opacity-80 hover:text-primary-fixed hover:opacity-100 transition-colors" href="#">Privacy Policy</a>
+<a class="font-label-md text-label-md text-surface-variant opacity-80 hover:text-primary-fixed hover:opacity-100 transition-colors" href="#">Terms of Service</a>
+<a class="font-label-md text-label-md text-surface-variant opacity-80 hover:text-primary-fixed hover:opacity-100 transition-colors" href="#">Help Center</a>
+<a class="font-label-md text-label-md text-surface-variant opacity-80 hover:text-primary-fixed hover:opacity-100 transition-colors" href="#">Contact Us</a>
+</nav>
+</footer>
+<!-- Interactive script for quantity and UI feedback -->
+<script>
+        // Micro-interaction for Add to Cart
+        const addToCartBtn = document.querySelector('button.bg-primary');
+        if (addToCartBtn) {
+            addToCartBtn.addEventListener('click', function() {
+                const originalText = this.innerHTML;
+                this.innerHTML = '<span class="material-symbols-outlined">check_circle</span> Added!';
+                this.classList.replace('bg-primary', 'bg-secondary');
+                
+                setTimeout(() => {
+                    this.innerHTML = originalText;
+                    this.classList.replace('bg-secondary', 'bg-primary');
+                }, 2000);
+            });
+        }
+
+        // Image switching logic
+        const thumbnails = document.querySelectorAll('.grid.grid-cols-3 .aspect-square');
+        const mainImage = document.querySelector('.product-image-container img');
+        
+        thumbnails.forEach(thumb => {
+            thumb.addEventListener('click', function() {
+                const thumbImg = this.querySelector('img');
+                const tempSrc = mainImage.src;
+                const tempAlt = mainImage.getAttribute('data-alt');
+                
+                mainImage.src = thumbImg.src;
+                mainImage.setAttribute('data-alt', thumbImg.getAttribute('data-alt'));
+                
+                // Add a small fade effect
+                mainImage.style.opacity = '0.5';
+                setTimeout(() => { mainImage.style.opacity = '1'; }, 50);
+            });
+        });
+    </script>
+</body></html>

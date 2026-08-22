@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AgroConnect Admin Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-surface": "#273140",
+                        "outline-variant": "#bbcbbb",
+                        "tertiary-fixed-dim": "#ffb68d",
+                        "primary-fixed-dim": "#4ae183",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-fixed": "#331200",
+                        "on-surface": "#121c2a",
+                        "surface": "#f9f9ff",
+                        "surface-container-high": "#dee9fd",
+                        "primary": "#006d37",
+                        "secondary-fixed": "#7efba4",
+                        "surface-container": "#e6eeff",
+                        "on-secondary-fixed": "#00210c",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-container": "#007239",
+                        "surface-variant": "#d9e3f7",
+                        "on-surface-variant": "#3d4a3e",
+                        "error-container": "#ffdad6",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed": "#ffdbc9",
+                        "inverse-primary": "#4ae183",
+                        "on-tertiary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "primary-container": "#2ecc71",
+                        "surface-container-highest": "#d9e3f7",
+                        "on-tertiary-container": "#733200",
+                        "surface-dim": "#d0daef",
+                        "on-primary-fixed": "#00210c",
+                        "tertiary-container": "#ff995b",
+                        "on-primary-container": "#005027",
+                        "surface-tint": "#006d37",
+                        "tertiary": "#9b4500",
+                        "background": "#f9f9ff",
+                        "secondary": "#006d37",
+                        "on-secondary-fixed-variant": "#005228",
+                        "on-tertiary-fixed-variant": "#763300",
+                        "outline": "#6c7b6d",
+                        "on-primary-fixed-variant": "#005228",
+                        "on-background": "#121c2a",
+                        "inverse-on-surface": "#ebf1ff",
+                        "secondary-container": "#7bf8a1",
+                        "on-secondary": "#ffffff",
+                        "primary-fixed": "#6bfe9c",
+                        "surface-container-low": "#eff3ff",
+                        "error": "#ba1a1a",
+                        "surface-bright": "#f9f9ff",
+                        "secondary-fixed-dim": "#61de8a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "32px",
+                        "base": "4px",
+                        "margin-mobile": "16px",
+                        "gutter": "24px",
+                        "sidebar-width": "280px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "title-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #f9f9ff; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .sidebar-active { transition: transform 0.2s ease-in-out; }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #bbcbbb; border-radius: 10px; }
+    </style>
+</head>
+<body class="bg-background text-on-surface antialiased">
+<!-- SideNavBar (Authority Source: JSON) -->
+<aside class="fixed left-0 top-0 h-full w-[280px] flex flex-col py-4 z-40 bg-surface-container-low dark:bg-inverse-surface shadow-sm border-r border-outline-variant">
+<div class="font-headline-md text-headline-md text-primary px-4 py-6 flex items-center gap-3">
+<span class="material-symbols-outlined bg-primary-container text-on-primary-container p-2 rounded-lg">eco</span>
+            AgroConnect
+        </div>
+<div class="px-4 mb-8">
+<div class="flex items-center gap-3 p-3 bg-surface-container-high rounded-xl">
+<img class="w-10 h-10 rounded-full object-cover border-2 border-primary-container" data-alt="A professional headshot of a male administrative manager in a clean office setting, featuring high-key natural lighting and a minimalist background with soft green accents reflecting the AgroConnect corporate identity. The photography style is crisp and modern with a shallow depth of field." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbbQMF3me6lNaw7R38fO-IJ7pHkc0N9EfBHFBYIKwVxW488gUUCeL6rxyMUNaPd-9YnrDgep6t3DL_B0thov4QOLWXm7ZV3f2be6DJ_RiRuBeUvb4_9VdFCLTh-SBcrjdm_kpywfF4FMJhP5V-uzH2VODG6kSVK8F8JyFJb6Bv1j3sm0wXt27LOXk0Mz2khX_EIgKHG6d80hWW6xfQ12tPHa8flv_3_yAl6nwgW64CdDId2WNcfbtN_JbNbTNFO0FIcnDPsJCydw6A"/>
+<div class="flex flex-col">
+<span class="font-title-lg text-label-md text-on-surface font-bold">Admin Dashboard</span>
+<span class="font-body-md text-label-md text-on-surface-variant">Management Portal</span>
+</div>
+</div>
+</div>
+<nav class="flex-1 space-y-1 px-2 custom-scrollbar overflow-y-auto">
+<!-- Dashboard Active -->
+<a class="flex items-center gap-3 px-4 py-3 bg-secondary-container text-on-secondary-container rounded-lg mx-2 my-1 transition-transform translate-x-1" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high mx-2 my-1 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">person_add</span>
+<span class="font-label-md text-label-md">Manage Farmers</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high mx-2 my-1 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">local_shipping</span>
+<span class="font-label-md text-label-md">Order Tracking</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high mx-2 my-1 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">monitoring</span>
+<span class="font-label-md text-label-md">Statistics</span>
+</a>
+</nav>
+<div class="mt-auto px-2 space-y-1 pt-4 border-t border-outline-variant">
+<button class="w-[calc(100%-16px)] mx-2 mb-4 bg-primary text-on-primary py-3 rounded-lg font-label-md text-label-md hover:opacity-90 transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">description</span>
+                Export Report
+            </button>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high mx-2 my-1 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-error hover:bg-error-container/20 mx-2 my-1 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-label-md text-label-md">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-[280px] min-h-screen p-8 flex flex-col gap-8">
+<!-- Top Bar -->
+<header class="flex justify-between items-center mb-4">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface">Overview</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Welcome back, Administrator. Here's what's happening today.</p>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative group">
+<button class="p-2 bg-surface-container-lowest rounded-full border border-outline-variant text-on-surface-variant hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined">mail</span>
+<span class="absolute top-0 right-0 w-3 h-3 bg-tertiary-container rounded-full border-2 border-surface"></span>
+</button>
+<!-- Tooltip -->
+<span class="absolute -bottom-10 left-1/2 -translate-x-1/2 scale-0 group-hover:scale-100 transition-all bg-inverse-surface text-on-tertiary px-2 py-1 text-[10px] rounded whitespace-nowrap">Revisar correos</span>
+</div>
+<button class="p-2 bg-surface-container-lowest rounded-full border border-outline-variant text-on-surface-variant hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</div>
+</header>
+<!-- Metric Cards Grid -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Total Orders -->
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm border border-outline-variant flex items-center justify-between">
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant mb-1 uppercase tracking-wider">Total Orders</p>
+<h3 class="font-headline-md text-headline-md text-on-surface">1,284</h3>
+<p class="text-xs text-primary font-bold mt-2 flex items-center">
+<span class="material-symbols-outlined text-[14px]">trending_up</span>
+                        +12.5% vs last month
+                    </p>
+</div>
+<div class="w-12 h-12 bg-primary-container/20 rounded-full flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">shopping_bag</span>
+</div>
+</div>
+<!-- Active Farmers -->
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm border border-outline-variant flex items-center justify-between">
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant mb-1 uppercase tracking-wider">Active Farmers</p>
+<h3 class="font-headline-md text-headline-md text-on-surface">452</h3>
+<p class="text-xs text-primary font-bold mt-2 flex items-center">
+<span class="material-symbols-outlined text-[14px]">add</span>
+                        8 new this week
+                    </p>
+</div>
+<div class="w-12 h-12 bg-secondary-container/20 rounded-full flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">agriculture</span>
+</div>
+</div>
+<!-- Revenue -->
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm border border-outline-variant flex items-center justify-between">
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant mb-1 uppercase tracking-wider">Gross Revenue</p>
+<h3 class="font-headline-md text-headline-md text-on-surface">$42,950</h3>
+<p class="text-xs text-tertiary font-bold mt-2 flex items-center">
+<span class="material-symbols-outlined text-[14px]">show_chart</span>
+                        Target: $50,000
+                    </p>
+</div>
+<div class="w-12 h-12 bg-tertiary-container/20 rounded-full flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">payments</span>
+</div>
+</div>
+</section>
+<!-- Main Data Table Section -->
+<section class="bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant overflow-hidden">
+<div class="px-6 py-4 border-b border-outline-variant flex justify-between items-center bg-surface-container-low/50">
+<h2 class="font-title-lg text-title-lg text-on-surface">Order Monitoring</h2>
+<div class="flex gap-2">
+<div class="relative">
+<input class="pl-9 pr-4 py-2 bg-white border border-outline-variant rounded-lg text-sm focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" placeholder="Search product..." type="text"/>
+<span class="material-symbols-outlined absolute left-2.5 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">search</span>
+</div>
+<button class="flex items-center gap-2 px-3 py-2 border border-outline-variant rounded-lg text-sm font-medium hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[18px]">filter_list</span>
+                        Filter
+                    </button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-high/30 border-b border-outline-variant">
+<th class="px-6 py-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">ID</th>
+<th class="px-6 py-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Farmer</th>
+<th class="px-6 py-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Product</th>
+<th class="px-6 py-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider text-center">Quantity</th>
+<th class="px-6 py-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Date</th>
+<th class="px-6 py-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Status</th>
+<th class="px-6 py-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider text-right">View</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<!-- Table Row 1 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-4 font-body-md text-on-surface font-bold">#AG-8821</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-secondary-fixed text-on-secondary-fixed flex items-center justify-center text-[10px] font-bold">RM</div>
+<span class="font-body-md text-on-surface">Ricardo Mendoza</span>
+</div>
+</td>
+<td class="px-6 py-4 font-body-md text-on-surface">Organic Avocados (Hass)</td>
+<td class="px-6 py-4 font-body-md text-on-surface text-center">250 kg</td>
+<td class="px-6 py-4 font-body-md text-on-surface-variant">24 Oct, 2023</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-primary-container/20 text-on-primary-container border border-primary-container/30">Completed</span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors hover:bg-primary-container/10 rounded-lg group-hover:scale-110">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</td>
+</tr>
+<!-- Table Row 2 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-4 font-body-md text-on-surface font-bold">#AG-8822</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-tertiary-fixed text-on-tertiary-fixed flex items-center justify-center text-[10px] font-bold">EA</div>
+<span class="font-body-md text-on-surface">Elena Alarcón</span>
+</div>
+</td>
+<td class="px-6 py-4 font-body-md text-on-surface">Fresh Quinoa White</td>
+<td class="px-6 py-4 font-body-md text-on-surface text-center">120 kg</td>
+<td class="px-6 py-4 font-body-md text-on-surface-variant">25 Oct, 2023</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-surface-container-high text-on-surface-variant border border-outline-variant">In Transit</span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors hover:bg-primary-container/10 rounded-lg group-hover:scale-110">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</td>
+</tr>
+<!-- Table Row 3 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-4 font-body-md text-on-surface font-bold">#AG-8823</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary-fixed text-on-primary-fixed flex items-center justify-center text-[10px] font-bold">JP</div>
+<span class="font-body-md text-on-surface">Javier Pineda</span>
+</div>
+</td>
+<td class="px-6 py-4 font-body-md text-on-surface">Green Coffee Beans</td>
+<td class="px-6 py-4 font-body-md text-on-surface text-center">500 kg</td>
+<td class="px-6 py-4 font-body-md text-on-surface-variant">26 Oct, 2023</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-tertiary-container/20 text-on-tertiary-container border border-tertiary-container/30">Pending</span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors hover:bg-primary-container/10 rounded-lg group-hover:scale-110">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</td>
+</tr>
+<!-- Table Row 4 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-4 font-body-md text-on-surface font-bold">#AG-8824</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-secondary-fixed-dim text-on-secondary-fixed flex items-center justify-center text-[10px] font-bold">MC</div>
+<span class="font-body-md text-on-surface">Maria Cortez</span>
+</div>
+</td>
+<td class="px-6 py-4 font-body-md text-on-surface">Sweet Potatoes</td>
+<td class="px-6 py-4 font-body-md text-on-surface text-center">80 kg</td>
+<td class="px-6 py-4 font-body-md text-on-surface-variant">26 Oct, 2023</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-primary-container/20 text-on-primary-container border border-primary-container/30">Completed</span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors hover:bg-primary-container/10 rounded-lg group-hover:scale-110">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="px-6 py-4 bg-surface-container-low/50 border-t border-outline-variant flex justify-between items-center">
+<span class="text-xs text-on-surface-variant font-medium">Showing 4 of 128 orders</span>
+<div class="flex gap-1">
+<button class="p-1.5 rounded border border-outline-variant hover:bg-white disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+</button>
+<button class="p-1.5 rounded border border-outline-variant bg-primary text-on-primary text-xs font-bold px-3">1</button>
+<button class="p-1.5 rounded border border-outline-variant hover:bg-white text-xs font-bold px-3">2</button>
+<button class="p-1.5 rounded border border-outline-variant hover:bg-white text-xs font-bold px-3">3</button>
+<button class="p-1.5 rounded border border-outline-variant hover:bg-white">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Footer Section (Authority Source: JSON) -->
+<footer class="w-full py-8 mt-auto flex flex-col md:flex-row justify-between items-center border-t border-outline-variant bg-inverse-surface dark:bg-surface-container-lowest text-on-primary dark:text-on-surface px-margin-desktop rounded-t-2xl">
+<div class="flex flex-col items-center md:items-start mb-6 md:mb-0">
+<span class="font-headline-md text-primary-fixed-dim mb-2">AgroConnect</span>
+<p class="font-body-md text-body-md text-surface-variant opacity-80 text-center md:text-left">© 2024 AgroConnect. Connecting roots to tables.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-6">
+<a class="font-label-md text-label-md text-surface-variant opacity-80 hover:text-primary-fixed hover:opacity-100 transition-all" href="#">Privacy Policy</a>
+<a class="font-label-md text-label-md text-surface-variant opacity-80 hover:text-primary-fixed hover:opacity-100 transition-all" href="#">Terms of Service</a>
+<a class="font-label-md text-label-md text-surface-variant opacity-80 hover:text-primary-fixed hover:opacity-100 transition-all" href="#">Help Center</a>
+<a class="font-label-md text-label-md text-surface-variant opacity-80 hover:text-primary-fixed hover:opacity-100 transition-all" href="#">Contact Us</a>
+</div>
+</footer>
+</main>
+<!-- FAB Tooltip micro-interaction Script -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Simple interaction logic could go here if needed for more complex UI behaviors
+            console.log("AgroConnect Admin Dashboard Initialized");
+        });
+    </script>
+</body></html>

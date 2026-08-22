@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Dashboard Agricultor - AgroConnect</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-container": "#007239",
+                        "on-primary": "#ffffff",
+                        "outline": "#6c7b6d",
+                        "on-tertiary": "#ffffff",
+                        "primary-container": "#2ecc71",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed-variant": "#005228",
+                        "on-surface": "#121c2a",
+                        "on-error": "#ffffff",
+                        "surface-bright": "#f9f9ff",
+                        "on-error-container": "#93000a",
+                        "inverse-primary": "#4ae183",
+                        "tertiary-fixed-dim": "#ffb68d",
+                        "background": "#f9f9ff",
+                        "surface-container-low": "#eff3ff",
+                        "primary-fixed-dim": "#4ae183",
+                        "on-tertiary-fixed": "#331200",
+                        "surface-variant": "#d9e3f7",
+                        "on-surface-variant": "#3d4a3e",
+                        "surface-dim": "#d0daef",
+                        "secondary-fixed": "#7efba4",
+                        "outline-variant": "#bbcbbb",
+                        "tertiary-container": "#ff995b",
+                        "inverse-surface": "#273140",
+                        "secondary": "#006d37",
+                        "surface-container": "#e6eeff",
+                        "primary-fixed": "#6bfe9c",
+                        "on-primary-fixed": "#00210c",
+                        "secondary-fixed-dim": "#61de8a",
+                        "surface-tint": "#006d37",
+                        "secondary-container": "#7bf8a1",
+                        "on-tertiary-container": "#733200",
+                        "surface": "#f9f9ff",
+                        "error-container": "#ffdad6",
+                        "on-secondary-fixed-variant": "#005228",
+                        "on-secondary-fixed": "#00210c",
+                        "surface-container-highest": "#d9e3f7",
+                        "tertiary": "#9b4500",
+                        "on-background": "#121c2a",
+                        "inverse-on-surface": "#ebf1ff",
+                        "error": "#ba1a1a",
+                        "surface-container-high": "#dee9fd",
+                        "tertiary-fixed": "#ffdbc9",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-fixed-variant": "#763300",
+                        "primary": "#006d37",
+                        "on-primary-container": "#005027"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "sidebar-width": "280px",
+                        "margin-desktop": "32px",
+                        "base": "4px",
+                        "gutter": "24px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-md": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "title-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .bento-card {
+            background: #ffffff;
+            border: 1px solid #E5E7EB;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .bento-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.08);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface">
+<!-- Sidebar Navigation -->
+<aside class="fixed left-0 top-0 h-full w-[280px] bg-surface-container-low dark:bg-inverse-surface flex flex-col py-4 z-40 shadow-sm">
+<div class="font-headline-md text-primary px-margin-desktop py-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">eco</span>
+<span class="font-headline-md tracking-tight">AgroConnect</span>
+</div>
+<div class="px-4 mb-8">
+<div class="flex items-center gap-3 p-3 rounded-xl bg-surface-container-highest/30">
+<img class="w-12 h-12 rounded-full object-cover" data-alt="A professional headshot of a middle-aged farmer with a friendly smile, wearing a clean denim shirt, set against a blurred background of a lush green organic vegetable farm during the golden hour. The image has a clean, high-end commercial aesthetic with soft, warm lighting and vibrant natural colors." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOdcHF1HnYy5bDePgrMbtBW2PiLgDvTwrXOsdGQaDTwXJesctto9edS-6h0M6ZcH_X11HjUQ34TRocYRINe2nok3x5fa0ExJQ1kVnDnizUXtiGggqU-VT9VLqvX2qhUntmEn8abAG6-xRo23DbN3gtXS3tdRG3C2GWHIn4MHXyHPZCL4rcBSVz03oTNJXfcO_nWOtsEYsWPL5eMFELFZWKvEkjPCQfPqdvfrb6NLRQc0F8mbsK80JuyTt86O2KFwlpOuaMpKHms8ui"/>
+<div>
+<p class="font-title-lg text-primary text-sm">Carlos Mendoza</p>
+<p class="font-label-md text-on-surface-variant text-[10px]">Productor Premium</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="bg-secondary-container text-on-secondary-container rounded-lg mx-2 my-1 flex items-center px-4 py-3 gap-3 transition-transform translate-x-1" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-label-md">Dashboard</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-container-high mx-2 my-1 rounded-lg flex items-center px-4 py-3 gap-3 transition-colors" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-label-md">Mis Productos</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-container-high mx-2 my-1 rounded-lg flex items-center px-4 py-3 gap-3 transition-colors" href="#">
+<span class="material-symbols-outlined">local_shipping</span>
+<span class="font-label-md">Pedidos</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-container-high mx-2 my-1 rounded-lg flex items-center px-4 py-3 gap-3 transition-colors" href="#">
+<span class="material-symbols-outlined">monitoring</span>
+<span class="font-label-md">Estadísticas</span>
+</a>
+</nav>
+<div class="px-4 py-4 space-y-1 mt-auto">
+<a class="text-on-surface-variant hover:bg-surface-container-high mx-2 my-1 rounded-lg flex items-center px-4 py-3 gap-3 transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md">Configuración</span>
+</a>
+<a class="text-error hover:bg-error-container/20 mx-2 my-1 rounded-lg flex items-center px-4 py-3 gap-3 transition-colors" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-label-md">Cerrar Sesión</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-[280px] min-h-screen p-margin-desktop">
+<!-- Header Actions -->
+<header class="flex justify-between items-center mb-8">
+<div>
+<h1 class="font-headline-lg text-on-surface">Bienvenido, Carlos</h1>
+<p class="font-body-md text-on-surface-variant">Gestión de tu producción agrícola hoy.</p>
+</div>
+<div class="flex gap-4">
+<button class="flex items-center gap-2 px-6 py-2.5 rounded-full border border-outline text-on-surface-variant font-label-md hover:bg-surface-container-high transition-all">
+<span class="material-symbols-outlined">history</span>
+                    Historial de Pedidos
+                </button>
+<button class="flex items-center gap-2 px-6 py-2.5 rounded-full bg-primary text-on-primary font-label-md hover:opacity-90 transition-all shadow-sm">
+<span class="material-symbols-outlined">add_circle</span>
+                    Crear Producto
+                </button>
+</div>
+</header>
+<!-- Metrics Overview (Bento Grid Style) -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter mb-gutter">
+<div class="bento-card p-6 rounded-2xl flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<span class="text-primary-container bg-primary-container/10 p-2 rounded-lg">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">inventory_2</span>
+</span>
+<span class="text-secondary font-label-md">+2 esta semana</span>
+</div>
+<div class="mt-4">
+<p class="font-label-md text-on-surface-variant">Total Productos</p>
+<h3 class="font-headline-lg text-on-surface">10</h3>
+</div>
+</div>
+<div class="bento-card p-6 rounded-2xl flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<span class="text-tertiary-container bg-tertiary-container/10 p-2 rounded-lg">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">shopping_basket</span>
+</span>
+<span class="text-secondary font-label-md">+12%</span>
+</div>
+<div class="mt-4">
+<p class="font-label-md text-on-surface-variant">Ventas (Mes)</p>
+<h3 class="font-headline-lg text-on-surface">142</h3>
+</div>
+</div>
+<div class="bento-card p-6 rounded-2xl flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<span class="text-primary bg-primary/10 p-2 rounded-lg">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">payments</span>
+</span>
+<span class="text-primary font-label-md">Meta: 85%</span>
+</div>
+<div class="mt-4">
+<p class="font-label-md text-on-surface-variant">Ingresos Totales</p>
+<h3 class="font-headline-lg text-on-surface">$2.4k</h3>
+</div>
+</div>
+<div class="bento-card p-6 rounded-2xl flex flex-col justify-between border-primary/20 bg-primary/5">
+<div class="flex justify-between items-start">
+<span class="text-tertiary bg-tertiary/10 p-2 rounded-lg">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">pending_actions</span>
+</span>
+<span class="text-tertiary font-label-md">Acción requerida</span>
+</div>
+<div class="mt-4">
+<p class="font-label-md text-on-surface-variant">Órdenes Pendientes</p>
+<h3 class="font-headline-lg text-on-surface text-tertiary">08</h3>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
+<!-- Section: Mis Productos -->
+<section class="lg:col-span-2 space-y-4">
+<div class="flex justify-between items-center mb-2">
+<h2 class="font-title-lg text-on-surface">Mis Productos en Oferta</h2>
+<a class="text-primary font-label-md hover:underline" href="#">Ver catálogo completo</a>
+</div>
+<div class="space-y-3">
+<!-- Product Item 1 -->
+<div class="bento-card p-4 rounded-xl flex items-center gap-4 group">
+<div class="w-20 h-20 rounded-lg bg-surface-container-high flex-shrink-0 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A macro high-definition photograph of several bright red, ripe organic tomatoes still on their vine, glistening with tiny water droplets. The lighting is crisp and natural, highlighting the smooth texture and deep color of the fruit against a minimalist, clean white background, reflecting a premium agricultural marketplace aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZmzcRapKQeNiMTLcUQMJFeKX6O0WSfOtLjzT3B2DWHQPNQJppkyTH8ymf93C8sazCUn__OvBLQAND1bC7fW-fpbuwcJnG4r1-h_qntv9hvT7wYXYi3ehVprbZhh0M4VySzcqoXCGNb9EvTD37jH7XxrYPnNPzbGHyWjoMPmj4m8bAbNawZXJubScTCeD7s2-LoNUlNGSJPM0twSZTXSUc053eyuHyev4ZjUr5MwHVlHOWRv49pRimYtwq96wW3SSA8-aeFOQz9O-x"/>
+</div>
+<div class="flex-1">
+<h4 class="font-title-lg text-on-surface text-base">Tomate Feliz</h4>
+<p class="font-label-md text-on-surface-variant">RD$ 150.00 / Kg</p>
+<div class="flex items-center gap-2 mt-1">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="font-label-md text-primary text-[10px]">Disponible</span>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="p-2 rounded-lg hover:bg-surface-container-highest text-on-surface-variant transition-colors" title="Editar">
+<span class="material-symbols-outlined">edit</span>
+</button>
+<button class="p-2 rounded-lg hover:bg-surface-container-highest text-on-surface-variant transition-colors" title="Pausar">
+<span class="material-symbols-outlined">pause_circle</span>
+</button>
+<button class="p-2 rounded-lg hover:bg-error-container/20 text-error transition-colors" title="Eliminar">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</div>
+<!-- Product Item 2 -->
+<div class="bento-card p-4 rounded-xl flex items-center gap-4 group">
+<div class="w-20 h-20 rounded-lg bg-surface-container-high flex-shrink-0 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A vibrant and detailed close-up shot of freshly harvested green bell peppers, their waxy skin reflecting soft studio lighting. The composition is balanced and clean, emphasizing the organic freshness and premium quality of the produce, suitable for a professional farm-to-table digital marketplace dashboard." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMCwCMDBUM4peuWoA2h5HjTcE8cZQkT_73mGWXbggt-enVWmWq1imEMNnXvrwcnHIo8ljhS8l_WHjsijZY5YuTDIVRNeLJWTcYogMX2s1PYs3eIFf1GAof9hNGmK55kCkP4lsTBnju0UNrhvLPWDdq9rfYzHzZEGQ7RQ6k7EuxkbIECBjE6jmJtVAu6tiu3gU0MXMOu939KUd921k-eOf66-W3RKgbHMFcXgsQ1mla5ok6A1cIZb0TnX-BtOwqqO5c84u3zaxbyRx-"/>
+</div>
+<div class="flex-1">
+<h4 class="font-title-lg text-on-surface text-base">Pimiento Verde Orgánico</h4>
+<p class="font-label-md text-on-surface-variant">RD$ 85.00 / Lb</p>
+<div class="flex items-center gap-2 mt-1">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="font-label-md text-primary text-[10px]">Disponible</span>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="p-2 rounded-lg hover:bg-surface-container-highest text-on-surface-variant transition-colors">
+<span class="material-symbols-outlined">edit</span>
+</button>
+<button class="p-2 rounded-lg hover:bg-surface-container-highest text-on-surface-variant transition-colors">
+<span class="material-symbols-outlined">pause_circle</span>
+</button>
+<button class="p-2 rounded-lg hover:bg-error-container/20 text-error transition-colors">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</div>
+<!-- Product Item 3 -->
+<div class="bento-card p-4 rounded-xl flex items-center gap-4 group">
+<div class="w-20 h-20 rounded-lg bg-surface-container-high flex-shrink-0 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A bunch of bright yellow organic bananas with small brown spots indicating perfect ripeness, photographed on a clean, light-colored wooden surface. The lighting is warm and inviting, capturing the natural essence of tropical produce for a modern agricultural dashboard interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpiGtKyiUcLcsjm7GT8fdIzaxYBnYc_WqtBsGPnfmExay0e6jsL_9N-BLa4H51Duyoqd6Cv012i6RtIKYwJpeGpOv8rOpRgpqIg0WUoV4oYmYQtIXhHNMmSzN1lcaEOLxuHwyxdpBCIy9IWKKJ4M5z_XGx0QwkdUqsv6QJvyB6ZU0rOJvu8LNNEFR9R6BGzw58DS2Cs1zahKzAbJymn4RE2s-ml4v81aL2__PC5MpkEGpxwbMiJkjsPZ8j0taGSlkam5HNQ8VbGnwi"/>
+</div>
+<div class="flex-1">
+<h4 class="font-title-lg text-on-surface text-base">Banano Cavendish</h4>
+<p class="font-label-md text-on-surface-variant">RD$ 45.00 / Mano</p>
+<div class="flex items-center gap-2 mt-1">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+<span class="font-label-md text-tertiary text-[10px]">Stock Bajo</span>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="p-2 rounded-lg hover:bg-surface-container-highest text-on-surface-variant transition-colors">
+<span class="material-symbols-outlined">edit</span>
+</button>
+<button class="p-2 rounded-lg hover:bg-surface-container-highest text-on-surface-variant transition-colors">
+<span class="material-symbols-outlined">pause_circle</span>
+</button>
+<button class="p-2 rounded-lg hover:bg-error-container/20 text-error transition-colors">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Section: Pedidos Recientes -->
+<section class="space-y-4">
+<div class="flex justify-between items-center mb-2">
+<h2 class="font-title-lg text-on-surface">Pedidos Recientes</h2>
+</div>
+<div class="bento-card rounded-2xl overflow-hidden">
+<div class="p-4 bg-surface-container-low border-b border-outline-variant">
+<p class="font-label-md text-on-surface-variant uppercase tracking-wider text-[10px]">Últimas 24 horas</p>
+</div>
+<div class="divide-y divide-outline-variant">
+<!-- Order 1 -->
+<div class="p-4 hover:bg-surface-container transition-colors cursor-pointer">
+<div class="flex justify-between mb-1">
+<span class="font-label-md text-primary">#2020</span>
+<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-primary-container/20 text-on-primary-container">ENTREGADO</span>
+</div>
+<p class="font-body-md text-on-surface">Tomate (1kg) - SuperMarket Central</p>
+<p class="font-label-md text-on-surface-variant text-[11px] mt-1">Hoy, 10:30 AM</p>
+</div>
+<!-- Order 2 -->
+<div class="p-4 hover:bg-surface-container transition-colors cursor-pointer">
+<div class="flex justify-between mb-1">
+<span class="font-label-md text-primary">#2019</span>
+<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-tertiary-container/20 text-on-tertiary-container">PENDIENTE</span>
+</div>
+<p class="font-body-md text-on-surface">Pimiento (5lb) - Restaurante La Finca</p>
+<p class="font-label-md text-on-surface-variant text-[11px] mt-1">Ayer, 04:15 PM</p>
+</div>
+<!-- Order 3 -->
+<div class="p-4 hover:bg-surface-container transition-colors cursor-pointer">
+<div class="flex justify-between mb-1">
+<span class="font-label-md text-primary">#2018</span>
+<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-secondary-container/20 text-on-secondary-container">EN CAMINO</span>
+</div>
+<p class="font-body-md text-on-surface">Mix Vegetal (10kg) - Mercado Local</p>
+<p class="font-label-md text-on-surface-variant text-[11px] mt-1">Ayer, 02:00 PM</p>
+</div>
+</div>
+<div class="p-4 text-center">
+<button class="text-primary font-label-md hover:underline">Ver todos los pedidos</button>
+</div>
+</div>
+<!-- Weather/Growth Tip Card (Extra Context) -->
+<div class="rounded-2xl p-6 bg-primary text-on-primary shadow-lg overflow-hidden relative">
+<div class="relative z-10">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined">wb_sunny</span>
+<span class="font-label-md">Clima Local: 28°C</span>
+</div>
+<h4 class="font-title-lg mb-2">Consejo de Cosecha</h4>
+<p class="font-body-md opacity-90">Se esperan lluvias moderadas mañana. Asegúrate de cubrir tus semilleros de hortalizas.</p>
+</div>
+<span class="material-symbols-outlined absolute -bottom-4 -right-4 text-white opacity-10 text-9xl">grass</span>
+</div>
+</section>
+</div>
+</main>
+<!-- Footer (Internal Dashboard Style) -->
+<footer class="ml-[280px] mt-8 py-8 px-margin-desktop flex flex-col md:flex-row justify-between items-center border-t border-outline-variant bg-surface">
+<p class="font-label-md text-on-surface-variant">© 2024 AgroConnect. Conectando raíces con mesas.</p>
+<div class="flex gap-6 mt-4 md:mt-0">
+<a class="font-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Soporte Técnico</a>
+<a class="font-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Términos y Condiciones</a>
+<a class="font-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Privacidad</a>
+</div>
+</footer>
+<script>
+        // Micro-interaction for buttons
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('mousedown', () => {
+                button.classList.add('scale-95', 'opacity-80');
+            });
+            button.addEventListener('mouseup', () => {
+                button.classList.remove('scale-95', 'opacity-80');
+            });
+            button.addEventListener('mouseleave', () => {
+                button.classList.remove('scale-95', 'opacity-80');
+            });
+        });
+    </script>
+</body></html>

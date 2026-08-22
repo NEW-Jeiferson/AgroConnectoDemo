@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mi Cuenta - AgroConnect</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9f9ff;
+        }
+        .profile-card-shadow {
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container-lowest": "#ffffff",
+                      "error-container": "#ffdad6",
+                      "on-secondary": "#ffffff",
+                      "error": "#ba1a1a",
+                      "on-error-container": "#93000a",
+                      "inverse-on-surface": "#ebf1ff",
+                      "on-tertiary-fixed-variant": "#763300",
+                      "primary-container": "#2ecc71",
+                      "surface-container": "#e6eeff",
+                      "on-surface-variant": "#3d4a3e",
+                      "on-primary-fixed": "#00210c",
+                      "on-tertiary-fixed": "#331200",
+                      "inverse-primary": "#4ae183",
+                      "outline-variant": "#bbcbbb",
+                      "primary-fixed-dim": "#4ae183",
+                      "tertiary-fixed-dim": "#ffb68d",
+                      "primary-fixed": "#6bfe9c",
+                      "primary": "#006d37",
+                      "tertiary": "#9b4500",
+                      "outline": "#6c7b6d",
+                      "inverse-surface": "#273140",
+                      "on-surface": "#121c2a",
+                      "surface-container-high": "#dee9fd",
+                      "background": "#f9f9ff",
+                      "on-secondary-fixed": "#00210c",
+                      "on-primary": "#ffffff",
+                      "on-background": "#121c2a",
+                      "on-error": "#ffffff",
+                      "surface-bright": "#f9f9ff",
+                      "on-secondary-container": "#007239",
+                      "on-tertiary": "#ffffff",
+                      "surface-dim": "#d0daef",
+                      "on-secondary-fixed-variant": "#005228",
+                      "tertiary-fixed": "#ffdbc9",
+                      "on-primary-container": "#005027",
+                      "surface-container-low": "#eff3ff",
+                      "on-tertiary-container": "#733200",
+                      "tertiary-container": "#ff995b",
+                      "surface-container-highest": "#d9e3f7",
+                      "secondary-fixed": "#7efba4",
+                      "secondary": "#006d37",
+                      "on-primary-fixed-variant": "#005228",
+                      "surface-variant": "#d9e3f7",
+                      "surface-tint": "#006d37",
+                      "secondary-container": "#7bf8a1",
+                      "surface": "#f9f9ff",
+                      "secondary-fixed-dim": "#61de8a"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "sidebar-width": "280px",
+                      "margin-mobile": "16px",
+                      "gutter": "24px",
+                      "base": "4px",
+                      "margin-desktop": "32px"
+              },
+              "fontFamily": {
+                      "display-lg": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "title-lg": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "label-md": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "body-md": ["Inter"]
+              },
+              "fontSize": {
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                      "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+      </script>
+</head>
+<body class="bg-background text-on-background min-h-screen">
+<!-- TopNavBar Implementation -->
+<header class="bg-surface dark:bg-inverse-surface border-b border-outline-variant dark:border-outline flex justify-between items-center w-full px-margin-desktop h-16 fixed top-0 z-50">
+<div class="flex items-center gap-8">
+<span class="text-title-lg font-headline-lg text-primary dark:text-primary-fixed-dim">AgroConnect</span>
+<nav class="hidden md:flex gap-6">
+<a class="text-on-surface-variant dark:text-outline-variant font-body-md text-body-md hover:bg-surface-container dark:hover:bg-inverse-surface transition-colors px-2 py-1 rounded" href="#">Marketplace</a>
+<a class="text-on-surface-variant dark:text-outline-variant font-body-md text-body-md hover:bg-surface-container dark:hover:bg-inverse-surface transition-colors px-2 py-1 rounded" href="#">Direct Producers</a>
+<a class="text-on-surface-variant dark:text-outline-variant font-body-md text-body-md hover:bg-surface-container dark:hover:bg-inverse-surface transition-colors px-2 py-1 rounded" href="#">Special Offers</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2">
+<button class="p-2 text-on-surface-variant hover:bg-surface-container rounded-full transition-colors">
+<span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container rounded-full transition-colors relative">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></span>
+</button>
+</div>
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary">
+<img class="w-full h-full object-cover" data-alt="A professional studio portrait of a friendly Hispanic male user in his late 30s, wearing a clean, casual linen shirt. The background is a soft, out-of-focus agricultural landscape at sunrise, conveying a sense of fresh beginnings and connection to nature. The lighting is warm and cinematic, perfectly aligned with the AgroConnect modern corporate aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_RhtKDgPLNVZSe-He8rRJkJnH3ztmGXoPIEc9hfknogKkGIjBlSg4Zscnwr8B6tadbKJuI-1brzjkQl-QdqqHv0HnxkgeZZQqkcsUSA3756GUuuPwToOSGtW63jb_dCH9v8--UF1H5HgvB7PmJY1qLKVRelp3tdLCU1L16xVJnNvW5LBlTvwgmximbwmrdO2z0Hf6EEaMEVmTRqMOdGXq0c5cG8OMrFC1REUwbZXnJo6ZzsQkRAHeRnI7d68A-fG7RL8baIv4dl_k"/>
+</div>
+</div>
+</header>
+<!-- SideNavBar Implementation (for Desktop) -->
+<aside class="hidden lg:flex fixed left-0 top-16 h-[calc(100vh-64px)] w-[280px] bg-surface-container-low dark:bg-inverse-surface shadow-sm flex-col py-4 z-40">
+<div class="px-4 py-6">
+<h2 class="font-headline-md text-headline-md text-primary">Mi Cuenta</h2>
+<p class="font-label-md text-label-md text-on-surface-variant opacity-70">Gestiona tu experiencia</p>
+</div>
+<nav class="flex-grow">
+<div class="space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 bg-secondary-container text-on-secondary-container dark:bg-primary-container dark:text-on-primary-container rounded-lg mx-2 my-1 translate-x-1 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-md text-label-md">Perfil</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high mx-2 my-1 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+<span class="font-label-md text-label-md">Mis pedidos</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high mx-2 my-1 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+<span class="font-label-md text-label-md">Métodos de pago</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high mx-2 my-1 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="location_on">location_on</span>
+<span class="font-label-md text-label-md">Direcciones</span>
+</a>
+</div>
+</nav>
+<div class="mt-auto border-t border-outline-variant pt-4">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high mx-2 my-1 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Configuración</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-error hover:bg-error-container mx-2 my-1 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="font-label-md text-label-md">Cerrar sesión</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="pt-24 pb-12 px-margin-mobile md:px-margin-desktop lg:ml-[280px]">
+<div class="max-w-5xl mx-auto">
+<!-- Bento Grid Layout for Profile -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Hero Profile Card -->
+<section class="md:col-span-8 bg-surface-container-lowest rounded-xl profile-card-shadow p-8 flex flex-col md:flex-row items-center gap-8 border border-outline-variant/30">
+<div class="relative">
+<div class="w-32 h-32 rounded-full overflow-hidden border-4 border-primary-container shadow-lg">
+<img class="w-full h-full object-cover" data-alt="A close-up, high-quality photograph of a professional user profile. The person is a man in his late 30s with a warm smile, set against a clean, minimalist white background with a hint of organic greenery in the corner. The lighting is soft and flattering, emphasizing a trustworthy and professional persona consistent with a modern corporate agricultural platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5RDv3TCj_03kSTv2c6MIpMfh5SagfS2HtTU9rB4YZw3PzFthytihCs2DGi7_4X8N56l4GTUnDIQj-ZOJMBjiOPkY-dclam3_08GFFci02L1Up0-Hiff4kfXLeJ6uVUyxWQpXtufv_oEWc9y8xxXzkA09yukSoFo_n3JxStHdtc2UAd4lkWJe2nEuDqxRDELtwltuj0SXhxUGM6f3Yl8ZpuJ4_S2RIyT2fLCrSMf8kJaljv-M8O5Rx__7S2RoXKBj0R9hr3Zw6XzZz"/>
+</div>
+<button class="absolute bottom-0 right-0 bg-primary text-on-primary p-2 rounded-full shadow-md hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[20px]" data-icon="edit">edit</span>
+</button>
+</div>
+<div class="text-center md:text-left space-y-2">
+<h1 class="font-headline-lg text-headline-lg text-on-surface">Carlos Mendoza</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant flex items-center justify-center md:justify-start gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="mail">mail</span>
+                            c.mendoza@email.com
+                        </p>
+<div class="flex flex-wrap gap-3 mt-4 justify-center md:justify-start">
+<span class="px-3 py-1 bg-primary-container/20 text-on-primary-container rounded-full text-label-md font-label-md">Cliente VIP</span>
+<span class="px-3 py-1 bg-secondary-container/20 text-on-secondary-container rounded-full text-label-md font-label-md">Desde 2022</span>
+</div>
+</div>
+</section>
+<!-- Quick Actions / Stats -->
+<section class="md:col-span-4 grid grid-cols-2 md:grid-cols-1 gap-4">
+<div class="bg-primary text-on-primary rounded-xl p-6 flex flex-col justify-between profile-card-shadow">
+<span class="material-symbols-outlined text-4xl" data-icon="eco">eco</span>
+<div>
+<p class="text-3xl font-bold">124</p>
+<p class="text-sm opacity-90">Kilos de CO2 ahorrados</p>
+</div>
+</div>
+<div class="bg-tertiary-container text-on-tertiary-container rounded-xl p-6 flex flex-col justify-between profile-card-shadow">
+<span class="material-symbols-outlined text-4xl" data-icon="local_shipping">local_shipping</span>
+<div>
+<p class="text-3xl font-bold">3</p>
+<p class="text-sm opacity-90">Pedidos en camino</p>
+</div>
+</div>
+</section>
+<!-- Information Details -->
+<section class="md:col-span-12 lg:col-span-7 bg-surface-container-lowest rounded-xl profile-card-shadow p-8 border border-outline-variant/30">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-title-lg text-title-lg text-on-surface">Información de Contacto</h3>
+<button class="text-primary font-label-md flex items-center gap-1 hover:underline">
+<span class="material-symbols-outlined text-[18px]" data-icon="edit">edit</span>
+                            Editar
+                        </button>
+</div>
+<div class="space-y-6">
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+<div class="space-y-1">
+<p class="text-label-md font-label-md text-on-surface-variant uppercase tracking-wider">Teléfono</p>
+<p class="text-body-lg font-body-lg">+54 9 11 5555-0123</p>
+</div>
+<div class="space-y-1">
+<p class="text-label-md font-label-md text-on-surface-variant uppercase tracking-wider">Documento</p>
+<p class="text-body-lg font-body-lg">DNI 34.XXX.XXX</p>
+</div>
+</div>
+<div class="pt-4 border-t border-outline-variant/30 space-y-4">
+<div class="flex gap-4 items-start">
+<div class="p-2 bg-surface-container rounded-lg">
+<span class="material-symbols-outlined text-primary" data-icon="location_on">location_on</span>
+</div>
+<div class="flex-grow">
+<p class="text-label-md font-label-md text-on-surface-variant uppercase tracking-wider">Dirección Principal</p>
+<p class="text-body-lg font-body-lg">Av. de Mayo 1370, 4to Piso B</p>
+<p class="text-body-md text-on-surface-variant">C1085 Buenos Aires, Argentina</p>
+</div>
+</div>
+<div class="h-48 w-full rounded-lg overflow-hidden bg-surface-variant mt-4">
+<div class="w-full h-full" data-location="Buenos Aires, Argentina" style="">
+<!-- Map Placeholder logic -->
+<div class="w-full h-full flex items-center justify-center bg-surface-container-high border border-outline-variant relative">
+<span class="material-symbols-outlined text-4xl text-primary/50" data-icon="map">map</span>
+<div class="absolute inset-0 bg-primary/5 opacity-10"></div>
+<p class="absolute bottom-4 left-4 bg-white/80 backdrop-blur px-3 py-1 rounded-full text-xs font-medium text-on-surface">Ubicación guardada</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Side Panel (Payment & Activity) -->
+<section class="md:col-span-12 lg:col-span-5 space-y-gutter">
+<!-- Payment Methods Card -->
+<div class="bg-surface-container-lowest rounded-xl profile-card-shadow p-6 border border-outline-variant/30">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-title-lg text-title-lg text-on-surface">Métodos de Pago</h3>
+<button class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-all">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+</button>
+</div>
+<div class="space-y-3">
+<div class="flex items-center justify-between p-3 border border-outline-variant rounded-lg hover:bg-surface-container/50 transition-colors cursor-pointer group">
+<div class="flex items-center gap-3">
+<div class="w-12 h-8 bg-inverse-surface rounded flex items-center justify-center text-white font-bold text-[10px]">VISA</div>
+<div>
+<p class="text-body-md font-bold">**** 4582</p>
+<p class="text-label-md text-on-surface-variant">Exp: 08/26</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-primary" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="flex items-center justify-between p-3 border border-outline-variant rounded-lg hover:bg-surface-container/50 transition-colors cursor-pointer">
+<div class="flex items-center gap-3">
+<div class="w-12 h-8 bg-[#EB001B] rounded flex items-center justify-center text-white font-bold text-[10px]">MC</div>
+<div>
+<p class="text-body-md font-bold">**** 9104</p>
+<p class="text-label-md text-on-surface-variant">Exp: 11/25</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant" data-icon="more_vert">more_vert</span>
+</div>
+</div>
+</div>
+<!-- Account Settings & Privacy -->
+<div class="bg-surface-container-lowest rounded-xl profile-card-shadow p-6 border border-outline-variant/30">
+<h3 class="font-title-lg text-title-lg text-on-surface mb-6">Preferencias</h3>
+<div class="space-y-4">
+<label class="flex items-center justify-between cursor-pointer">
+<span class="text-body-md">Notificaciones por Email</span>
+<div class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</div>
+</label>
+<label class="flex items-center justify-between cursor-pointer">
+<span class="text-body-md">Ofertas Personalizadas</span>
+<div class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</div>
+</label>
+</div>
+</div>
+<!-- Danger Zone -->
+<div class="bg-error-container/10 border border-error/20 rounded-xl p-6">
+<p class="text-error font-title-lg mb-4">Zona de Seguridad</p>
+<button class="w-full py-3 px-4 rounded-lg border border-error text-error font-medium hover:bg-error hover:text-on-error transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined" data-icon="delete">delete</span>
+                            Eliminar mi cuenta
+                        </button>
+</div>
+</section>
+</div>
+<!-- Recent Orders Section -->
+<section class="mt-gutter bg-surface-container-lowest rounded-xl profile-card-shadow p-8 border border-outline-variant/30">
+<div class="flex justify-between items-center mb-8">
+<h3 class="font-title-lg text-title-lg text-on-surface">Pedidos Recientes</h3>
+<a class="text-primary font-label-md flex items-center gap-1 hover:underline" href="#">Ver todo el historial</a>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-surface-container-low">
+<tr>
+<th class="px-4 py-3 font-label-md text-label-md text-on-surface-variant uppercase">ID Pedido</th>
+<th class="px-4 py-3 font-label-md text-label-md text-on-surface-variant uppercase">Fecha</th>
+<th class="px-4 py-3 font-label-md text-label-md text-on-surface-variant uppercase">Estado</th>
+<th class="px-4 py-3 font-label-md text-label-md text-on-surface-variant uppercase">Total</th>
+<th class="px-4 py-3 font-label-md text-label-md text-on-surface-variant uppercase text-right">Acción</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/30">
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="px-4 py-4 font-body-md">#AGR-99234</td>
+<td class="px-4 py-4 font-body-md">14 Oct, 2023</td>
+<td class="px-4 py-4">
+<span class="px-2 py-1 bg-primary-container/20 text-on-primary-container rounded text-xs font-medium">Entregado</span>
+</td>
+<td class="px-4 py-4 font-body-md font-bold">$4,250.00</td>
+<td class="px-4 py-4 text-right">
+<button class="p-2 hover:bg-primary-container rounded-full text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="visibility">visibility</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="px-4 py-4 font-body-md">#AGR-98112</td>
+<td class="px-4 py-4 font-body-md">02 Oct, 2023</td>
+<td class="px-4 py-4">
+<span class="px-2 py-1 bg-tertiary-container/20 text-on-tertiary-container rounded text-xs font-medium">En tránsito</span>
+</td>
+<td class="px-4 py-4 font-body-md font-bold">$1,890.00</td>
+<td class="px-4 py-4 text-right">
+<button class="p-2 hover:bg-primary-container rounded-full text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="visibility">visibility</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</div>
+</main>
+<!-- Footer Implementation -->
+<footer class="bg-inverse-surface dark:bg-surface-container-lowest border-t border-outline-variant w-full py-8 px-margin-desktop flex flex-col md:flex-row justify-between items-center text-on-primary dark:text-on-surface mt-12">
+<div class="mb-4 md:mb-0">
+<span class="font-headline-md text-primary-fixed-dim">AgroConnect</span>
+<p class="font-body-md text-body-md opacity-80 mt-2">© 2024 AgroConnect. Connecting roots to tables.</p>
+</div>
+<div class="flex gap-6">
+<a class="text-surface-variant opacity-80 hover:text-primary-fixed hover:opacity-100 font-label-md text-label-md transition-all" href="#">Privacy Policy</a>
+<a class="text-surface-variant opacity-80 hover:text-primary-fixed hover:opacity-100 font-label-md text-label-md transition-all" href="#">Terms of Service</a>
+<a class="text-surface-variant opacity-80 hover:text-primary-fixed hover:opacity-100 font-label-md text-label-md transition-all" href="#">Help Center</a>
+<a class="text-surface-variant opacity-80 hover:text-primary-fixed hover:opacity-100 font-label-md text-label-md transition-all" href="#">Contact Us</a>
+</div>
+</footer>
+<!-- Bottom Nav for Mobile -->
+<nav class="fixed bottom-0 left-0 right-0 h-16 bg-surface border-t border-outline-variant flex items-center justify-around md:hidden z-50">
+<a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="text-[10px]">Inicio</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+<span class="text-[10px]">Explorar</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined" data-icon="person" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="text-[10px] font-bold">Perfil</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+<span class="text-[10px]">Carrito</span>
+</a>
+</nav>
+<script>
+        // Micro-interactions for profile section
+        document.querySelectorAll('.cursor-pointer').forEach(el => {
+            el.addEventListener('mousedown', () => el.style.transform = 'scale(0.98)');
+            el.addEventListener('mouseup', () => el.style.transform = 'scale(1)');
+            el.addEventListener('mouseleave', () => el.style.transform = 'scale(1)');
+        });
+
+        // Simulating some dynamic behavior for progress
+        window.addEventListener('load', () => {
+            const stats = document.querySelectorAll('.font-bold');
+            stats.forEach(stat => {
+                const target = parseInt(stat.innerText);
+                if(!isNaN(target)){
+                    let count = 0;
+                    const interval = setInterval(() => {
+                        count += Math.ceil(target / 20);
+                        if(count >= target) {
+                            stat.innerText = target;
+                            clearInterval(interval);
+                        } else {
+                            stat.innerText = count;
+                        }
+                    }, 50);
+                }
+            });
+        });
+    </script>
+</body></html>

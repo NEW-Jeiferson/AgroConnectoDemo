@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AgroConnect Marketplace</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-surface": "#273140",
+                        "outline-variant": "#bbcbbb",
+                        "tertiary-fixed-dim": "#ffb68d",
+                        "primary-fixed-dim": "#4ae183",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-fixed": "#331200",
+                        "on-surface": "#121c2a",
+                        "surface": "#f9f9ff",
+                        "surface-container-high": "#dee9fd",
+                        "primary": "#006d37",
+                        "secondary-fixed": "#7efba4",
+                        "surface-container": "#e6eeff",
+                        "on-secondary-fixed": "#00210c",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-container": "#007239",
+                        "surface-variant": "#d9e3f7",
+                        "on-surface-variant": "#3d4a3e",
+                        "error-container": "#ffdad6",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed": "#ffdbc9",
+                        "inverse-primary": "#4ae183",
+                        "on-tertiary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "primary-container": "#2ecc71",
+                        "surface-container-highest": "#d9e3f7",
+                        "on-tertiary-container": "#733200",
+                        "surface-dim": "#d0daef",
+                        "on-primary-fixed": "#00210c",
+                        "tertiary-container": "#ff995b",
+                        "on-primary-container": "#005027",
+                        "surface-tint": "#006d37",
+                        "tertiary": "#9b4500",
+                        "background": "#f9f9ff",
+                        "secondary": "#006d37",
+                        "on-secondary-fixed-variant": "#005228",
+                        "on-tertiary-fixed-variant": "#763300",
+                        "outline": "#6c7b6d",
+                        "on-primary-fixed-variant": "#005228",
+                        "on-background": "#121c2a",
+                        "inverse-on-surface": "#ebf1ff",
+                        "secondary-container": "#7bf8a1",
+                        "on-secondary": "#ffffff",
+                        "primary-fixed": "#6bfe9c",
+                        "surface-container-low": "#eff3ff",
+                        "error": "#ba1a1a",
+                        "surface-bright": "#f9f9ff",
+                        "secondary-fixed-dim": "#61de8a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "32px",
+                        "base": "4px",
+                        "margin-mobile": "16px",
+                        "gutter": "24px",
+                        "sidebar-width": "280px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "title-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #f9f9ff; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .filled-icon { font-variation-settings: 'FILL' 1; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="text-on-surface">
+<!-- TopNavBar -->
+<header class="flex justify-between items-center w-full px-margin-desktop h-16 fixed top-0 z-50 bg-surface border-b border-outline-variant dark:bg-inverse-surface dark:border-outline">
+<div class="flex items-center gap-8">
+<span class="text-title-lg font-headline-lg text-primary dark:text-primary-fixed-dim">AgroConnect</span>
+<!-- Desktop Navigation -->
+<nav class="hidden md:flex gap-6">
+<a class="text-primary font-bold border-b-2 border-primary pb-1 font-label-md text-label-md hover:bg-surface-container transition-colors" href="#">Marketplace</a>
+<a class="text-on-surface-variant dark:text-outline-variant font-label-md text-label-md hover:bg-surface-container transition-colors" href="#">Direct Producers</a>
+<a class="text-on-surface-variant dark:text-outline-variant font-label-md text-label-md hover:bg-surface-container transition-colors" href="#">Special Offers</a>
+</nav>
+</div>
+<div class="flex items-center gap-4 flex-1 max-w-xl mx-8">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full bg-surface-container-low border-none rounded-full pl-10 pr-4 py-2 focus:ring-2 focus:ring-primary text-body-md font-body-md" placeholder="Search fresh produce..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="relative p-2 rounded-full hover:bg-surface-container transition-colors active:opacity-80 active:scale-95">
+<span class="material-symbols-outlined text-on-surface-variant">shopping_cart</span>
+<span class="absolute top-1 right-1 bg-tertiary text-on-tertiary text-[10px] w-4 h-4 flex items-center justify-center rounded-full">3</span>
+</button>
+<button class="p-2 rounded-full hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">notifications</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant ml-2">
+<img class="w-full h-full object-cover" data-alt="A close-up professional portrait of a friendly user with a warm smile, set against a blurred background of a modern office space. The lighting is soft and natural, emphasizing the clear, high-resolution details of the person's features and professional attire. The overall aesthetic is clean, corporate, and minimalist, consistent with a high-end service platform's user profile." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9vZiUjYKwGhaabK9q2MEdjkaCu-UhL3G4zlXfmFCk5NwsCVrNCH3FeT6E6iONhojFKlMUb3pt75TP4isgPYj1CYSfhYF8W2rF33TJY4ruaH6xkQoPFTitHoAfm9-VndRNzCdfA8Y17phHiw9FdSUMF3pvDZtxI37CPcQKqYb_kRbcan-lW76W2f4Ay47iv9xQE7URkcBQxDPxJT_WGdi0pKlbUQSQRJyi20Juf-Q5HvLjdPfPCScGVqGjXW7W8CKIjE3ECoxuQDS1"/>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-12 px-margin-desktop max-w-[1440px] mx-auto flex gap-gutter">
+<!-- Sidebar Filters -->
+<aside class="hidden lg:block w-sidebar-width shrink-0">
+<div class="sticky top-24 space-y-6">
+<div>
+<h3 class="font-title-lg text-title-lg text-on-surface mb-4">Categories</h3>
+<ul class="space-y-1">
+<li>
+<button class="w-full flex items-center gap-3 px-4 py-3 rounded-lg bg-secondary-container text-on-secondary-container">
+<span class="material-symbols-outlined">eco</span>
+<span class="font-label-md text-label-md">All Produce</span>
+</button>
+</li>
+<li>
+<button class="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined">nutrition</span>
+<span class="font-label-md text-label-md">Vegetables</span>
+</button>
+</li>
+<li>
+<button class="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined">restaurant</span>
+<span class="font-label-md text-label-md">Fruits</span>
+</button>
+</li>
+<li>
+<button class="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined">egg</span>
+<span class="font-label-md text-label-md">Dairy &amp; Eggs</span>
+</button>
+</li>
+<li>
+<button class="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined">bakery_dining</span>
+<span class="font-label-md text-label-md">Organic Grains</span>
+</button>
+</li>
+</ul>
+</div>
+<div class="p-4 bg-surface-container rounded-xl border border-outline-variant">
+<img alt="Farm fresh promo" class="w-full h-48 object-cover rounded-lg mb-4" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLHjBjLP9FZg18QobZly9GurPvxVCrghxG3xxRWZknE0EcAnGkG4cI-wD-quhLnnvl17Sm7Fvvr9PmK2vUzx7STUSRQmiMpR0TV4zpls4P43CS9_14AIsXAASsRJWICCakz3djr1hd3YC4xCOczZcjnnD9RaBn-dt78VvoJlGo8gRDo_nFoitD42LZjce5gInUBAmGh-aMDTI26kPJm4JOaG0wC_O_SYCEOdq1fiaTatPMyJTtd0HgibCwtKP4fcwOAxdTW6aoCU2T"/>
+<p class="font-label-md text-label-md text-on-surface-variant mb-2">PROMO OF THE WEEK</p>
+<h4 class="font-title-lg text-title-lg text-primary mb-2">20% Off Citrus</h4>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4">Direct from Valencia farms. Limited time offer.</p>
+<button class="w-full py-2 bg-primary text-on-primary rounded-lg font-label-md text-label-md">View Offer</button>
+</div>
+</div>
+</aside>
+<!-- Product Content -->
+<section class="flex-1">
+<div class="flex justify-between items-center mb-8">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface mb-1">Marketplace Offers</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Connecting roots to tables from local certified farmers.</p>
+</div>
+<div class="flex gap-2">
+<button class="flex items-center gap-2 px-4 py-2 bg-surface border border-outline-variant rounded-lg font-label-md text-label-md hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[20px]">sort</span>
+                        Sort by: Price
+                    </button>
+<button class="flex items-center gap-2 px-4 py-2 bg-surface border border-outline-variant rounded-lg font-label-md text-label-md hover:bg-surface-container-high transition-colors lg:hidden">
+<span class="material-symbols-outlined text-[20px]">filter_list</span>
+                        Filters
+                    </button>
+</div>
+</div>
+<!-- Bento/Grid Mix -->
+<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
+<!-- Large Featured Card -->
+<div class="sm:col-span-2 bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden group shadow-sm flex flex-col md:flex-row">
+<div class="md:w-1/2 relative overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A lush, high-resolution overhead shot of a wooden crate filled with vibrant, various organic heirloom tomatoes in shades of ruby red, deep purple, and golden yellow. Sunlight filters through leaves, creating a warm, dappled effect across the fresh produce. The scene is presented in a clean, professional food photography style with soft shadows and rich, natural textures that evoke a sense of farm-to-table freshness and agricultural quality." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmROOu7xqzrRk6fcfi8I3BuLgrm2NIgb0E3gGGfU5OiAYDGg-YqvprGqLTV4GZ8rbknDLWetwkn4_B0Gt3SGww2lkHIbosd7tEgU4JmGIhkq6tjeYKG0b_WcFbydST22L4ZvX12GotFC8pPVD-UZzmKn855UznadZ-UEDi_KlGSbGvFMWbQ_JPEkYebAXmG1VGIYvw8hR5AUFHNtY5f1b21G5oee67E9M7J11Ls04oqVmMgiFOWesuQE5VapPmHcV1tvk0DmUQwaLl"/>
+<span class="absolute top-4 left-4 bg-tertiary text-on-tertiary px-3 py-1 rounded-full text-label-md font-label-md">Featured Offer</span>
+</div>
+<div class="md:w-1/2 p-6 flex flex-col justify-center">
+<div class="flex items-center gap-1 text-tertiary-container mb-2">
+<span class="material-symbols-outlined filled-icon text-[18px]">star</span>
+<span class="material-symbols-outlined filled-icon text-[18px]">star</span>
+<span class="material-symbols-outlined filled-icon text-[18px]">star</span>
+<span class="material-symbols-outlined filled-icon text-[18px]">star</span>
+<span class="material-symbols-outlined filled-icon text-[18px]">star</span>
+<span class="text-on-surface-variant text-[12px] ml-1">(128 reviews)</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface mb-2">Organic Heirloom Tomato Box</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 line-clamp-2">Hand-picked selection from the Green Valley farms. Delivered within 24 hours of harvest.</p>
+<div class="flex items-end gap-3 mb-6">
+<span class="text-headline-md font-headline-md text-primary">$24.99</span>
+<span class="text-body-md font-body-md text-on-surface-variant line-through mb-1">$32.00</span>
+</div>
+<button class="w-full py-3 bg-primary text-on-primary rounded-lg font-label-md text-label-md flex items-center justify-center gap-2 hover:opacity-90 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[20px]">add_shopping_cart</span>
+                            Add to Cart
+                        </button>
+</div>
+</div>
+<!-- Standard Cards -->
+<!-- Card 2 -->
+<div class="bg-white border border-outline-variant rounded-xl overflow-hidden group shadow-sm flex flex-col">
+<div class="relative h-48 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A beautiful, close-up photograph of a bundle of fresh, bright green organic asparagus tied with a simple jute twine. The stalks are crisp and perfectly aligned, resting on a clean white surface with subtle reflections. The lighting is bright and airy, typical of a modern high-end grocery marketplace, highlighting the intricate textures of the tips. The background is a soft, out-of-focus hint of a clean kitchen or farm stand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBattjelTPcTMZUgOf1bIyLZud6pV_62yFz1PKLTGrnqDUNbhm9efyVc7272T9jOok_qUaTAdO3DuEBUno522cPCVcJitt3TMxLuoZnmM_jLqyBSUgJqLjXAcbhtQ5aJjSMvUan_U8y6hE6jaEO-elCryyuK_TwnYKEzUIqSKKLv2IKzp1sZxtiNhOGpBPnqC9NtTS42z6e0SgBRASTzWGSk8cdKS3Riwo1vFMAFe5byAMpVPZkwV8-d9zy-NCQQ1muWP_Q_XGAS1gj"/>
+<span class="absolute top-3 right-3 bg-white/80 backdrop-blur-sm p-1.5 rounded-full">
+<span class="material-symbols-outlined text-primary text-[20px]">favorite</span>
+</span>
+</div>
+<div class="p-4 flex-1 flex flex-col">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-title-lg text-title-lg text-on-surface leading-tight">Fresh Green Asparagus</h3>
+<div class="flex items-center gap-1 bg-surface-container-high px-2 py-0.5 rounded">
+<span class="material-symbols-outlined filled-icon text-tertiary-container text-[14px]">star</span>
+<span class="text-[11px] font-bold">4.8</span>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4">500g Bunch • Local Farmer</p>
+<div class="mt-auto flex justify-between items-center">
+<span class="text-title-lg font-headline-md text-primary">$4.50</span>
+<button class="w-10 h-10 bg-secondary-container text-on-secondary-container rounded-lg flex items-center justify-center hover:bg-primary-container transition-colors active:scale-90">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-white border border-outline-variant rounded-xl overflow-hidden group shadow-sm flex flex-col">
+<div class="relative h-48 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Close-up artistic shot of a cluster of deep red, shiny organic cherries still attached to their bright green stems. A few tiny water droplets cling to the surface of the fruit, enhancing the freshness. The shot is taken with a shallow depth of field against a minimalist grey stone background, creating a premium and appetizing aesthetic suitable for a high-end food marketplace." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAR99uN9_ugiOaYX_8wTuxiXPrJSURXsiGM20Mc7sezBQA1KRCLDDUZ-2kXSrNWeN_cSfwlIpdfGXg2M5D4Igr4nSxezFVGeirvAS6T8Ot_pW3PgqW8Xd44MJP4E5vMGuP77EcHOme7hRFW82ANpkbBIPVUKc01blKNYmdAXh58WLmjzsTgryZFGL2XME13fdmLjTkNpwbpO08eQZYE5DSXkqrmUeJwsF-czJGkigRcwPw2n9KfjzB4edGztQb39iaigZrSMDUaZeWs"/>
+<div class="absolute top-3 left-3 bg-tertiary-container text-on-tertiary-container px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wider">-15%</div>
+</div>
+<div class="p-4 flex-1 flex flex-col">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-title-lg text-title-lg text-on-surface leading-tight">Sweet Red Cherries</h3>
+<div class="flex items-center gap-1 bg-surface-container-high px-2 py-0.5 rounded">
+<span class="material-symbols-outlined filled-icon text-tertiary-container text-[14px]">star</span>
+<span class="text-[11px] font-bold">4.9</span>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4">1kg Basket • Certified Bio</p>
+<div class="mt-auto flex justify-between items-center">
+<div class="flex flex-col">
+<span class="text-title-lg font-headline-md text-primary">$8.20</span>
+<span class="text-[10px] text-on-surface-variant line-through">$9.60</span>
+</div>
+<button class="w-10 h-10 bg-secondary-container text-on-secondary-container rounded-lg flex items-center justify-center hover:bg-primary-container transition-colors active:scale-90">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="bg-white border border-outline-variant rounded-xl overflow-hidden group shadow-sm flex flex-col">
+<div class="relative h-48 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A professional product shot of a dozen large, brown organic pasture-raised eggs in a simple gray recycled cardboard carton. One egg is slightly turned to show its smooth texture. The lighting is soft and directional, creating elegant highlights and shadows. The overall composition is clean and modern, emphasizing sustainability and natural quality in a minimalist studio setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrW4XsptlLQ7bTCKF89nmM24I_fjHAhFO-sITLv4M24RDnyyzBozCj6LeY4pPOtRCW_j5XHNkFrLBTG59eWea2vdx5CGtVaCBH8tiK87RYgh-ubZuGVd2RmgGqbk-xH_o6p8wNWZSllWpHwPqNP5k0KscJeKfo-y1P082l_87j95cyvQP7NCbtwXzJ6_DhkIRLQ_bF1VAMB9oM3wEtf2i4UG2O0sx4F4JTP9IsvswaWUZDoTKiUTNZBQ3oPaPKiXUv3X8JVXVQjdz2"/>
+</div>
+<div class="p-4 flex-1 flex flex-col">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-title-lg text-title-lg text-on-surface leading-tight">Pasture-Raised Eggs</h3>
+<div class="flex items-center gap-1 bg-surface-container-high px-2 py-0.5 rounded">
+<span class="material-symbols-outlined filled-icon text-tertiary-container text-[14px]">star</span>
+<span class="text-[11px] font-bold">5.0</span>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4">Dozen (12) • Free Range</p>
+<div class="mt-auto flex justify-between items-center">
+<span class="text-title-lg font-headline-md text-primary">$6.75</span>
+<button class="w-10 h-10 bg-secondary-container text-on-secondary-container rounded-lg flex items-center justify-center hover:bg-primary-container transition-colors active:scale-90">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Card 5 -->
+<div class="bg-white border border-outline-variant rounded-xl overflow-hidden group shadow-sm flex flex-col">
+<div class="relative h-48 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A macro shot of a handful of fresh organic blueberries in a wooden bowl. The berries have their characteristic dusty blue bloom and small green stems. Soft, cool lighting enhances the deep blues and purples. The style is fresh, rustic yet modern, emphasizing the wholesome, natural origin of the product for a premium health-focused marketplace." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcB-HIF8_0gxe8S1LiUbs6MmJf2iFQKdXQYrQkKae1z9_DBt8151iMaEmpiqIsb_Shnh-U2226PNvstBfnTivarHd1xP1S4uGXMIlz8qaqmHCrdo6DITo92BCk5vHVqqywYgILupoKSpdgDOQa9stk1j8CGd5DiSBfpuJ2KSXRfKJ5t_FzUAxj0uGPLpeWv6EszeKIPhQOittjdeGSBYFE1zfI0DvIhG0OpwKE53S3OYBSKu6OdrfBHwQxa0bDeVie4yjfiv_2aZEZ"/>
+</div>
+<div class="p-4 flex-1 flex flex-col">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-title-lg text-title-lg text-on-surface leading-tight">Organic Blueberries</h3>
+<div class="flex items-center gap-1 bg-surface-container-high px-2 py-0.5 rounded">
+<span class="material-symbols-outlined filled-icon text-tertiary-container text-[14px]">star</span>
+<span class="text-[11px] font-bold">4.7</span>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4">250g Pack • Antioxidant Rich</p>
+<div class="mt-auto flex justify-between items-center">
+<span class="text-title-lg font-headline-md text-primary">$5.40</span>
+<button class="w-10 h-10 bg-secondary-container text-on-secondary-container rounded-lg flex items-center justify-center hover:bg-primary-container transition-colors active:scale-90">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Card 6 -->
+<div class="bg-white border border-outline-variant rounded-xl overflow-hidden group shadow-sm flex flex-col">
+<div class="relative h-48 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Clean studio shot of three large, golden-brown organic avocados, one of which is sliced in half to reveal the creamy green interior and a large pit. The composition is balanced and minimalist, set against a light, neutral background with soft shadows. The lighting is bright and even, showcasing the freshness and high quality of the fruit in a contemporary professional style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXaXefsd6CMGCYiBMQB9iG7FQ7cTHprQUhfP86K7Kcq1H3Kgb36zUO7qTa6RUaGhe9zIYWVe_7vNe1_2wp6Poxps9gxNYuaQs8uAOD64GCrP4VHBZ4zwpyjadelIr3y7rXBIlochO0CzRlKlG5hkkdns_skIlSLA3esrOwGsCH6t_Uol7r3RiHqcxhnqvxg3QKBA-QWJJig9LleOfNBm2diYmLs--D1JpIta9TtfHwmD2ChdBfnDG1U1uyla8hToJdxb6H-rgAmw8P"/>
+</div>
+<div class="p-4 flex-1 flex flex-col">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-title-lg text-title-lg text-on-surface leading-tight">Hass Avocado Pack</h3>
+<div class="flex items-center gap-1 bg-surface-container-high px-2 py-0.5 rounded">
+<span class="material-symbols-outlined filled-icon text-tertiary-container text-[14px]">star</span>
+<span class="text-[11px] font-bold">4.8</span>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4">3 Units • Ripe &amp; Ready</p>
+<div class="mt-auto flex justify-between items-center">
+<span class="text-title-lg font-headline-md text-primary">$7.50</span>
+<button class="w-10 h-10 bg-secondary-container text-on-secondary-container rounded-lg flex items-center justify-center hover:bg-primary-container transition-colors active:scale-90">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Load More -->
+<div class="mt-12 flex justify-center">
+<button class="px-8 py-3 border-2 border-primary text-primary font-bold rounded-lg hover:bg-primary/5 transition-all active:scale-95">
+                    Show More Products
+                </button>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-8 px-margin-desktop flex flex-col md:flex-row justify-between items-center bg-inverse-surface dark:bg-surface-container-lowest border-t border-outline-variant">
+<div class="mb-6 md:mb-0">
+<span class="font-headline-md text-primary-fixed-dim block mb-2">AgroConnect</span>
+<p class="font-body-md text-body-md text-surface-variant opacity-80">© 2024 AgroConnect. Connecting roots to tables.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-6">
+<a class="font-label-md text-label-md text-surface-variant opacity-80 hover:text-primary-fixed hover:opacity-100 transition-colors" href="#">Privacy Policy</a>
+<a class="font-label-md text-label-md text-surface-variant opacity-80 hover:text-primary-fixed hover:opacity-100 transition-colors" href="#">Terms of Service</a>
+<a class="font-label-md text-label-md text-surface-variant opacity-80 hover:text-primary-fixed hover:opacity-100 transition-colors" href="#">Help Center</a>
+<a class="font-label-md text-label-md text-surface-variant opacity-80 hover:text-primary-fixed hover:opacity-100 transition-colors" href="#">Contact Us</a>
+</div>
+</footer>
+<!-- FAB for Quick Cart View (Mobile) -->
+<button class="md:hidden fixed bottom-6 right-6 w-14 h-14 bg-primary text-on-primary rounded-full shadow-lg flex items-center justify-center z-40 active:scale-95 transition-transform">
+<span class="material-symbols-outlined">shopping_cart</span>
+<span class="absolute top-2 right-2 bg-tertiary text-on-tertiary text-[10px] w-5 h-5 flex items-center justify-center rounded-full border-2 border-primary">3</span>
+</button>
+<script>
+        // Micro-interactions and subtle effects
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                if(this.classList.contains('active:scale-90') || this.classList.contains('active:scale-95')) return;
+                this.classList.add('opacity-80');
+                setTimeout(() => this.classList.remove('opacity-80'), 100);
+            });
+        });
+
+        // Search bar interaction
+        const searchInput = document.querySelector('input[type="text"]');
+        searchInput.addEventListener('focus', () => {
+            searchInput.parentElement.classList.add('ring-2', 'ring-primary/20');
+        });
+        searchInput.addEventListener('blur', () => {
+            searchInput.parentElement.classList.remove('ring-2', 'ring-primary/20');
+        });
+    </script>
+</body></html>
