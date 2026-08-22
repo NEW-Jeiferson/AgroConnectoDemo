@@ -345,4 +345,58 @@ async function obtenerProductos() {
   }
 }
 
-obtenerProductos();
+// ================================
+// RETO 2 - Simulación de Error 404 en Categorías
+// ================================
+document.addEventListener('DOMContentLoaded', () => {
+    // Seleccionar todos los botones de categoría en el sidebar
+    const botonesCategoria = document.querySelectorAll('aside ul button');
+    
+    if (botonesCategoria.length === 0) return; // Si no estamos en la página de productos, no hacer nada
+
+    botonesCategoria.forEach(boton => {
+        boton.addEventListener('click', (e) => {
+            // Actualizar el estado "activo" de los botones (UI)
+            botonesCategoria.forEach(b => {
+                b.className = "w-full flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors text-sm";
+            });
+            e.currentTarget.className = "w-full flex items-center gap-3 px-4 py-3 rounded-lg bg-secondary-container text-on-secondary-container font-medium text-sm";
+
+            // Obtener el nombre de la categoría del span interior
+            const nombreCategoria = e.currentTarget.querySelector('span:last-child').textContent.trim();
+            const contenedor = document.getElementById('productosContainer');
+
+            if (nombreCategoria === 'Todos los productos') {
+                // Volver a cargar todos los productos (flujo normal)
+                obtenerProductos();
+            } else {
+                // 1. Mostrar spinner/mensaje de carga
+                if (contenedor) {
+                    contenedor.innerHTML = `
+                        <div class="col-span-full flex flex-col items-center justify-center text-center py-16 px-6">
+                            <span class="material-symbols-outlined animate-spin text-[48px] text-primary mb-4">progress_activity</span>
+                            <h3 class="text-lg font-bold text-on-surface mb-1">Buscando ${nombreCategoria}...</h3>
+                            <p class="text-sm text-on-surface-variant">Por favor espera un momento.</p>
+                        </div>
+                    `;
+                }
+
+                // 2. Simular espera de 1.2 segundos y luego mostrar error 404
+                setTimeout(() => {
+                    if (contenedor) {
+                        contenedor.innerHTML = `
+                            <div class="col-span-full flex flex-col items-center justify-center text-center py-16 px-6 bg-error-container/20 border border-error/30 rounded-xl">
+                                <span class="material-symbols-outlined text-error text-[48px] mb-3">error</span>
+                                <h3 class="text-lg font-bold text-on-surface mb-1">Error 404: Dirección no encontrada.</h3>
+                                <p class="text-sm text-on-surface-variant mb-4">Esta categoría no está disponible todavía.</p>
+                                <button onclick="obtenerProductos()" class="px-6 py-2 bg-primary text-on-primary rounded-lg font-medium text-sm hover:opacity-90 transition-colors">
+                                    Volver a Todos los productos
+                                </button>
+                            </div>
+                        `;
+                    }
+                }, 1200);
+            }
+        });
+    });
+});

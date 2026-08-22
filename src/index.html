@@ -155,7 +155,12 @@
 </div>
 </div>
 <!-- Login Error Message -->
-<p class="hidden text-error font-body-md text-body-md -mt-2 ml-1" id="login-error">Usuario o contraseña incorrectos.</p>
+<div class="hidden bg-error-container text-on-error-container p-4 rounded-lg flex items-start gap-3 -mt-2 ml-1" id="login-error">
+    <span class="material-symbols-outlined shrink-0 text-error">error</span>
+    <div class="text-sm font-medium">
+        Error 401: Autorización no generada. Verifica tu contraseña e intenta de nuevo.
+    </div>
+</div>
 <!-- Password Field -->
 <div class="space-y-2">
 <div class="flex justify-between items-center px-1">
@@ -222,15 +227,21 @@
             const pass = document.getElementById('password').value.trim();
             const account = USERS[user];
 
-            if (account && account.password === pass) {
-                errorMsg.classList.add('hidden');
-                this.innerHTML = '<span class="material-symbols-outlined animate-spin">progress_activity</span><span>Cargando...</span>';
-                setTimeout(() => {
+            // 1. Ocultar error previo y mostrar spinner/barra de carga
+            errorMsg.classList.add('hidden');
+            const originalBtnHtml = this.innerHTML;
+            this.innerHTML = '<span class="material-symbols-outlined animate-spin">progress_activity</span><span>Cargando...</span>';
+
+            // 2. Simular espera del servidor por 1.5 segundos
+            setTimeout(() => {
+                if (account && account.password === pass) {
                     window.location.href = account.home;
-                }, 800);
-            } else {
-                errorMsg.classList.remove('hidden');
-            }
+                } else {
+                    // 3. Mostrar error 401 y restaurar botón
+                    errorMsg.classList.remove('hidden');
+                    this.innerHTML = originalBtnHtml;
+                }
+            }, 1500);
         });
     </script>
 </body>
