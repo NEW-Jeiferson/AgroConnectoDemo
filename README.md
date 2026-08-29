@@ -10,7 +10,7 @@ AgroConnect es una aplicación móvil que conecta directamente a productores agr
 
 En República Dominicana y otros países de Latinoamérica, muchos agricultores venden sus productos a intermediarios que obtienen gran parte de las ganancias. Esto provoca que los productores reciban un pago menor por sus cosechas y que los consumidores paguen precios más elevados.
 
-AgroConnect busca reducir esta brecha permitiendo la venta directa entre productores y consumidores, facilitando además la gestión de productos, pedidos y entregas locales. :contentReference[oaicite:1]{index=1}
+AgroConnect busca reducir esta brecha permitiendo la venta directa entre productores y consumidores, facilitando además la gestión de productos, pedidos y entregas locales. 
 
 ---
 
