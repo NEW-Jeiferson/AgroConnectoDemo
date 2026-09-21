@@ -14,8 +14,17 @@ public class ProductoRoutes implements HttpHandler {
     @Override
     public void handle(HttpExchange t) throws IOException {
         t.getResponseHeaders().set("Content-Type", "application/json; charset=UTF-8");
+        t.getResponseHeaders().set("Access-Control-Allow-Origin", "*");
+        t.getResponseHeaders().set("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
         
         String method = t.getRequestMethod();
+        
+        // Handle Preflight OPTIONS request for CORS
+        if (method.equals("OPTIONS")) {
+            t.sendResponseHeaders(204, -1);
+            return;
+        }
+        
         String path = t.getRequestURI().getPath();
         
         String response = "";

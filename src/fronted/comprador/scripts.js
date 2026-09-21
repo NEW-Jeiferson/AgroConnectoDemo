@@ -239,9 +239,10 @@ document.addEventListener('DOMContentLoaded', () => {
 // que la tarjeta no se vea rota.
 function crearTarjetaProducto(producto) {
     const imagen = producto.image || 'https://placehold.co/400x300?text=Sin+imagen';
-    const titulo = producto.title || 'Producto sin nombre';
+    const titulo = producto.nombre || producto.title || 'Producto sin nombre';
     const categoria = producto.category || 'General';
-    const precio = typeof producto.price === 'number' ? producto.price.toFixed(2) : '0.00';
+    const precioObj = producto.precio || producto.price || 0;
+    const precio = typeof precioObj === 'number' ? precioObj.toFixed(2) : parseFloat(precioObj).toFixed(2);
     const rating = producto.rating && producto.rating.rate ? producto.rating.rate : '—';
 
     return `
@@ -312,7 +313,7 @@ async function obtenerProductos() {
         contenedor.innerHTML = `<p class="col-span-full text-center py-16 text-on-surface-variant">Cargando productos...</p>`;
     }
 
-    const respuesta = await fetch('https://fakestoreapi.com/products', {
+    const respuesta = await fetch('http://localhost:3000/api/productos', {
         signal: controlador.signal
     });
 
