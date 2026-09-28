@@ -1,0 +1,8 @@
+{
+    "java.project.referencedLibraries": [
+        "backend/lib/**/*.jar"
+    ],
+    "java.project.sourcePaths": [
+        "backend"
+    ]
+}

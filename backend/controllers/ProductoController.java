@@ -22,13 +22,27 @@ public class ProductoController {
         return m.find() ? m.group(1) : null;
     }
 
-    // 1. READ: Obtener todos los productos de la BD real
+    // Variables estáticas para la Caché en memoria
+    private static String cacheProductos = null;
+    private static long cacheExpiracion = 0;
+
+    // 1. READ: Obtener todos los productos (CON CACHÉ)
     public String obtenerTodos() {
+        long tiempoActual = System.currentTimeMillis();
+        
+        // Verificar si el caché existe y no ha expirado (TTL)
+        if (cacheProductos != null && tiempoActual < cacheExpiracion) {
+            System.out.println("Respondiendo desde la Caché en memoria");
+            return cacheProductos;
+        }
+        
+        System.out.println("Caché vacío o expirado. Consultando la base de datos...");
         StringBuilder jsonArray = new StringBuilder("[");
         String dbUrl = Database.getEnvVariable("DB_URL");
         
         try (Connection conn = DriverManager.getConnection(dbUrl)) {
-            String sql = "SELECT * FROM productos";
+            // Usamos ORDER BY nombre para aprovechar el nuevo índice de la base de datos
+            String sql = "SELECT * FROM productos ORDER BY nombre";
             ResultSet rs = conn.createStatement().executeQuery(sql);
             
             boolean primero = true;
@@ -43,7 +57,12 @@ public class ProductoController {
         }
         
         jsonArray.append("]");
-        return jsonArray.toString();
+        
+        // Guardar en la caché y definir el TTL (Time To Live) a 30 segundos
+        cacheProductos = jsonArray.toString();
+        cacheExpiracion = tiempoActual + 30000; // 30,000 ms = 30 seg
+        
+        return cacheProductos;
     }
 
     // 2. CREATE: Insertar un nuevo producto
