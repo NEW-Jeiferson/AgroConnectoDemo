@@ -53,7 +53,9 @@ public class ProductoController {
                 primero = false;
             }
         } catch (SQLException e) {
-            return "{\"error\": \"Error al consultar BD\"}";
+            System.err.println("[ERROR BD] Falló al consultar productos con url: " + dbUrl);
+            e.printStackTrace();
+            return "{\"error\": \"Error al consultar BD: " + e.getMessage() + "\"}";
         }
         
         jsonArray.append("]");

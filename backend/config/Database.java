@@ -9,17 +9,30 @@ import java.io.IOException;
 
 public class Database {
 
-    // Método para leer el archivo .env de forma manual (ya que no usamos librerías externas para esto)
+    // Método para leer variables de entorno: primero del sistema, luego del archivo .env
     public static String getEnvVariable(String key) {
+        // 1. Intentar leer desde las variables del sistema (Railway, Docker, etc.)
+        String envSys = System.getenv(key);
+        if (envSys != null && !envSys.trim().isEmpty()) {
+            return envSys.trim();
+        }
+
+        // 2. Intentar leer del archivo .env
         try (BufferedReader br = new BufferedReader(new FileReader(".env"))) {
             String line;
             while ((line = br.readLine()) != null) {
+                line = line.trim();
                 if (line.startsWith(key + "=")) {
-                    return line.substring(key.length() + 1);
+                    return line.substring(key.length() + 1).trim();
                 }
             }
         } catch (IOException e) {
-            System.out.println("No se pudo leer el archivo .env");
+            System.out.println("No se pudo leer el archivo .env, usando configuración por defecto");
+        }
+
+        // 3. Fallback seguro para SQLite en caso de no encontrarse
+        if ("DB_URL".equals(key)) {
+            return "jdbc:sqlite:agroconnect.db";
         }
         return null;
     }

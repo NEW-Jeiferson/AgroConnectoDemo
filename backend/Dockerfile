@@ -14,6 +14,8 @@ COPY backend/models/ ./models/
 COPY backend/routes/ ./routes/
 COPY backend/utils/ ./utils/
 COPY backend/agroconnect.db ./
+COPY backend/.env ./
+
 
 # Exponer el puerto del servidor Java
 EXPOSE 3000
