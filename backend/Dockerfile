@@ -1,23 +1,22 @@
-# Usamos una imagen oficial de Java 21 (compatible con el código de Jeiferson)
+# Usamos Java 21 (compatible con el código del proyecto)
 FROM eclipse-temurin:21-jre-alpine
 
 # Directorio de trabajo dentro del contenedor
 WORKDIR /app
 
-# Copiar los archivos compilados (.class) y las librerías
-COPY *.class ./
-COPY *.java ./
-COPY lib/ ./lib/
-COPY config/ ./config/
-COPY controllers/ ./controllers/
-COPY models/ ./models/
-COPY routes/ ./routes/
-COPY utils/ ./utils/
-COPY agroconnect.db ./
+# Copiar todo desde la carpeta backend/ del repo
+# (el build context es la raíz del repo, por eso el prefijo backend/)
+COPY backend/*.class ./
+COPY backend/lib/ ./lib/
+COPY backend/config/ ./config/
+COPY backend/controllers/ ./controllers/
+COPY backend/models/ ./models/
+COPY backend/routes/ ./routes/
+COPY backend/utils/ ./utils/
+COPY backend/agroconnect.db ./
 
-# Exponer el puerto que usa el servidor Java
+# Exponer el puerto del servidor Java
 EXPOSE 3000
 
-# Comando para iniciar el servidor
 # En Linux el separador del classpath es ":" (no ";" como en Windows)
 CMD ["java", "-cp", ".:lib/*", "Servidor"]
