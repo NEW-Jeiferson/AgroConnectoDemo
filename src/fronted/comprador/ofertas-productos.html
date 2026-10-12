@@ -63,7 +63,7 @@
         }
     </script>
 </head>
-<body class="text-on-surface">
+<body class="text-on-surface min-h-screen flex flex-col">
 <div style="position:fixed;top:10px;right:10px;z-index:99999;background:rgba(17,24,39,0.92);color:#fff;padding:10px 16px;border-radius:12px;font-family:'Inter',sans-serif;font-size:12px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;box-shadow:0 4px 16px rgba(0,0,0,0.3);max-width:90vw;">
 <strong style="color:#A3D977;">Demo Comprador:</strong>
 <a href="ofertas-productos.html" style="color:#fff;text-decoration:none;border-bottom:1px solid #599924;">Marketplace</a>
@@ -104,7 +104,7 @@
         </div>
     </header>
 
-    <main class="pt-24 pb-12 px-4 md:px-6 max-w-7xl mx-auto flex gap-6">
+    <main class="pt-24 pb-12 px-4 md:px-6 max-w-7xl mx-auto flex gap-6 flex-1 w-full">
         <!-- Sidebar Filters -->
         <aside class="hidden lg:block w-72 shrink-0">
             <div class="sticky top-24 space-y-6">
@@ -334,7 +334,7 @@
     </main>
 
     <!-- Footer -->
-    <footer class="w-full py-8 px-6 flex flex-col md:flex-row justify-between items-center bg-inverse-surface dark:bg-surface-container-lowest border-t border-outline-variant mt-12">
+    <footer class="w-full py-8 px-6 flex flex-col md:flex-row justify-between items-center bg-inverse-surface dark:bg-surface-container-lowest border-t border-outline-variant mt-auto">
         <div class="mb-6 md:mb-0">
             <span class="font-bold text-lg text-primary-fixed-dim block mb-2">AgroConnect</span>
             <p class="text-sm text-surface-variant opacity-80">© 2024 AgroConnect. Conectando raíces a mesas.</p>
@@ -347,6 +347,7 @@
         </div>
     </footer>
 
+    <script src="../../config.js"></script>
     <script src="scripts.js"></script>
 </body>
 </html>

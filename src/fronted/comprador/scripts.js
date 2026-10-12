@@ -302,10 +302,9 @@ function mostrarError(mensaje) {
 }
 
 async function obtenerProductos() {
-  // Contenedor límite de tiempo: si la API no responde en 8 segundos,
-  // cancelamos la petición en vez de dejar al usuario esperando para siempre.
+  // Contenedor límite de tiempo: 10 segundos para dar margen en la nube
   const controlador = new AbortController();
-  const limiteDeTiempo = setTimeout(() => controlador.abort(), 2000);
+  const limiteDeTiempo = setTimeout(() => controlador.abort(), 10000);
 
   try {
     const contenedor = document.getElementById('productosContainer');
@@ -313,9 +312,12 @@ async function obtenerProductos() {
         contenedor.innerHTML = `<p class="col-span-full text-center py-16 text-on-surface-variant">Cargando productos...</p>`;
     }
 
-    // La URL se lee desde CONFIG (que a su vez lee de process.env.API_BASE_URL).
-    // Así no hay valores "hardcodeados" en el código → ver src/config.js y .env
-    const apiUrl = (typeof CONFIG !== 'undefined') ? CONFIG.API_BASE_URL : 'http://localhost:3000';
+    // La URL se lee desde CONFIG o directamente del origen del navegador actual
+    const originFallback = (typeof window !== 'undefined' && window.location && window.location.origin.startsWith('http'))
+        ? window.location.origin
+        : 'http://localhost:3000';
+    const apiUrl = (typeof CONFIG !== 'undefined' && CONFIG.API_BASE_URL) ? CONFIG.API_BASE_URL : originFallback;
+
     const respuesta = await fetch(`${apiUrl}/api/productos`, {
         signal: controlador.signal
     });
