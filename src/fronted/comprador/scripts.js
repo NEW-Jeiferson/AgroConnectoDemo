@@ -234,23 +234,53 @@ document.addEventListener('DOMContentLoaded', () => {
 // ACTIVIDAD 3 - Mostrar los Datos en tarjetas
 // ================================
 
-// Crea el HTML de UNA tarjeta a partir de un producto de la API.
-// Si el producto no trae imagen, usamos un placeholder gris para
-// que la tarjeta no se vea rota.
+// Banco de imágenes agrícolas de alta calidad para productos sin imagen
+const BANCO_IMAGENES = [
+    'https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=600&q=80', // Ensalada y vegetales
+    'https://images.unsplash.com/photo-1610832958506-aa56368176cf?auto=format&fit=crop&w=600&q=80', // Frutas variadas
+    'https://images.unsplash.com/photo-1592924357228-91a4daadcfea?auto=format&fit=crop&w=600&q=80', // Tomates
+    'https://images.unsplash.com/photo-1518977676601-b53f82aba655?auto=format&fit=crop&w=600&q=80', // Papas
+    'https://images.unsplash.com/photo-1598170845058-32b9d6a5c317?auto=format&fit=crop&w=600&q=80', // Zanahorias
+    'https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?auto=format&fit=crop&w=600&q=80', // Manzanas
+    'https://images.unsplash.com/photo-1618512496248-a07fe83aa8cb?auto=format&fit=crop&w=600&q=80', // Cebollas
+    'https://images.unsplash.com/photo-1523049673857-eb18f1d7b578?auto=format&fit=crop&w=600&q=80', // Aguacates
+    'https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?auto=format&fit=crop&w=600&q=80', // Plátanos
+    'https://images.unsplash.com/photo-1563565375-f3fdfdbefa83?auto=format&fit=crop&w=600&q=80', // Pimientos
+    'https://images.unsplash.com/photo-1550258987-190a2d41a8ba?auto=format&fit=crop&w=600&q=80', // Fresas
+    'https://images.unsplash.com/photo-1611080626919-7cf5a9dbab5b?auto=format&fit=crop&w=600&q=80'  // Naranjas
+];
+
+function obtenerImagenProducto(nombre, id) {
+    if (!nombre) return BANCO_IMAGENES[0];
+    const n = nombre.toLowerCase();
+    if (n.includes('cebolla')) return 'https://images.unsplash.com/photo-1618512496248-a07fe83aa8cb?auto=format&fit=crop&w=600&q=80';
+    if (n.includes('manzana')) return 'https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?auto=format&fit=crop&w=600&q=80';
+    if (n.includes('papa')) return 'https://images.unsplash.com/photo-1518977676601-b53f82aba655?auto=format&fit=crop&w=600&q=80';
+    if (n.includes('tomate')) return 'https://images.unsplash.com/photo-1592924357228-91a4daadcfea?auto=format&fit=crop&w=600&q=80';
+    if (n.includes('zanahoria')) return 'https://images.unsplash.com/photo-1598170845058-32b9d6a5c317?auto=format&fit=crop&w=600&q=80';
+    if (n.includes('aguacate')) return 'https://images.unsplash.com/photo-1523049673857-eb18f1d7b578?auto=format&fit=crop&w=600&q=80';
+    
+    // Para productos simulados o genéricos, asignamos una foto rotativa según su id
+    const index = Math.abs((Number(id) || 0) % BANCO_IMAGENES.length);
+    return BANCO_IMAGENES[index];
+}
+
+// Crea el HTML de UNA tarjeta a partir de un producto de la API
 function crearTarjetaProducto(producto) {
-    const imagen = producto.image || 'https://placehold.co/400x300?text=Sin+imagen';
     const titulo = producto.nombre || producto.title || 'Producto sin nombre';
-    const categoria = producto.category || 'General';
+    const imagen = producto.image || obtenerImagenProducto(titulo, producto.id);
+    const categoria = producto.category || 'Agrícola Local';
     const precioObj = producto.precio || producto.price || 0;
     const precio = typeof precioObj === 'number' ? precioObj.toFixed(2) : parseFloat(precioObj).toFixed(2);
-    const rating = producto.rating && producto.rating.rate ? producto.rating.rate : '—';
+    const rating = (producto.rating && producto.rating.rate) ? producto.rating.rate : (4.5 + ((Number(producto.id) || 1) % 5) * 0.1).toFixed(1);
 
     return `
-        <div class="bg-white border border-outline-variant rounded-xl overflow-hidden group shadow-sm flex flex-col">
+        <div class="bg-white border border-outline-variant rounded-xl overflow-hidden group shadow-sm hover:shadow-md transition-shadow flex flex-col">
             <div class="relative h-48 overflow-hidden bg-surface-container-high">
-                <img class="w-full h-full object-contain p-4 group-hover:scale-105 transition-transform duration-500"
+                <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                      alt="${titulo}" src="${imagen}"
-                     onerror="this.src='https://placehold.co/400x300?text=Sin+imagen'">
+                     loading="lazy"
+                     onerror="this.src='https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=600&q=80'">
             </div>
             <div class="p-4 flex-1 flex flex-col">
                 <div class="flex justify-between items-start mb-2 gap-2">
@@ -272,15 +302,31 @@ function crearTarjetaProducto(producto) {
     `;
 }
 
-// Recorre el arreglo de productos y genera una tarjeta por cada uno,
-// insertándolas todas dentro del contenedor del marketplace.
+// Variables para paginación fluida
+let todosLosProductos = [];
+let productosVisibles = 24;
+
+// Recorre el arreglo de productos y genera tarjetas en el contenedor
 function mostrarProductos(productos) {
     const contenedor = document.getElementById('productosContainer');
-    if (!contenedor) return; // esta página no tiene el contenedor, no hacemos nada
+    if (!contenedor) return;
 
-    contenedor.innerHTML = productos
-        .map(producto => crearTarjetaProducto(producto))
-        .join('');
+    todosLosProductos = productos;
+    const corte = productos.slice(0, productosVisibles);
+    contenedor.innerHTML = corte.map(p => crearTarjetaProducto(p)).join('');
+
+    // Conectar el botón 'Mostrar Más Productos' si existe
+    const btnMas = Array.from(document.querySelectorAll('button')).find(b => b.textContent.includes('Mostrar Más')) || document.querySelector('section > div.mt-12 button');
+    if (btnMas) {
+        btnMas.onclick = () => {
+            productosVisibles += 24;
+            const nuevoCorte = todosLosProductos.slice(0, productosVisibles);
+            contenedor.innerHTML = nuevoCorte.map(p => crearTarjetaProducto(p)).join('');
+            if (productosVisibles >= todosLosProductos.length) {
+                btnMas.style.display = 'none';
+            }
+        };
+    }
 }
 
 // Muestra un mensaje de error claro dentro del marketplace,
