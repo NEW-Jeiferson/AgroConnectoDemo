@@ -15,6 +15,8 @@ COPY backend/routes/ ./routes/
 COPY backend/utils/ ./utils/
 COPY backend/agroconnect.db ./
 COPY backend/.env ./
+COPY src/ ./public/
+
 
 
 # Exponer el puerto del servidor Java

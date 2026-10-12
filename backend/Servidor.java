@@ -3,6 +3,11 @@ import com.sun.net.httpserver.HttpServer;
 import com.sun.net.httpserver.HttpContext;
 import com.sun.net.httpserver.Filter;
 import com.sun.net.httpserver.HttpExchange;
+import com.sun.net.httpserver.HttpHandler;
+import java.io.File;
+import java.io.OutputStream;
+import java.nio.file.Files;
+import java.nio.charset.StandardCharsets;
 import java.io.IOException;
 
 // Importar nuestras nuevas rutas
@@ -22,7 +27,7 @@ public class Servidor {
         HttpContext contextRegistro = server.createContext("/api/registro", authRoutes);
         HttpContext contextLogin = server.createContext("/api/login", authRoutes);
         
-        // Mantener el middleware para todas las rutas
+        // Mantener el middleware para todas las rutas API
         LoggerMiddleware logger = new LoggerMiddleware();
         contextProductos.getFilters().add(logger);
         contextRegistro.getFilters().add(logger);
@@ -32,9 +37,72 @@ public class Servidor {
         contextProductos.getFilters().add(new AuthMiddleware());
         contextProductos.getFilters().add(new RoleMiddleware());
         
+        // Servir archivos estáticos del Frontend (HTML, CSS, JS) y la ruta /health
+        File publicDir = new File("public");
+        if (!publicDir.exists()) {
+            publicDir = new File("../src");
+            if (!publicDir.exists()) {
+                publicDir = new File("src");
+            }
+        }
+        server.createContext("/", new StaticHandler(publicDir));
+        
         server.setExecutor(null); 
         server.start();
         System.out.println("Servidor de la API corriendo con estructura MVC en el puerto 3000");
+    }
+
+    // Handler para servir el Frontend HTML, CSS, JS
+    static class StaticHandler implements HttpHandler {
+        private final File baseDir;
+
+        public StaticHandler(File baseDir) {
+            this.baseDir = baseDir;
+        }
+
+        @Override
+        public void handle(HttpExchange exchange) throws IOException {
+            String path = exchange.getRequestURI().getPath();
+            
+            // Redirección o mapeo de rutas amigables
+            if (path.equals("/") || path.isEmpty()) {
+                path = "/index.html";
+            } else if (path.equals("/health")) {
+                path = "/health.html";
+            }
+
+            File file = new File(baseDir, path).getCanonicalFile();
+            // Prevenir Path Traversal y verificar que exista
+            if (!file.getPath().startsWith(baseDir.getCanonicalPath()) || !file.exists() || file.isDirectory()) {
+                String error = "404 Not Found";
+                byte[] errorBytes = error.getBytes(StandardCharsets.UTF_8);
+                exchange.getResponseHeaders().set("Content-Type", "text/plain; charset=UTF-8");
+                exchange.sendResponseHeaders(404, errorBytes.length);
+                try (OutputStream os = exchange.getResponseBody()) {
+                    os.write(errorBytes);
+                }
+                return;
+            }
+
+            // Detectar tipo de contenido MIME
+            String mime = "application/octet-stream";
+            String lower = file.getName().toLowerCase();
+            if (lower.endsWith(".html")) mime = "text/html; charset=UTF-8";
+            else if (lower.endsWith(".css")) mime = "text/css; charset=UTF-8";
+            else if (lower.endsWith(".js")) mime = "application/javascript; charset=UTF-8";
+            else if (lower.endsWith(".json")) mime = "application/json; charset=UTF-8";
+            else if (lower.endsWith(".png")) mime = "image/png";
+            else if (lower.endsWith(".jpg") || lower.endsWith(".jpeg")) mime = "image/jpeg";
+            else if (lower.endsWith(".svg")) mime = "image/svg+xml";
+            else if (lower.endsWith(".ico")) mime = "image/x-icon";
+
+            byte[] bytes = Files.readAllBytes(file.toPath());
+            exchange.getResponseHeaders().set("Content-Type", mime);
+            exchange.sendResponseHeaders(200, bytes.length);
+            try (OutputStream os = exchange.getResponseBody()) {
+                os.write(bytes);
+            }
+        }
     }
 
 

@@ -15,10 +15,12 @@ const CONFIG = {
         ? process.env.PORT
         : '8080',
 
-    // URL base del servidor Java local
-    API_BASE_URL: (typeof process !== 'undefined' && process.env && process.env.API_BASE_URL)
-        ? process.env.API_BASE_URL
-        : 'http://localhost:8080',
+    // URL base del servidor (en navegador toma dinámicamente el dominio actual, ej: Railway)
+    API_BASE_URL: (typeof window !== 'undefined' && window.location && window.location.origin && window.location.origin.startsWith('http'))
+        ? window.location.origin
+        : ((typeof process !== 'undefined' && process.env && process.env.API_BASE_URL)
+            ? process.env.API_BASE_URL
+            : 'http://localhost:3000'),
 
     // URL de la API externa (FakeStore para desarrollo/pruebas)
     FAKE_STORE_API_URL: (typeof process !== 'undefined' && process.env && process.env.FAKE_STORE_API_URL)
