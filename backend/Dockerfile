@@ -1,5 +1,5 @@
 # Usamos Java 21 (compatible con el código del proyecto)
-FROM eclipse-temurin:21-jre-alpine
+FROM eclipse-temurin:25-jre
 
 # Directorio de trabajo dentro del contenedor
 WORKDIR /app
