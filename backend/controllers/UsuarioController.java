@@ -23,6 +23,8 @@ public class UsuarioController {
     public String registro(String body) {
         String email = extraerString(body, "email");
         String plainPassword = extraerString(body, "password");
+        String rol = extraerString(body, "rol");
+        if (rol == null) rol = "cliente"; // rol por defecto
 
         if (email == null || plainPassword == null) {
             return "{\"error\": \"Faltan datos obligatorios (email, password)\"}";
@@ -34,13 +36,14 @@ public class UsuarioController {
         // 2. Guardar en Base de Datos
         String dbUrl = Database.getEnvVariable("DB_URL");
         try (Connection conn = DriverManager.getConnection(dbUrl)) {
-            String sql = "INSERT INTO usuarios (email, password) VALUES (?, ?)";
+            String sql = "INSERT INTO usuarios (email, password, rol) VALUES (?, ?, ?)";
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, email);
             pstmt.setString(2, hashedPassword);
+            pstmt.setString(3, rol);
             pstmt.executeUpdate();
             
-            return "{\"mensaje\": \"Usuario registrado exitosamente\"}";
+            return "{\"mensaje\": \"Usuario registrado exitosamente como " + rol + "\"}";
         } catch (SQLException e) {
             if (e.getMessage().contains("UNIQUE")) {
                 return "{\"error\": \"El email ya está registrado\"}";
@@ -68,11 +71,13 @@ public class UsuarioController {
 
             if (rs.next()) {
                 String dbHashedPassword = rs.getString("password");
+                String dbRol = rs.getString("rol");
+                if (dbRol == null) dbRol = "cliente";
                 
                 // 1. Validar la contraseña desencriptada vs encriptada
                 if (BCrypt.checkpw(plainPassword, dbHashedPassword)) {
-                    // 2. Credenciales válidas -> Generar JWT
-                    String token = JwtUtil.generarToken(email);
+                    // 2. Credenciales válidas -> Generar JWT con el ROL
+                    String token = JwtUtil.generarToken(email, dbRol);
                     return "{\"mensaje\": \"Login exitoso\", \"token\": \"" + token + "\"}";
                 } else {
                     return "{\"error\": \"Contraseña incorrecta\"}";

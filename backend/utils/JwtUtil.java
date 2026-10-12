@@ -8,15 +8,15 @@ import java.util.Base64;
 public class JwtUtil {
     private static final String SECRET_KEY = "MiSuperSecretoSeguroParaAgroConnect"; // Debería estar en .env idealmente
 
-    public static String generarToken(String email) {
+    public static String generarToken(String email, String rol) {
         try {
             // 1. Header
             String header = "{\"alg\":\"HS256\",\"typ\":\"JWT\"}";
             String encodedHeader = Base64.getUrlEncoder().withoutPadding().encodeToString(header.getBytes(StandardCharsets.UTF_8));
 
-            // 2. Payload (Incluye expiración de 1 hora)
+            // 2. Payload (Incluye expiración de 1 hora y el ROL)
             long exp = (System.currentTimeMillis() / 1000) + 3600; 
-            String payload = "{\"email\":\"" + email + "\",\"exp\":" + exp + "}";
+            String payload = "{\"email\":\"" + email + "\",\"rol\":\"" + rol + "\",\"exp\":" + exp + "}";
             String encodedPayload = Base64.getUrlEncoder().withoutPadding().encodeToString(payload.getBytes(StandardCharsets.UTF_8));
 
             // 3. Signature
@@ -71,5 +71,20 @@ public class JwtUtil {
         } catch (Exception e) {
             return false;
         }
+    }
+
+    public static String extraerRol(String token) {
+        try {
+            String payload = token.split("\\.")[1];
+            String decodedPayload = new String(Base64.getUrlDecoder().decode(payload), StandardCharsets.UTF_8);
+            if (decodedPayload.contains("\"rol\":\"")) {
+                int rolIndex = decodedPayload.indexOf("\"rol\":\"") + 7;
+                int rolEnd = decodedPayload.indexOf("\"", rolIndex);
+                return decodedPayload.substring(rolIndex, rolEnd);
+            }
+        } catch (Exception e) {
+            // ignorar
+        }
+        return "cliente"; // rol por defecto
     }
 }
