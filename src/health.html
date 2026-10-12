@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AgroConnect – Health Check</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0f172a;
+            color: #e2e8f0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card {
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 16px;
+            padding: 2.5rem 3rem;
+            max-width: 480px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+
+        .status-dot {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #22c55e;
+            margin: 0 auto 1.5rem;
+            box-shadow: 0 0 16px #22c55e88;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.25); opacity: 0.7; }
+        }
+
+        h1 { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .subtitle { color: #94a3b8; font-size: 0.875rem; margin-bottom: 2rem; }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+        }
+
+        .info-item {
+            background: #0f172a;
+            border: 1px solid #334155;
+            border-radius: 10px;
+            padding: 0.75rem 1rem;
+            text-align: left;
+        }
+
+        .info-label { color: #64748b; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem; }
+        .info-value { font-size: 0.95rem; font-weight: 600; color: #22c55e; word-break: break-all; }
+
+        .api-check {
+            background: #0f172a;
+            border: 1px solid #334155;
+            border-radius: 10px;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .api-label { color: #64748b; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; }
+        .api-status { font-size: 0.875rem; font-weight: 600; }
+        .api-status.ok { color: #22c55e; }
+        .api-status.error { color: #f87171; }
+        .api-status.checking { color: #fbbf24; }
+
+        .btn-refresh {
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            color: white;
+            border: none;
+            padding: 0.65rem 1.75rem;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.2s, transform 0.15s;
+        }
+        .btn-refresh:hover { opacity: 0.9; transform: translateY(-1px); }
+        .btn-refresh:active { transform: scale(0.97); }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <div class="status-dot" id="statusDot"></div>
+    <h1>✅ Sistema Operativo</h1>
+    <p class="subtitle">AgroConnect · Health Check · <code>/health</code></p>
+
+    <div class="info-grid">
+        <div class="info-item">
+            <div class="info-label">Estado</div>
+            <div class="info-value" id="estado">OK</div>
+        </div>
+        <div class="info-item">
+            <div class="info-label">Timestamp</div>
+            <div class="info-value" id="timestamp">—</div>
+        </div>
+        <div class="info-item">
+            <div class="info-label">Puerto</div>
+            <div class="info-value" id="puerto">8080</div>
+        </div>
+        <div class="info-item">
+            <div class="info-label">Entorno</div>
+            <div class="info-value" id="entorno">local</div>
+        </div>
+    </div>
+
+    <div class="api-check">
+        <div class="api-label">Conexión con API externa (FakeStore)</div>
+        <div class="api-status checking" id="apiStatus">⏳ Verificando...</div>
+    </div>
+
+    <button class="btn-refresh" onclick="runHealthCheck()">🔄 Actualizar</button>
+</div>
+
+<script src="../config.js"></script>
+<script>
+    // ================================================
+    // /health — verifica que el sistema esté en línea
+    // Leer el puerto desde CONFIG (que a su vez lee
+    // de process.env.PORT cuando está disponible).
+    // ================================================
+
+    async function runHealthCheck() {
+        // Timestamp actual
+        document.getElementById('timestamp').textContent =
+            new Date().toLocaleTimeString('es-DO');
+
+        // Puerto desde config (process.env.PORT → fallback 8080)
+        document.getElementById('puerto').textContent = CONFIG.PORT;
+
+        // Estado básico
+        document.getElementById('estado').textContent = 'OK';
+
+        // Entorno
+        const entorno = window.location.hostname === 'localhost' ? 'local' : 'producción';
+        document.getElementById('entorno').textContent = entorno;
+
+        // Verificar API externa
+        const apiStatusEl = document.getElementById('apiStatus');
+        apiStatusEl.className = 'api-status checking';
+        apiStatusEl.textContent = '⏳ Verificando...';
+
+        try {
+            const res = await fetch(`${CONFIG.FAKE_STORE_API_URL}/products?limit=1`, {
+                signal: AbortSignal.timeout(5000)
+            });
+            if (res.ok) {
+                apiStatusEl.className = 'api-status ok';
+                apiStatusEl.textContent = `✅ Conectada (HTTP ${res.status})`;
+            } else {
+                throw new Error(`HTTP ${res.status}`);
+            }
+        } catch (err) {
+            apiStatusEl.className = 'api-status error';
+            apiStatusEl.textContent = `❌ Sin conexión: ${err.message}`;
+        }
+    }
+
+    // Ejecutar al cargar la página
+    runHealthCheck();
+</script>
+</body>
+</html>

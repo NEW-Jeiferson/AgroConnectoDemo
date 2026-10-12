@@ -313,9 +313,13 @@ async function obtenerProductos() {
         contenedor.innerHTML = `<p class="col-span-full text-center py-16 text-on-surface-variant">Cargando productos...</p>`;
     }
 
-    const respuesta = await fetch('http://localhost:3000/api/productos', {
+    // La URL se lee desde CONFIG (que a su vez lee de process.env.API_BASE_URL).
+    // Así no hay valores "hardcodeados" en el código → ver src/config.js y .env
+    const apiUrl = (typeof CONFIG !== 'undefined') ? CONFIG.API_BASE_URL : 'http://localhost:3000';
+    const respuesta = await fetch(`${apiUrl}/api/productos`, {
         signal: controlador.signal
     });
+
 
     // fetch() NO lanza error automáticamente si el servidor responde
     // con un código de error (404, 500, etc.) — hay que revisarlo a mano.
